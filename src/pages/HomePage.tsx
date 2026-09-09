@@ -1,5 +1,6 @@
 import React from 'react';
 import { Language, Program, Experience } from '../types';
+import { EnvironmentalBackground } from '../components/EnvironmentalBackground';
 import { Hero } from '../components/Hero';
 import { AboutTeaser } from '../components/AboutTeaser';
 import { MethodologySection } from '../components/MethodologySection';
@@ -26,7 +27,10 @@ export const HomePage: React.FC<HomePageProps> = ({
   onScrollToSection,
 }) => {
   return (
-    <div>
+    <div className="relative">
+      {/* Dynamic Environmental Continuous Background with scroll-linked focal points */}
+      <EnvironmentalBackground />
+
       {/* 1. Cinematic Hero */}
       <Hero
         language={language}

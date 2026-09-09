@@ -1,7 +1,7 @@
 import React from 'react';
 import { PROGRAMS } from '../data/yaHalaData';
 import { Program, Language } from '../types';
-import { Landmark, User, Users, Monitor, ArrowRight, Check } from 'lucide-react';
+import { Landmark, User, Users, Monitor, ArrowRight, Layers } from 'lucide-react';
 
 interface ProgramsSectionProps {
   language: Language;
@@ -17,13 +17,13 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
   const getIcon = (iconName: string) => {
     switch (iconName) {
       case 'landmark':
-        return <Landmark className="w-6 h-6" />;
+        return <Landmark className="w-5 h-5 text-[#1F3423] group-hover:text-[#1EC672] transition-colors" aria-hidden="true" />;
       case 'user':
-        return <User className="w-6 h-6" />;
+        return <User className="w-5 h-5 text-[#1F3423] group-hover:text-[#1EC672] transition-colors" aria-hidden="true" />;
       case 'users':
-        return <Users className="w-6 h-6" />;
+        return <Users className="w-5 h-5 text-[#1F3423] group-hover:text-[#1EC672] transition-colors" aria-hidden="true" />;
       default:
-        return <Monitor className="w-6 h-6" />;
+        return <Monitor className="w-5 h-5 text-[#1F3423] group-hover:text-[#1EC672] transition-colors" aria-hidden="true" />;
     }
   };
 
@@ -31,79 +31,92 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
     <section
       id="programs"
       data-theme="light"
-      className="py-24 bg-[#F9F8F5] px-6 border-t border-gray-100"
+      data-header-theme="light"
+      className="py-24 md:py-32 px-6 relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto">
+      {/* Restrained contextual backdrop letting the historic architecture breathe */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#F9F8F5]/60 via-[#F9F8F5]/80 to-[#F9F8F5]/60 backdrop-blur-md pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16 max-w-2xl mx-auto">
-          <h4 className="text-[#1F3423] uppercase tracking-widest font-semibold text-xs md:text-sm mb-4">
-            {language === 'en' ? 'OUR PROGRAMS' : 'برامجنا التعليمية'}
-          </h4>
-          <h2 className="text-4xl md:text-5xl font-syne font-bold text-[#222222] tracking-tight mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-control-light text-[#1F3423] text-xs font-bold uppercase tracking-widest mb-4">
+            <Layers className="w-3.5 h-3.5 text-[#1F3423]" />
+            <span>{language === 'en' ? 'OUR CURRICULAR TRACKS' : 'مساراتنا التعليمية'}</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-syne font-bold text-[#1F3423] tracking-tight mb-4">
             {language === 'en' ? 'Choose Your Path' : 'اختر مسارك التعليمي'}
           </h2>
-          <p className="text-sm md:text-base text-gray-600 font-light">
+          <p className="text-sm md:text-base text-[#1F3423]/80 font-normal leading-relaxed">
             {language === 'en'
-              ? 'Flexible, cohort-based and personalized tracks designed for diplomats, professionals, and language enthusiasts.'
+              ? 'Cohort-based and personalized tracks designed for diplomats, professionals, and language enthusiasts seeking conversational fluency.'
               : 'مسارات متنوعة حضورية وافتراضية وخاصة تلائم الدبلوماسيين والتنفيذيين والباحثين وعشاق اللغة العربية.'}
           </p>
         </div>
 
-        {/* 4 Cards Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* 4 Cards Responsive Composition in Warm Translucent Glass */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           {PROGRAMS.map((program) => {
             return (
               <div
                 key={program.id}
-                className="group bg-white rounded-3xl p-8 border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between"
+                className="group glass-warm-card rounded-2xl p-7 hover:border-[#1EC672]/60 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
-                  {/* Icon */}
-                  <div className="w-14 h-14 bg-[#F9F8F5] rounded-2xl flex items-center justify-center mb-6 text-[#1F3423] group-hover:bg-[#1F3423] group-hover:text-[#1EC672] transition-colors shadow-sm">
-                    {getIcon(program.iconName)}
+                  {/* Top Bar: Icon with high-contrast default state */}
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-12 h-12 rounded-xl bg-[#1F3423]/10 border border-[#1F3423]/15 flex items-center justify-center group-hover:bg-[#1F3423] transition-colors shadow-xs">
+                      {getIcon(program.iconName)}
+                    </div>
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#1F3423] bg-[#1F3423]/8 px-2.5 py-1 rounded-full border border-[#1F3423]/10">
+                      {language === 'en' ? program.category : program.categoryAr}
+                    </span>
                   </div>
 
-                  <div className="text-[11px] font-bold uppercase tracking-wider text-[#1EC672] mb-1">
-                    {language === 'en' ? program.category : program.categoryAr}
-                  </div>
-
-                  <h3 className="text-xl md:text-2xl font-syne font-bold mb-3 text-[#222222]">
+                  <h3 className="text-xl font-syne font-bold mb-2.5 text-[#1F3423] group-hover:text-[#166534] transition-colors leading-snug">
                     {language === 'en' ? program.title : program.titleAr}
                   </h3>
 
-                  <p className="text-gray-600 mb-6 text-sm leading-relaxed font-light">
+                  <p className="text-[#1F3423]/75 mb-6 text-xs sm:text-sm leading-relaxed font-normal line-clamp-3">
                     {language === 'en' ? program.description : program.descriptionAr}
                   </p>
 
-                  <div className="space-y-2 mb-6 pt-4 border-t border-gray-100">
-                    <div className="text-xs text-gray-500 font-medium">
-                      <strong className="text-[#1F3423]">
-                        {language === 'en' ? 'Duration: ' : 'المدة: '}
-                      </strong>
-                      {language === 'en' ? program.duration : program.durationAr}
+                  {/* Program Metadata Pills */}
+                  <div className="space-y-2 mb-6 pt-4 border-t border-[#1F3423]/10">
+                    <div className="text-xs text-[#1F3423]/80 font-medium flex items-center justify-between">
+                      <span className="font-semibold text-[#1F3423]">
+                        {language === 'en' ? 'Duration' : 'المدة'}
+                      </span>
+                      <span className="text-[#1F3423]/90 bg-[#1F3423]/5 px-2 py-0.5 rounded text-[11px]">
+                        {language === 'en' ? program.duration : program.durationAr}
+                      </span>
                     </div>
-                    <div className="text-xs text-gray-500 font-medium">
-                      <strong className="text-[#1F3423]">
-                        {language === 'en' ? 'Format: ' : 'النمط: '}
-                      </strong>
-                      {language === 'en' ? program.format : program.formatAr}
+                    <div className="text-xs text-[#1F3423]/80 font-medium flex items-center justify-between">
+                      <span className="font-semibold text-[#1F3423]">
+                        {language === 'en' ? 'Format' : 'النمط'}
+                      </span>
+                      <span className="text-[#1F3423]/90 bg-[#1F3423]/5 px-2 py-0.5 rounded text-[11px]">
+                        {language === 'en' ? program.format : program.formatAr}
+                      </span>
                     </div>
                   </div>
                 </div>
 
-                {/* Card Action Buttons */}
-                <div className="pt-4 border-t border-gray-100 flex items-center justify-between">
+                {/* Card Action Buttons with visible icons and clear focus-visible */}
+                <div className="pt-4 border-t border-[#1F3423]/10 flex items-center justify-between gap-3">
                   <button
                     onClick={() => onSelectProgram(program)}
-                    className="text-[#1F3423] group-hover:text-[#1EC672] font-semibold text-xs tracking-wider uppercase transition-colors flex items-center gap-1.5"
+                    className="text-[#1F3423] hover:text-[#166534] font-syne font-bold text-xs tracking-wider uppercase transition-colors flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-[#1EC672] focus-visible:outline-none rounded-md px-1 py-1"
+                    aria-label={`${language === 'en' ? 'View details for' : 'تفاصيل'} ${language === 'en' ? program.title : program.titleAr}`}
                   >
                     <span>{language === 'en' ? 'View Details' : 'تفاصيل المسار'}</span>
-                    <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform rtl:group-hover:-translate-x-1" />
+                    <ArrowRight className="w-3.5 h-3.5 text-[#1F3423] group-hover:text-[#166534] transform group-hover:translate-x-1 transition-transform rtl:group-hover:-translate-x-1" aria-hidden="true" />
                   </button>
 
                   <button
                     onClick={() => onApplyProgram(program.id)}
-                    className="px-3 py-1.5 rounded-full bg-[#1F3423] text-white text-[11px] font-bold hover:bg-[#1EC672] hover:text-[#1F3423] transition-colors"
+                    className="px-3.5 py-1.5 rounded-full bg-[#1F3423] text-white text-xs font-syne font-bold hover:bg-[#1EC672] hover:text-[#0C100E] transition-all duration-200 shadow-xs focus-visible:ring-2 focus-visible:ring-[#1EC672] focus-visible:outline-none"
+                    aria-label={`${language === 'en' ? 'Apply to' : 'التقديم على'} ${language === 'en' ? program.title : program.titleAr}`}
                   >
                     {language === 'en' ? 'Apply' : 'تقديم'}
                   </button>

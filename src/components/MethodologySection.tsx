@@ -52,6 +52,7 @@ export const MethodologySection: React.FC<MethodologySectionProps> = ({ language
     <section
       id="methodology"
       data-theme="light"
+      data-header-theme="light"
       className="pt-28 pb-24 relative overflow-hidden bg-[#F9F8F5]"
     >
       {/* Pattern texture overlay */}

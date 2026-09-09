@@ -13,19 +13,9 @@ export const AboutTeaser: React.FC<AboutTeaserProps> = ({ language }) => {
     <section
       id="why"
       data-theme="dark"
-      className="relative py-20 md:py-28 bg-[#0C100E] text-white overflow-hidden"
+      data-header-theme="dark"
+      className="relative py-20 md:py-28 bg-[#0C100E]/75 backdrop-blur-md text-white overflow-hidden border-y border-white/5"
     >
-      {/* Background Image with visible oasis photography */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <img
-          src={ASSETS.aboutBg}
-          alt="Saudi Palm Oasis Sanctuary"
-          className="w-full h-full object-cover object-center opacity-35 scale-105 transition-transform duration-1000"
-          referrerPolicy="no-referrer"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0C100E]/95 via-[#0C100E]/70 to-[#0C100E]/95 pointer-events-none" />
-      </div>
-
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         {/* Eyebrow badge */}
         <div className="inline-flex items-center gap-2 mb-4">

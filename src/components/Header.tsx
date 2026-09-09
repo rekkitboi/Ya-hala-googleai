@@ -16,40 +16,40 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenApplication,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isDarkSection, setIsDarkSection] = useState(true);
+  const [headerTheme, setHeaderTheme] = useState<'dark' | 'light'>('dark');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Dark header logic
-  const isDarkHeader = location.pathname === '/' || location.pathname === '/about' || location.pathname === '/student-experience';
-
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      setIsScrolled(scrollPosition > 40);
+      setIsScrolled(scrollPosition > 35);
 
-      // Section theme detector for contrast
+      // Section theme detector for contrast based on section under header
       const sections = document.querySelectorAll('section');
-      let currentSectionTheme = 'dark';
+      let currentTheme: 'dark' | 'light' = 'dark';
 
       sections.forEach((section) => {
         const rect = section.getBoundingClientRect();
-        if (rect.top <= 80 && rect.bottom >= 80) {
-          const theme = section.getAttribute('data-theme');
-          if (theme) {
-            currentSectionTheme = theme;
+        // Check section intersecting the header line (y = 65px)
+        if (rect.top <= 65 && rect.bottom >= 65) {
+          const themeAttr = section.getAttribute('data-header-theme') || section.getAttribute('data-theme');
+          if (themeAttr === 'light' || themeAttr === 'dark') {
+            currentTheme = themeAttr;
           }
         }
       });
 
-      setIsDarkSection(currentSectionTheme === 'dark');
+      setHeaderTheme(currentTheme);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, [location.pathname]);
+
+  const isDark = headerTheme === 'dark';
 
   const handleNavClick = (path: string, hash?: string) => {
     setMobileMenuOpen(false);
@@ -80,9 +80,9 @@ export const Header: React.FC<HeaderProps> = ({
       id="main-header"
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         isScrolled
-          ? isDarkSection
-            ? 'bg-[#0C100E]/85 backdrop-blur-xl border-b border-white/10 shadow-lg'
-            : 'bg-[#F9F8F5]/90 backdrop-blur-xl border-b border-[#1F3423]/10 shadow-sm'
+          ? isDark
+            ? 'bg-[#0C100E]/60 backdrop-blur-xl border-b border-white/10 shadow-lg'
+            : 'bg-[#F9F8F5]/65 backdrop-blur-xl border-b border-[#1F3423]/10 shadow-sm'
           : 'bg-transparent border-b border-transparent'
       }`}
     >
@@ -100,8 +100,8 @@ export const Header: React.FC<HeaderProps> = ({
               className={`transition-all py-1 relative ${
                 isRouteActive('/')
                   ? 'text-[#1EC672] font-bold'
-                  : isDarkHeader || (isScrolled && isDarkSection)
-                  ? 'text-white/85 hover:text-[#1EC672]'
+                  : isDark
+                  ? 'text-white/90 hover:text-[#1EC672]'
                   : 'text-[#1F3423] hover:text-[#1EC672]'
               }`}
             >
@@ -117,8 +117,8 @@ export const Header: React.FC<HeaderProps> = ({
               className={`transition-all py-1 relative ${
                 isRouteActive('/about')
                   ? 'text-[#1EC672] font-bold'
-                  : isDarkHeader || (isScrolled && isDarkSection)
-                  ? 'text-white/85 hover:text-[#1EC672]'
+                  : isDark
+                  ? 'text-white/90 hover:text-[#1EC672]'
                   : 'text-[#1F3423] hover:text-[#1EC672]'
               }`}
             >
@@ -134,8 +134,8 @@ export const Header: React.FC<HeaderProps> = ({
               className={`transition-all py-1 relative ${
                 isRouteActive('/student-experience')
                   ? 'text-[#1EC672] font-bold'
-                  : isDarkHeader || (isScrolled && isDarkSection)
-                  ? 'text-white/85 hover:text-[#1EC672]'
+                  : isDark
+                  ? 'text-white/90 hover:text-[#1EC672]'
                   : 'text-[#1F3423] hover:text-[#1EC672]'
               }`}
             >
@@ -147,28 +147,28 @@ export const Header: React.FC<HeaderProps> = ({
           </nav>
         </div>
 
-        {/* Logo (Mathematically Centered at Viewport/Container Horizontal Midpoint) */}
-        <div className="absolute inset-0 pointer-events-none flex items-center justify-center z-0">
+        {/* Logo (Mathematically Locked to True Viewport Center) */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto z-20 flex items-center justify-center">
           <Link
             to="/"
-            className="block w-[130px] xl:w-[140px] h-[44px] xl:h-[48px] relative group pointer-events-auto"
+            className="block w-[130px] xl:w-[140px] h-[44px] xl:h-[48px] relative group"
             aria-label="Ya Hala Homepage"
           >
             <div className="relative w-full h-full">
-              {/* White Logo */}
+              {/* White Logo (Visible over dark areas) */}
               <img
                 src={ASSETS.logoWhite}
                 alt="Ya Hala Logo"
-                className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ${
-                  isDarkHeader || (isScrolled && isDarkSection) ? 'opacity-100' : 'opacity-0'
+                className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
+                  isDark ? 'opacity-100' : 'opacity-0 pointer-events-none'
                 }`}
               />
-              {/* Green Logo */}
+              {/* Green Logo (Visible over light areas) */}
               <img
                 src={ASSETS.logoGreen}
                 alt="Ya Hala Logo"
-                className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ${
-                  isDarkHeader || (isScrolled && isDarkSection) ? 'opacity-0' : 'opacity-100'
+                className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
+                  isDark ? 'opacity-0 pointer-events-none' : 'opacity-100'
                 }`}
               />
             </div>
@@ -184,8 +184,8 @@ export const Header: React.FC<HeaderProps> = ({
               <div className="relative group/explore py-4">
                 <button
                   className={`flex items-center gap-1 transition-colors cursor-pointer tracking-wider ${
-                    isDarkHeader || (isScrolled && isDarkSection)
-                      ? 'text-white/85 hover:text-[#1EC672]'
+                    isDark
+                      ? 'text-white/90 hover:text-[#1EC672]'
                       : 'text-[#1F3423] hover:text-[#1EC672]'
                   }`}
                 >
@@ -194,22 +194,22 @@ export const Header: React.FC<HeaderProps> = ({
                 </button>
                 
                 {/* Dropdown Menu */}
-                <div className="absolute top-[80%] left-1/2 -translate-x-1/2 rtl:translate-x-1/2 mt-2 w-48 py-2 bg-white rounded-xl shadow-lg border border-[#1F3423]/10 opacity-0 invisible group-hover/explore:opacity-100 group-hover/explore:visible transition-all duration-300">
+                <div className="absolute top-[80%] left-1/2 -translate-x-1/2 rtl:translate-x-1/2 mt-2 w-48 py-2 bg-white/95 backdrop-blur-xl rounded-xl shadow-xl border border-[#1F3423]/10 opacity-0 invisible group-hover/explore:opacity-100 group-hover/explore:visible transition-all duration-300 z-50">
                   <button
                     onClick={() => handleNavClick('/', 'methodology')}
-                    className="block w-full text-left rtl:text-right px-5 py-2.5 text-[11px] font-bold text-[#1F3423]/80 hover:text-[#1EC672] hover:bg-[#F9F8F5] transition-colors"
+                    className="block w-full text-left rtl:text-right px-5 py-2.5 text-[11px] font-bold text-[#1F3423]/80 hover:text-[#1EC672] hover:bg-[#F9F8F5] transition-colors cursor-pointer"
                   >
                     {language === 'en' ? 'METHODOLOGY' : 'المنهجية'}
                   </button>
                   <button
                     onClick={() => handleNavClick('/', 'programs')}
-                    className="block w-full text-left rtl:text-right px-5 py-2.5 text-[11px] font-bold text-[#1F3423]/80 hover:text-[#1EC672] hover:bg-[#F9F8F5] transition-colors"
+                    className="block w-full text-left rtl:text-right px-5 py-2.5 text-[11px] font-bold text-[#1F3423]/80 hover:text-[#1EC672] hover:bg-[#F9F8F5] transition-colors cursor-pointer"
                   >
                     {language === 'en' ? 'PROGRAMS' : 'البرامج'}
                   </button>
                   <button
                     onClick={() => handleNavClick('/', 'experiences')}
-                    className="block w-full text-left rtl:text-right px-5 py-2.5 text-[11px] font-bold text-[#1F3423]/80 hover:text-[#1EC672] hover:bg-[#F9F8F5] transition-colors"
+                    className="block w-full text-left rtl:text-right px-5 py-2.5 text-[11px] font-bold text-[#1F3423]/80 hover:text-[#1EC672] hover:bg-[#F9F8F5] transition-colors cursor-pointer"
                   >
                     {language === 'en' ? 'EXPERIENCES' : 'التجارب'}
                   </button>
@@ -220,10 +220,10 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 id="lang-toggle-btn"
                 onClick={onToggleLanguage}
-                className={`flex items-center gap-1 px-2 py-1 rounded transition-colors cursor-pointer ${
-                  isDarkHeader || (isScrolled && isDarkSection)
-                    ? 'text-white/80 hover:text-white'
-                    : 'text-[#1F3423] hover:text-[#1EC672]'
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full transition-all cursor-pointer ${
+                  isDark
+                    ? 'text-white/90 hover:text-white bg-white/10 hover:bg-white/20 border border-white/20'
+                    : 'text-[#1F3423] hover:text-[#1EC672] bg-white/60 hover:bg-white/90 border border-[#1F3423]/15'
                 }`}
                 title={language === 'en' ? 'Switch to Arabic' : 'التحويل للإنجليزية'}
               >
@@ -239,7 +239,7 @@ export const Header: React.FC<HeaderProps> = ({
               id="header-cta-btn"
               onClick={() => onOpenApplication()}
               className={`px-4 xl:px-5 py-2 xl:py-2.5 font-syne font-bold rounded-full transition-all duration-300 shadow-sm hover:scale-[1.02] text-[11px] xl:text-xs tracking-wider cursor-pointer ${
-                isDarkHeader || (isScrolled && isDarkSection)
+                isDark
                   ? 'bg-white text-[#1F3423] hover:bg-[#F9F8F5]'
                   : 'bg-[#1F3423] text-white hover:bg-[#142317]'
               }`}
@@ -252,7 +252,7 @@ export const Header: React.FC<HeaderProps> = ({
               id="mobile-menu-toggle"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className={`lg:hidden p-2 rounded-lg cursor-pointer ${
-                isDarkHeader || (isScrolled && isDarkSection) ? 'text-white' : 'text-[#1F3423]'
+                isDark ? 'text-white' : 'text-[#1F3423]'
               }`}
               aria-label="Toggle Navigation Menu"
             >

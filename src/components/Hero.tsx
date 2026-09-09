@@ -18,23 +18,15 @@ export const Hero: React.FC<HeroProps> = ({
     <section
       id="top"
       data-theme="dark"
-      className="relative min-h-screen flex items-center justify-center pt-28 pb-24 overflow-hidden"
+      data-header-theme="dark"
+      className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-20 overflow-hidden"
     >
-      {/* Environmental Oasis Background with high clarity and visible sunlight */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <img
-          src={ASSETS.heroBg}
-          alt="Saudi Heritage Oasis Landscape"
-          className="w-full h-full object-cover object-center scale-105 transition-transform duration-1000"
-          referrerPolicy="no-referrer"
-        />
-        {/* Localized directional gradient for text readability while preserving natural sunlight and landscape */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0C100E]/80 via-black/35 to-black/30 pointer-events-none" />
-      </div>
+      {/* Localized directional gradient for text readability while preserving the continuous architectural environment */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/15 to-transparent pointer-events-none z-0" />
 
       <div className="relative z-10 text-center text-white px-6 max-w-4xl mx-auto">
         {/* Eyebrow badge: warm translucent glass */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white/90 text-xs font-semibold tracking-[0.2em] uppercase mb-6 shadow-sm">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/25 text-white/95 text-xs font-semibold tracking-[0.2em] uppercase mb-6 shadow-sm">
           <Sparkles className="w-3.5 h-3.5 text-[#1EC672]" />
           <span>
             {language === 'en'
@@ -79,7 +71,7 @@ export const Hero: React.FC<HeroProps> = ({
           <button
             id="hero-discover-exp-btn"
             onClick={onDiscoverExperiences}
-            className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3.5 bg-black/25 border border-white/40 text-white rounded-full hover:bg-white hover:text-[#1F3423] transition-all duration-300 font-syne font-semibold text-xs uppercase tracking-wider backdrop-blur-md cursor-pointer"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3.5 bg-white/10 hover:bg-white/20 border border-white/30 text-white rounded-full transition-all duration-300 font-syne font-semibold text-xs uppercase tracking-wider backdrop-blur-md cursor-pointer shadow-sm hover:scale-105"
           >
             <Compass className="w-4 h-4" />
             <span>
@@ -90,29 +82,26 @@ export const Hero: React.FC<HeroProps> = ({
           </button>
         </div>
 
-        {/* Location & Presence Indicators: Subtle & grounded */}
-        <div className="mt-14 pt-6 border-t border-white/15 flex flex-wrap justify-center items-center gap-6 md:gap-10 text-[11px] uppercase tracking-widest text-white/75 font-semibold">
-          <div className="flex items-center gap-2">
+        {/* Approved Conceptual Pillars: Replacing unverified location claims */}
+        <div className="mt-14 pt-6 border-t border-white/15 flex flex-wrap justify-center items-center gap-4 md:gap-8 text-[11px] uppercase tracking-widest text-white/85 font-semibold">
+          <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 backdrop-blur-sm border border-white/10">
             <span className="w-1.5 h-1.5 rounded-full bg-[#1EC672]" />
-            <span>Riyadh Flagship Hub</span>
+            <span>{language === 'en' ? 'Saudi Dialect' : 'اللهجة السعودية'}</span>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 backdrop-blur-sm border border-white/10">
             <span className="w-1.5 h-1.5 rounded-full bg-[#1EC672]" />
-            <span>Historic Jeddah Center</span>
+            <span>{language === 'en' ? 'Cultural Understanding' : 'الفهم الثقافي'}</span>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 backdrop-blur-sm border border-white/10">
             <span className="w-1.5 h-1.5 rounded-full bg-[#1EC672]" />
-            <span>AlUla Cultural Outposts</span>
+            <span>{language === 'en' ? 'Practical Communication' : 'التواصل العملي'}</span>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 backdrop-blur-sm border border-white/10">
             <span className="w-1.5 h-1.5 rounded-full bg-[#1EC672]" />
-            <span>Worldwide Online</span>
+            <span>{language === 'en' ? 'Everyday Confidence' : 'الثقة اليومية'}</span>
           </div>
         </div>
       </div>
-
-      {/* Atmospheric transition to following section */}
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-[#0C100E] to-transparent pointer-events-none" />
     </section>
   );
 };

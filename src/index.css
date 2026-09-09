@@ -32,7 +32,53 @@ body {
   font-family: 'Noto Sans Arabic', sans-serif;
 }
 
-/* Glassmorphism styles for Neo-Futuristic Oasis */
+/* Glassmorphism styles for Continuous Architectural Oasis System */
+.glass-warm-light {
+  background: rgba(249, 248, 245, 0.84);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(31, 52, 35, 0.12);
+  box-shadow: 0 20px 40px -12px rgba(12, 16, 14, 0.08);
+}
+
+.glass-warm-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(31, 52, 35, 0.1);
+  box-shadow: 0 10px 25px -5px rgba(12, 16, 14, 0.05);
+}
+
+.glass-neutral-dark {
+  background: rgba(12, 16, 14, 0.72);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.4);
+}
+
+.glass-dark-card {
+  background: rgba(20, 28, 24, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.25);
+}
+
+.glass-control-dark {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-control-light {
+  background: rgba(249, 248, 245, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(31, 52, 35, 0.15);
+}
+
 .glass-card-refined {
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
   backdrop-filter: blur(16px);
@@ -41,21 +87,21 @@ body {
 }
 
 .glass-card-dark {
-  background: rgba(16, 22, 19, 0.5);
+  background: rgba(16, 22, 19, 0.6);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .glass-subtle-dark {
-  background: rgba(14, 20, 17, 0.45);
+  background: rgba(14, 20, 17, 0.55);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .glass-oasis-panel {
-  background: rgba(12, 18, 15, 0.4);
+  background: rgba(12, 18, 15, 0.5);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -63,18 +109,18 @@ body {
 }
 
 .glass-subtle-light {
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(249, 248, 245, 0.82);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(31, 52, 35, 0.08);
+  border: 1px solid rgba(31, 52, 35, 0.1);
 }
 
 .glass-oasis-light {
-  background: rgba(249, 248, 245, 0.65);
+  background: rgba(249, 248, 245, 0.75);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(31, 52, 35, 0.1);
-  box-shadow: 0 12px 32px rgba(31, 52, 35, 0.04);
+  border: 1px solid rgba(31, 52, 35, 0.12);
+  box-shadow: 0 12px 32px rgba(31, 52, 35, 0.06);
 }
 
 /* Reduced motion preference */
