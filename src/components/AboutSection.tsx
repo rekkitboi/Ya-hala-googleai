@@ -29,13 +29,18 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ language }) => {
       data-theme="dark"
       className="relative py-28 md:py-36 bg-[#0C100E] text-white overflow-hidden"
     >
-      {/* Background with texture & subtle radial vignetting */}
-      <div
-        className="absolute inset-0 opacity-20 bg-cover bg-center pointer-events-none scale-105 transition-transform duration-1000"
-        style={{ backgroundImage: `url("${ASSETS.aboutBg}")` }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0C100E] via-transparent to-[#0C100E] pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#1F3423]/40 via-[#0C100E]/80 to-[#0C100E] pointer-events-none" />
+      {/* Background Image from user with lush green oasis feel & subtle radial vignetting */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <img
+          src={ASSETS.aboutBg}
+          alt="Saudi Palm Oasis Sanctuary"
+          className="w-full h-full object-cover object-center opacity-30 mix-blend-luminosity scale-105"
+          referrerPolicy="no-referrer"
+        />
+        <div className="absolute inset-0 bg-[#0C100E]/70 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0C100E] via-transparent to-[#0C100E] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#1F3423]/50 via-[#0C100E]/85 to-[#0C100E] pointer-events-none" />
+      </div>
 
       {/* Radiant glow behind central emblem */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#1EC672]/15 rounded-full blur-[120px] pointer-events-none" />

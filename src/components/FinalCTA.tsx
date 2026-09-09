@@ -1,4 +1,5 @@
 import React from 'react';
+import { ASSETS } from '../data/yaHalaData';
 import { Language } from '../types';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
@@ -14,8 +15,20 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ language, onApplyNow }) => {
       data-theme="dark"
       className="py-32 bg-[#1F3423] relative overflow-hidden text-center px-6 border-t border-white/10"
     >
+      {/* Background Image from user with emerald wash */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <img
+          src={ASSETS.experienceStone}
+          alt="Saudi Heritage Village"
+          className="w-full h-full object-cover object-center opacity-25 mix-blend-luminosity scale-105"
+          referrerPolicy="no-referrer"
+        />
+        <div className="absolute inset-0 bg-[#1F3423]/80 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1F3423] via-transparent to-[#1F3423] pointer-events-none" />
+      </div>
+
       {/* Background glowing orb */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-[#1EC672]/15 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-[#1EC672]/15 rounded-full blur-[140px] pointer-events-none z-[1]" />
 
       <div className="relative z-10 max-w-3xl mx-auto">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-[#1EC672] text-xs font-bold uppercase tracking-widest mb-6">

@@ -7,17 +7,19 @@ export const ASSETS = {
   logoFooter: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB_qJwNI1Rkr7hwxJGBaIRCQOkiNBxtef7dMPdBf0xBGnA5HhoKd6uM4fGXcmVgKJIe1OuCOHt68ykqcsTrdp0O3jiRC60veeiOJ1zGLQ1IkRVRIKdkX-y82ubGZqL3UkUK8Ezl_0zjf9k4kbt8uqm-5fA3Za9NH0bu-u8wtgMMSJcA2s_Mfoqv98H1pzr2vny6r1LPTpnFACjidqmV--wIScBVxAQ3-mJHjvia29bVLnl_744fq9MBqCyH43RaPCcQtA',
   
   // Backgrounds & Images
-  heroBg: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA52sERdCQmZS5Daj5gJaEGM23X9ufeaRwU7qfzneFDtd_I3fv0sKkXdUSjB7PPVUEVIg7bY8bX4rFBSSPMCS4xSnrkUWiTPNfMOhzQ4PPCFU5X4V0Dpcpbb7GZd-0dxmj9jLa_DHxZSz3xnIKrXx-JdcBcG75lvYKxQ-Oqukf9jtDt41W5m78TnvNyw65O-K_xXOEDIjGbBdQCgN9-qzDcxTXg3NMuZxt38ANJ-WW3LNf2piklR_Dag1tUJcxFECYobg',
-  aboutBg: 'https://lh3.googleusercontent.com/aida/AP1WRLvMykyC-PNO11dl_Si2W2IHiYNY59-DaiphH0nph2sw7lpMlPSSILV97iO4-TlwC9M8u-SY9ENwkWIpZjZwKKVRkmeyQY5rlYWmKF4Ysj21cz3vxND0-7nCm8kSUZ_EyPAcL14l97MBByQiYzoNRgTEr6M07OKAlIU53b4j_FfGToYZwgzaVDBy-NOKpUIL64mlngwUvCY-L-WLNjdVZFAro1KANeIAoj5dQKpbalKGAJPo1nN4y6WjoU4',
+  heroBg: '/yh-green-hero.jpg',
+  aboutBg: '/yh-green-about.jpg',
+  experienceArch: '/yh-green-experience-1.jpg',
+  experienceStone: '/yh-green-experience-2.jpg',
   patternTexture: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDUXSgp6ZkK8JVZIWwomwX8YCIqp6rXwzbMIsx74RVG1RJwE-G6wKQHRjp_DOb-ajHe3X5hIncyXS5U7TXhkm_HHoYR3WHg5a8CwMACtcv9iXKWXbp5q20uM4qJufzhEfcwp2GU_awPG0NkcU35dK_PKtXN1rjgdYLDgG55b2-G7FgsEMxBatQ6GyCsllIhdmD_9Iv239jIpNfZdg0FrI5xV4cITj-W0UHi8hcaFBbcV_2ca7Bu6npZ4T_5JrTGag69kw',
-  bujairiHero: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC1-FmGrUyyUZfeJZqkPq_ZiAsTDsyWAgbNoW-sB63lXMurjjdWFhwPJ4dlP4Pyl89oMvW51sJDlwtNEbOzVC-3KVUex5MbjcyBpvkaDGEnI3qGYiNt8ZLDfSYqKc2EOyXSK_9sVv4k1YNlFzL09p-WxeBf94WBPruPckicR7riBGwp8TA1CbtqH9pRSJbdhhaiYKfGQsV5Sf72L2st3JHzdFJ7kiE2jYKQkiJrypJxc7HjD187N7FIQ_GCrmv0_h49aQ',
-  historicJeddah: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAqsBJpAcDKMKfT_Y6Dc-_ytJPMNcOk2ctfljmPB8GMfuq_Zbs7V8ptrO8lBR2u2FOS6Ol4Qmcwejy_aoNr5523_ZNP6rcjp9bXFEezRS12WvXbbLH9FaeHu7431ary2RKi2sApc14i9dwJPaYSO99tuVovpqom6NFRD4B3CMIR-SevO9lp87hd27YlaeFYwUAdIna0PIq5vxKbhgvDu0XbnWkkYcwnvvT6r3UMLAlsJWMIfSDRABpM83FRTnLqBirKfQ',
+  bujairiHero: '/yh-green-experience-1.jpg',
+  historicJeddah: '/yh-green-experience-2.jpg',
   footerTexture: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDaugxfjuP8ulrg9TzRPxbAQF1qjrb7wJhQiIgtXIq4h8vUYfWDoHZHbAv8SVjl5INaMay63xMajA2FhoZXgRwW1-qXvZg6zYiK3Upt3rr-7NPJy4vM8qHhbTLJ8T1Eka09ujMmnnt9H9GQgW9UrozivqXrD6zgbjdQLcaHperoLFqV98zcwYfSZ7c4W9eqXe3qs22L7ZTZ98_Rt81CpyGgGlCyeZEqyEaKtkOYlR6AteNTaE7n0SdaMc7Dc-SInSqaCA',
   
   // Editorial imagery
-  diriyahNights: 'https://images.unsplash.com/photo-1586724237569-f3d0c1dee8c6?auto=format&fit=crop&w=1200&q=80',
+  diriyahNights: '/yh-green-experience-1.jpg',
   saudiCoffee: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1200&q=80',
-  alUlaHeritage: 'https://images.unsplash.com/photo-1609800325491-eb55681ec552?auto=format&fit=crop&w=1200&q=80',
+  alUlaHeritage: '/yh-green-hero.jpg',
 };
 
 export const YA_HALA_PILLARS = [

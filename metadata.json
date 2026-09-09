@@ -2,6 +2,7 @@
   "name": "Ya Hala - Saudi Language & Cultural Institute",
   "description": "Learn the Saudi Arabic dialect through immersive classes, cultural experiences, and authentic connections across the Kingdom.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
-

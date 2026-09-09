@@ -25,10 +25,11 @@ export const ExperiencesSection: React.FC<ExperiencesSectionProps> = ({
       <div className="absolute inset-0 z-0">
         <img
           src={ASSETS.bujairiHero}
-          alt="Bujairi Hero"
-          className="w-full h-full object-cover opacity-30 mix-blend-overlay"
+          alt="Bujairi Mudbrick Walkways"
+          className="w-full h-full object-cover opacity-25 mix-blend-overlay scale-105"
+          referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1F3423] via-transparent to-[#1F3423]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1F3423] via-[#1F3423]/60 to-[#1F3423]" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">

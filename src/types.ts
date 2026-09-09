@@ -75,3 +75,60 @@ export interface MethodologyStage {
   description: string;
   descriptionAr: string;
 }
+
+export interface TeamMember {
+  id: string;
+  name: string;
+  nameAr: string;
+  role: string;
+  roleAr: string;
+  bio: string;
+  bioAr: string;
+  image: string;
+  imageStatus: 'confirmed' | 'temporary';
+  bioStatus: 'confirmed' | 'requires-confirmation';
+  isFeatured?: boolean;
+}
+
+export interface CurriculumLevel {
+  id: string;
+  level: string;
+  cefr: string;
+  title: string;
+  titleAr: string;
+  description: string;
+  descriptionAr: string;
+  focus: string;
+  focusAr: string;
+  milestones: string[];
+  milestonesAr: string[];
+}
+
+export interface JourneyStage {
+  id: string;
+  step: string;
+  title: string;
+  titleAr: string;
+  description: string;
+  descriptionAr: string;
+  iconName: string;
+}
+
+export interface CulturalTopic {
+  id: string;
+  title: string;
+  titleAr: string;
+  description: string;
+  descriptionAr: string;
+  iconName: string;
+}
+
+export interface StudentActivity {
+  id: string;
+  title: string;
+  titleAr: string;
+  description: string;
+  descriptionAr: string;
+  iconName: string;
+}
+

@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { Language, Program, Experience } from './types';
 import { Header } from './components/Header';
-import { Hero } from './components/Hero';
-import { AboutSection } from './components/AboutSection';
-import { MethodologySection } from './components/MethodologySection';
-import { ProgramsSection } from './components/ProgramsSection';
-import { SaudiPhraseSection } from './components/SaudiPhraseSection';
-import { ExperiencesSection } from './components/ExperiencesSection';
-import { EditorialSection } from './components/EditorialSection';
-import { AppPreviewSection } from './components/AppPreviewSection';
-import { FinalCTA } from './components/FinalCTA';
 import { Footer } from './components/Footer';
+import { ScrollToTop } from './components/ScrollToTop';
+import { HomePage } from './pages/HomePage';
+import { AboutPage } from './pages/AboutPage';
+import { StudentExperiencePage } from './pages/StudentExperiencePage';
 import { ApplicationModal } from './components/ApplicationModal';
 import { ProgramModal } from './components/ProgramModal';
 import { ExperienceModal } from './components/ExperienceModal';
@@ -23,7 +19,7 @@ export default function App() {
   const [inspectedProgram, setInspectedProgram] = useState<Program | null>(null);
   const [inspectedExperience, setInspectedExperience] = useState<Experience | null>(null);
 
-  // Update HTML dir attribute when language changes
+  // Update HTML dir and lang attribute when language changes
   useEffect(() => {
     document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.lang = language;
@@ -62,6 +58,9 @@ export default function App() {
         language === 'ar' ? 'font-arabic' : 'font-sans'
       }`}
     >
+      {/* Route and Meta Title Synchronizer */}
+      <ScrollToTop language={language} />
+
       {/* Fixed Dynamic Navigation Header */}
       <Header
         language={language}
@@ -69,50 +68,48 @@ export default function App() {
         onOpenApplication={() => handleOpenApplication()}
       />
 
+      {/* Main Page Routing */}
       <main>
-        {/* 1. Cinematic Hero */}
-        <Hero
-          language={language}
-          onExplorePrograms={() => scrollToSection('programs')}
-          onDiscoverExperiences={() => scrollToSection('experiences')}
-        />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <HomePage
+                language={language}
+                onOpenApplication={handleOpenApplication}
+                onSelectProgram={(program) => setInspectedProgram(program)}
+                onSelectExperience={(exp) => setInspectedExperience(exp)}
+                onScrollToSection={scrollToSection}
+              />
+            }
+          />
 
-        {/* 2. Cinematic About / 4 Pillars Architecture */}
-        <AboutSection language={language} />
+          <Route
+            path="/about"
+            element={
+              <AboutPage
+                language={language}
+                onOpenApplication={handleOpenApplication}
+              />
+            }
+          />
 
-        {/* 3. Methodology / 4-Stage Pedagogy */}
-        <MethodologySection language={language} />
+          <Route
+            path="/student-experience"
+            element={
+              <StudentExperiencePage
+                language={language}
+                onOpenApplication={handleOpenApplication}
+              />
+            }
+          />
 
-        {/* 4. Programs / Learning Paths */}
-        <ProgramsSection
-          language={language}
-          onSelectProgram={(program) => setInspectedProgram(program)}
-          onApplyProgram={(programId) => handleOpenApplication(programId)}
-        />
-
-        {/* 5. Dialect Discovery / Interactive Phrase of the Day */}
-        <SaudiPhraseSection language={language} />
-
-        {/* 6. Cultural Experiences Showcase */}
-        <ExperiencesSection
-          language={language}
-          onSelectExperience={(exp) => setInspectedExperience(exp)}
-        />
-
-        {/* 7. Upcoming Experiences & Editorial Stories */}
-        <EditorialSection language={language} />
-
-        {/* 8. Ya Hala Mobile App Interactive Preview */}
-        <AppPreviewSection language={language} />
-
-        {/* 9. Final Call to Action */}
-        <FinalCTA
-          language={language}
-          onApplyNow={() => handleOpenApplication()}
-        />
+          {/* Fallback to Home */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </main>
 
-      {/* 10. Footer */}
+      {/* Global Footer */}
       <Footer
         language={language}
         onSelectProgramId={handleSelectProgramById}

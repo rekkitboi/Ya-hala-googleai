@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ASSETS } from '../data/yaHalaData';
 import { Language } from '../types';
-import { Check, Mail } from 'lucide-react';
+import { Check } from 'lucide-react';
 
 interface FooterProps {
   language: Language;
@@ -80,11 +81,11 @@ export const Footer: React.FC<FooterProps> = ({ language, onSelectProgramId }) =
           <h5 className="text-[#1EC672] font-syne font-bold mb-4 uppercase text-xs tracking-wider">
             {language === 'en' ? 'PROGRAMS' : 'البرامج الأكاديمية'}
           </h5>
-          <ul className="space-y-3 text-sm">
+          <ul className="space-y-3 text-sm font-light">
             <li>
               <button
                 onClick={() => onSelectProgramId('in-person')}
-                className="hover:text-white transition-colors text-left rtl:text-right"
+                className="hover:text-white transition-colors text-left rtl:text-right cursor-pointer"
               >
                 {language === 'en' ? 'In-Person Learning' : 'التعليم الحضوري'}
               </button>
@@ -92,7 +93,7 @@ export const Footer: React.FC<FooterProps> = ({ language, onSelectProgramId }) =
             <li>
               <button
                 onClick={() => onSelectProgramId('online-learning')}
-                className="hover:text-white transition-colors text-left rtl:text-right"
+                className="hover:text-white transition-colors text-left rtl:text-right cursor-pointer"
               >
                 {language === 'en' ? 'Online Programs' : 'البرامج الافتراضية'}
               </button>
@@ -100,7 +101,7 @@ export const Footer: React.FC<FooterProps> = ({ language, onSelectProgramId }) =
             <li>
               <button
                 onClick={() => onSelectProgramId('private-tutoring')}
-                className="hover:text-white transition-colors text-left rtl:text-right"
+                className="hover:text-white transition-colors text-left rtl:text-right cursor-pointer"
               >
                 {language === 'en' ? 'Private Tutoring' : 'التدريب الخاص الفردي'}
               </button>
@@ -108,7 +109,7 @@ export const Footer: React.FC<FooterProps> = ({ language, onSelectProgramId }) =
             <li>
               <button
                 onClick={() => onSelectProgramId('corporate-groups')}
-                className="hover:text-white transition-colors text-left rtl:text-right"
+                className="hover:text-white transition-colors text-left rtl:text-right cursor-pointer"
               >
                 {language === 'en' ? 'Corporate Training' : 'برامج الشركات والمؤسسات'}
               </button>
@@ -116,31 +117,36 @@ export const Footer: React.FC<FooterProps> = ({ language, onSelectProgramId }) =
           </ul>
         </div>
 
-        {/* Column 3: Institute & About */}
+        {/* Column 3: Institute & Pages */}
         <div>
           <h5 className="text-[#1EC672] font-syne font-bold mb-4 uppercase text-xs tracking-wider">
-            {language === 'en' ? 'ABOUT' : 'المعهد'}
+            {language === 'en' ? 'ACADEMY' : 'المعهد والأكاديمية'}
           </h5>
-          <ul className="space-y-3 text-sm">
+          <ul className="space-y-3 text-sm font-light">
             <li>
-              <a href="#why" className="hover:text-white transition-colors">
-                {language === 'en' ? 'Our Story & Mission' : 'قصتنا ورسالتنا'}
-              </a>
+              <Link to="/about" className="hover:text-white transition-colors">
+                {language === 'en' ? 'Our Story & Purpose' : 'قصتنا ورؤيتنا'}
+              </Link>
             </li>
             <li>
-              <a href="#methodology" className="hover:text-white transition-colors">
+              <Link to="/about#team" className="hover:text-white transition-colors">
+                {language === 'en' ? 'Founder & Team' : 'المؤسس وفريق العمل'}
+              </Link>
+            </li>
+            <li>
+              <Link to="/student-experience" className="hover:text-white transition-colors">
+                {language === 'en' ? 'Curriculum & Experience' : 'المنهج وتجربة الطالب'}
+              </Link>
+            </li>
+            <li>
+              <Link to="/#methodology" className="hover:text-white transition-colors">
                 {language === 'en' ? '4-Stage Methodology' : 'المنهجية التعليمية'}
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#experiences" className="hover:text-white transition-colors">
-                {language === 'en' ? 'Cultural Field Outings' : 'الزيارات الميدانية'}
-              </a>
-            </li>
-            <li>
-              <a href="#phrase-feature" className="hover:text-white transition-colors">
-                {language === 'en' ? 'Saudi Phrasebook' : 'قاموس العبارات'}
-              </a>
+              <Link to="/#experiences" className="hover:text-white transition-colors">
+                {language === 'en' ? 'Cultural Outings' : 'الزيارات الميدانية'}
+              </Link>
             </li>
           </ul>
         </div>
@@ -173,7 +179,7 @@ export const Footer: React.FC<FooterProps> = ({ language, onSelectProgramId }) =
               />
               <button
                 type="submit"
-                className="text-[#1EC672] text-xs font-bold uppercase hover:text-white transition-colors shrink-0 ml-2"
+                className="text-[#1EC672] text-xs font-bold uppercase hover:text-white transition-colors shrink-0 ml-2 cursor-pointer"
               >
                 {language === 'en' ? 'SUBSCRIBE' : 'اشتراك'}
               </button>
@@ -186,15 +192,12 @@ export const Footer: React.FC<FooterProps> = ({ language, onSelectProgramId }) =
       <div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-white/50 relative z-10 gap-4">
         <p>© 2026 Ya Hala Cultural Institute. All rights reserved.</p>
         <div className="flex gap-6">
-          <a href="#" className="hover:text-white transition-colors">
-            {language === 'en' ? 'Privacy Policy' : 'سياسة الخصوصية'}
-          </a>
-          <a href="#" className="hover:text-white transition-colors">
-            {language === 'en' ? 'Terms of Service' : 'شروط الخدمة'}
-          </a>
-          <a href="#" className="hover:text-white transition-colors">
-            {language === 'en' ? 'Academic FAQ' : 'الأسئلة الشائعة'}
-          </a>
+          <Link to="/about" className="hover:text-white transition-colors">
+            {language === 'en' ? 'About Us' : 'عن المعهد'}
+          </Link>
+          <Link to="/student-experience" className="hover:text-white transition-colors">
+            {language === 'en' ? 'Student Experience' : 'تجربة الطالب'}
+          </Link>
         </div>
       </div>
     </footer>

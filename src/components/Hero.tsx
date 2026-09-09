@@ -18,20 +18,23 @@ export const Hero: React.FC<HeroProps> = ({
     <section
       id="top"
       data-theme="dark"
-      className="relative min-h-screen flex items-center justify-center pt-24 pb-20 overflow-hidden"
-      style={{
-        backgroundImage: `linear-gradient(rgba(12, 16, 14, 0.45), rgba(12, 16, 14, 0.65)), url("${ASSETS.heroBg}")`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-      }}
+      className="relative min-h-screen flex items-center justify-center pt-24 pb-20 overflow-hidden bg-[#0C100E]"
     >
-      {/* Texture overlays */}
-      <div className="absolute inset-0 mix-blend-multiply bg-[#1F3423]/50 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#1F3423]/30 to-[#0C100E] pointer-events-none" />
+      {/* Background Image from user */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <img
+          src={ASSETS.heroBg}
+          alt="Saudi Heritage Landscape"
+          className="w-full h-full object-cover object-center scale-105 transition-transform duration-1000"
+          referrerPolicy="no-referrer"
+        />
+        <div className="absolute inset-0 bg-[#0C100E]/50 pointer-events-none" />
+        <div className="absolute inset-0 mix-blend-multiply bg-[#1F3423]/60 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0C100E]/80 via-transparent to-[#0C100E] pointer-events-none" />
+      </div>
 
       {/* Subtle glowing ambient aura */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#1EC672]/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#1EC672]/15 rounded-full blur-[140px] pointer-events-none z-[1]" />
 
       <div className="relative z-10 text-center text-white px-6 max-w-5xl mx-auto mt-6">
         {/* Eyebrow badge */}
