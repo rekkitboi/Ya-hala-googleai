@@ -11,6 +11,8 @@ export const ASSETS = {
   aboutBg: '/yh-green-about.jpg',
   experienceArch: '/yh-green-experience-1.jpg',
   experienceStone: '/yh-green-experience-2.jpg',
+  oasisGardenPassage: '/oasis-garden-passage.jpg',
+  oasisStoneTerrace: '/oasis-stone-terrace.jpg',
   patternTexture: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDUXSgp6ZkK8JVZIWwomwX8YCIqp6rXwzbMIsx74RVG1RJwE-G6wKQHRjp_DOb-ajHe3X5hIncyXS5U7TXhkm_HHoYR3WHg5a8CwMACtcv9iXKWXbp5q20uM4qJufzhEfcwp2GU_awPG0NkcU35dK_PKtXN1rjgdYLDgG55b2-G7FgsEMxBatQ6GyCsllIhdmD_9Iv239jIpNfZdg0FrI5xV4cITj-W0UHi8hcaFBbcV_2ca7Bu6npZ4T_5JrTGag69kw',
   bujairiHero: '/yh-green-experience-1.jpg',
   historicJeddah: '/yh-green-experience-2.jpg',
@@ -18,7 +20,7 @@ export const ASSETS = {
   
   // Editorial imagery
   diriyahNights: '/yh-green-experience-1.jpg',
-  saudiCoffee: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1200&q=80',
+  saudiCoffee: '/yh-green-experience-2.jpg',
   alUlaHeritage: '/yh-green-hero.jpg',
 };
 

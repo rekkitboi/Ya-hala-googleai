@@ -13,34 +13,32 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ language, onApplyNow }) => {
     <section
       id="start"
       data-theme="dark"
-      className="py-32 bg-[#1F3423] relative overflow-hidden text-center px-6 border-t border-white/10"
+      className="py-24 md:py-32 bg-[#0C100E] relative overflow-hidden text-center px-6"
     >
-      {/* Background Image from user with emerald wash */}
+      {/* Background Image with visible architectural photography */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <img
           src={ASSETS.experienceStone}
-          alt="Saudi Heritage Village"
-          className="w-full h-full object-cover object-center opacity-25 mix-blend-luminosity scale-105"
+          alt="Saudi Heritage Architecture"
+          className="w-full h-full object-cover object-center opacity-35 scale-105 transition-transform duration-1000"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-[#1F3423]/80 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1F3423] via-transparent to-[#1F3423] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0C100E]/95 via-[#0C100E]/70 to-[#0C100E]/95 pointer-events-none" />
       </div>
 
-      {/* Background glowing orb */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-[#1EC672]/15 rounded-full blur-[140px] pointer-events-none z-[1]" />
-
       <div className="relative z-10 max-w-3xl mx-auto">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-[#1EC672] text-xs font-bold uppercase tracking-widest mb-6">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>{language === 'en' ? 'ENROLLMENT NOW OPEN' : 'التسجيل متاح الآن'}</span>
+        <div className="inline-flex items-center gap-2 mb-4">
+          <Sparkles className="w-3.5 h-3.5 text-[#1EC672]" />
+          <span className="text-[#1EC672] uppercase tracking-[0.2em] font-syne font-semibold text-xs">
+            {language === 'en' ? 'ENROLLMENT NOW OPEN' : 'التسجيل متاح الآن'}
+          </span>
         </div>
 
-        <h2 className="text-4xl sm:text-5xl md:text-6xl font-syne font-extrabold text-white mb-8 tracking-tight leading-tight">
-          {language === 'en' ? 'Begin Your Ya Hala Journey' : 'ابدأ رحلتك مع معهد يا هلا'}
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-syne font-bold text-white mb-4 tracking-tight leading-tight">
+          {language === 'en' ? 'Begin Your Ya Hala Journey' : 'ابدأ رحلتك مع يا هلا'}
         </h2>
 
-        <p className="text-lg md:text-xl text-white/85 mb-12 font-light leading-relaxed max-w-xl mx-auto">
+        <p className="text-base sm:text-lg text-white/80 mb-8 font-light leading-relaxed max-w-xl mx-auto">
           {language === 'en'
             ? 'Take the first step towards fluency, confidence, and authentic cultural connection in the Kingdom today.'
             : 'اتخذ خطوتك الأولى نحو الطلاقة اللغوية والاندماج الثقافي الأصيل في أرجاء المملكة اليوم.'}
@@ -50,17 +48,17 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ language, onApplyNow }) => {
           <button
             id="final-apply-btn"
             onClick={onApplyNow}
-            className="px-10 py-5 bg-[#1EC672] text-[#1F3423] font-syne font-extrabold rounded-full text-base sm:text-lg hover:bg-white hover:scale-105 transition-all duration-300 shadow-xl shadow-[#1EC672]/20 flex items-center gap-3 tracking-wider uppercase"
+            className="px-8 py-3.5 bg-white text-[#0C100E] font-syne font-bold text-xs uppercase tracking-wider rounded-full hover:bg-[#F9F8F5] hover:scale-105 transition-all duration-300 shadow-md flex items-center justify-center gap-2.5 cursor-pointer"
           >
             <span>{language === 'en' ? 'APPLY NOW' : 'سجّل الآن'}</span>
-            <ArrowRight className="w-5 h-5 rtl:rotate-180" />
+            <ArrowRight className="w-4 h-4 rtl:rotate-180" />
           </button>
         </div>
 
-        <div className="mt-12 flex flex-wrap justify-center items-center gap-8 text-xs text-white/60">
-          <span>{language === 'en' ? '✓ Free initial dialect assessment' : '✓ تقييم مبدئي مجاني لتحديد المستوى'}</span>
-          <span>{language === 'en' ? '✓ Flexible scheduling options' : '✓ أوقات مرنة صباحية ومسائية'}</span>
-          <span>{language === 'en' ? '✓ Official Certificate included' : '✓ شهادة كفاءة معتمدة'}</span>
+        <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap justify-center items-center gap-6 text-xs text-white/60">
+          <span>{language === 'en' ? '✓ Initial dialect assessment' : '✓ تقييم مبدئي لتحديد المستوى'}</span>
+          <span>{language === 'en' ? '✓ Flexible scheduling' : '✓ أوقات مرنة صباحية ومسائية'}</span>
+          <span>{language === 'en' ? '✓ Certificate included' : '✓ شهادة كفاءة معتمدة'}</span>
         </div>
       </div>
     </section>

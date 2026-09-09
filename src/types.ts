@@ -85,7 +85,7 @@ export interface TeamMember {
   bio: string;
   bioAr: string;
   image: string;
-  imageStatus: 'confirmed' | 'temporary';
+  imageStatus: 'confirmed' | 'temporary' | 'temporary-generated';
   bioStatus: 'confirmed' | 'requires-confirmation';
   isFeatured?: boolean;
 }
