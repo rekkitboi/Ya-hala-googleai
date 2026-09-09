@@ -7,7 +7,7 @@ export const ASSETS = {
   logoFooter: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB_qJwNI1Rkr7hwxJGBaIRCQOkiNBxtef7dMPdBf0xBGnA5HhoKd6uM4fGXcmVgKJIe1OuCOHt68ykqcsTrdp0O3jiRC60veeiOJ1zGLQ1IkRVRIKdkX-y82ubGZqL3UkUK8Ezl_0zjf9k4kbt8uqm-5fA3Za9NH0bu-u8wtgMMSJcA2s_Mfoqv98H1pzr2vny6r1LPTpnFACjidqmV--wIScBVxAQ3-mJHjvia29bVLnl_744fq9MBqCyH43RaPCcQtA',
   
   // Backgrounds & Images
-  heroBg: '/yh-green-hero.jpg',
+  heroBg: '/STAI0063_005.Explore_the_wooden_balconies_and_historic_buildings_in_Historic_Jeddah.jpg',
   aboutBg: '/yh-green-about.jpg',
   experienceArch: '/yh-green-experience-1.jpg',
   experienceStone: '/yh-green-experience-2.jpg',

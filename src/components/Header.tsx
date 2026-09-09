@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ASSETS } from '../data/yaHalaData';
 import { Language } from '../types';
-import { Globe, Menu, X } from 'lucide-react';
+import { Globe, Menu, X, ChevronDown } from 'lucide-react';
 
 interface HeaderProps {
   language: Language;
@@ -91,8 +91,8 @@ export const Header: React.FC<HeaderProps> = ({
           isScrolled ? 'h-[70px]' : 'h-[80px]'
         }`}
       >
-        {/* Left Nav (Independently Positioned) */}
-        <div className="flex-1 flex items-center justify-start">
+        {/* Left Nav */}
+        <div className="flex-1 flex items-center justify-start z-10">
           <nav className="hidden lg:flex items-center gap-4 xl:gap-6 text-[11px] xl:text-xs font-semibold tracking-wider font-syne whitespace-nowrap">
             {/* Home Link */}
             <Link
@@ -148,10 +148,10 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
 
         {/* Logo (Mathematically Centered at Viewport/Container Horizontal Midpoint) */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-auto flex items-center justify-center">
+        <div className="absolute inset-0 pointer-events-none flex items-center justify-center z-0">
           <Link
             to="/"
-            className="block w-[130px] xl:w-[140px] h-[44px] xl:h-[48px] relative group"
+            className="block w-[130px] xl:w-[140px] h-[44px] xl:h-[48px] relative group pointer-events-auto"
             aria-label="Ya Hala Homepage"
           >
             <div className="relative w-full h-full">
@@ -175,42 +175,46 @@ export const Header: React.FC<HeaderProps> = ({
           </Link>
         </div>
 
-        {/* Right Nav & Actions (Independently Positioned) */}
-        <div className="flex-1 flex items-center justify-end">
+        {/* Right Nav & Actions */}
+        <div className="flex-1 flex items-center justify-end z-10">
           <div className="flex items-center gap-3 sm:gap-4 xl:gap-5 text-[11px] xl:text-xs font-semibold font-syne whitespace-nowrap">
             <div className="hidden lg:flex items-center gap-4 xl:gap-5">
-              <button
-                onClick={() => handleNavClick('/', 'methodology')}
-                className={`transition-colors py-1 cursor-pointer tracking-wider ${
-                  isDarkHeader || (isScrolled && isDarkSection)
-                    ? 'text-white/85 hover:text-[#1EC672]'
-                    : 'text-[#1F3423] hover:text-[#1EC672]'
-                }`}
-              >
-                {language === 'en' ? 'METHODOLOGY' : 'المنهجية'}
-              </button>
-
-              <button
-                onClick={() => handleNavClick('/', 'programs')}
-                className={`transition-colors py-1 cursor-pointer tracking-wider ${
-                  isDarkHeader || (isScrolled && isDarkSection)
-                    ? 'text-white/85 hover:text-[#1EC672]'
-                    : 'text-[#1F3423] hover:text-[#1EC672]'
-                }`}
-              >
-                {language === 'en' ? 'PROGRAMS' : 'البرامج'}
-              </button>
-
-              <button
-                onClick={() => handleNavClick('/', 'experiences')}
-                className={`transition-colors py-1 cursor-pointer tracking-wider ${
-                  isDarkHeader || (isScrolled && isDarkSection)
-                    ? 'text-white/85 hover:text-[#1EC672]'
-                    : 'text-[#1F3423] hover:text-[#1EC672]'
-                }`}
-              >
-                {language === 'en' ? 'EXPERIENCES' : 'التجارب'}
-              </button>
+              
+              {/* Explore Dropdown */}
+              <div className="relative group/explore py-4">
+                <button
+                  className={`flex items-center gap-1 transition-colors cursor-pointer tracking-wider ${
+                    isDarkHeader || (isScrolled && isDarkSection)
+                      ? 'text-white/85 hover:text-[#1EC672]'
+                      : 'text-[#1F3423] hover:text-[#1EC672]'
+                  }`}
+                >
+                  {language === 'en' ? 'EXPLORE' : 'استكشف'}
+                  <ChevronDown className="w-3.5 h-3.5" />
+                </button>
+                
+                {/* Dropdown Menu */}
+                <div className="absolute top-[80%] left-1/2 -translate-x-1/2 rtl:translate-x-1/2 mt-2 w-48 py-2 bg-white rounded-xl shadow-lg border border-[#1F3423]/10 opacity-0 invisible group-hover/explore:opacity-100 group-hover/explore:visible transition-all duration-300">
+                  <button
+                    onClick={() => handleNavClick('/', 'methodology')}
+                    className="block w-full text-left rtl:text-right px-5 py-2.5 text-[11px] font-bold text-[#1F3423]/80 hover:text-[#1EC672] hover:bg-[#F9F8F5] transition-colors"
+                  >
+                    {language === 'en' ? 'METHODOLOGY' : 'المنهجية'}
+                  </button>
+                  <button
+                    onClick={() => handleNavClick('/', 'programs')}
+                    className="block w-full text-left rtl:text-right px-5 py-2.5 text-[11px] font-bold text-[#1F3423]/80 hover:text-[#1EC672] hover:bg-[#F9F8F5] transition-colors"
+                  >
+                    {language === 'en' ? 'PROGRAMS' : 'البرامج'}
+                  </button>
+                  <button
+                    onClick={() => handleNavClick('/', 'experiences')}
+                    className="block w-full text-left rtl:text-right px-5 py-2.5 text-[11px] font-bold text-[#1F3423]/80 hover:text-[#1EC672] hover:bg-[#F9F8F5] transition-colors"
+                  >
+                    {language === 'en' ? 'EXPERIENCES' : 'التجارب'}
+                  </button>
+                </div>
+              </div>
 
               {/* Language Switcher */}
               <button
