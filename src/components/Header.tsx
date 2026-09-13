@@ -81,8 +81,8 @@ export const Header: React.FC<HeaderProps> = ({
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         isScrolled
           ? isDark
-            ? 'bg-[#0C100E]/60 backdrop-blur-xl border-b border-white/10 shadow-lg'
-            : 'bg-[#F9F8F5]/65 backdrop-blur-xl border-b border-[#1F3423]/10 shadow-sm'
+            ? 'glass-header-neutral-scrolled-dark'
+            : 'glass-header-neutral-scrolled-light'
           : 'bg-transparent border-b border-transparent'
       }`}
     >
@@ -99,9 +99,9 @@ export const Header: React.FC<HeaderProps> = ({
               to="/"
               className={`transition-all py-1 relative ${
                 isRouteActive('/')
-                  ? 'text-[#1EC672] font-bold'
+                  ? 'text-[#1EC672] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]'
                   : isDark
-                  ? 'text-white/90 hover:text-[#1EC672]'
+                  ? 'text-white hover:text-[#1EC672] drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]'
                   : 'text-[#1F3423] hover:text-[#1EC672]'
               }`}
             >
@@ -116,9 +116,9 @@ export const Header: React.FC<HeaderProps> = ({
               to="/about"
               className={`transition-all py-1 relative ${
                 isRouteActive('/about')
-                  ? 'text-[#1EC672] font-bold'
+                  ? 'text-[#1EC672] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]'
                   : isDark
-                  ? 'text-white/90 hover:text-[#1EC672]'
+                  ? 'text-white hover:text-[#1EC672] drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]'
                   : 'text-[#1F3423] hover:text-[#1EC672]'
               }`}
             >
@@ -133,9 +133,9 @@ export const Header: React.FC<HeaderProps> = ({
               to="/student-experience"
               className={`transition-all py-1 relative ${
                 isRouteActive('/student-experience')
-                  ? 'text-[#1EC672] font-bold'
+                  ? 'text-[#1EC672] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]'
                   : isDark
-                  ? 'text-white/90 hover:text-[#1EC672]'
+                  ? 'text-white hover:text-[#1EC672] drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]'
                   : 'text-[#1F3423] hover:text-[#1EC672]'
               }`}
             >
@@ -160,7 +160,7 @@ export const Header: React.FC<HeaderProps> = ({
                 src={ASSETS.logoWhite}
                 alt="Ya Hala Logo"
                 className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
-                  isDark ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                  isDark ? 'opacity-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]' : 'opacity-0 pointer-events-none'
                 }`}
               />
               {/* Green Logo (Visible over light areas) */}
@@ -168,7 +168,7 @@ export const Header: React.FC<HeaderProps> = ({
                 src={ASSETS.logoGreen}
                 alt="Ya Hala Logo"
                 className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
-                  isDark ? 'opacity-0 pointer-events-none' : 'opacity-100'
+                  isDark ? 'opacity-0 pointer-events-none' : 'opacity-100 drop-shadow-[0_1px_4px_rgba(0,0,0,0.1)]'
                 }`}
               />
             </div>
@@ -185,7 +185,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <button
                   className={`flex items-center gap-1 transition-colors cursor-pointer tracking-wider ${
                     isDark
-                      ? 'text-white/90 hover:text-[#1EC672]'
+                      ? 'text-white hover:text-[#1EC672] drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]'
                       : 'text-[#1F3423] hover:text-[#1EC672]'
                   }`}
                 >
@@ -194,22 +194,22 @@ export const Header: React.FC<HeaderProps> = ({
                 </button>
                 
                 {/* Dropdown Menu */}
-                <div className="absolute top-[80%] left-1/2 -translate-x-1/2 rtl:translate-x-1/2 mt-2 w-48 py-2 bg-white/95 backdrop-blur-xl rounded-xl shadow-xl border border-[#1F3423]/10 opacity-0 invisible group-hover/explore:opacity-100 group-hover/explore:visible transition-all duration-300 z-50">
+                <div className="absolute top-[80%] left-1/2 -translate-x-1/2 rtl:translate-x-1/2 mt-2 w-48 py-2 glass-warm-light rounded-xl shadow-2xl border border-[#1F3423]/15 opacity-0 invisible group-hover/explore:opacity-100 group-hover/explore:visible transition-all duration-300 z-50">
                   <button
                     onClick={() => handleNavClick('/', 'methodology')}
-                    className="block w-full text-left rtl:text-right px-5 py-2.5 text-[11px] font-bold text-[#1F3423]/80 hover:text-[#1EC672] hover:bg-[#F9F8F5] transition-colors cursor-pointer"
+                    className="block w-full text-left rtl:text-right px-5 py-2.5 text-[11px] font-bold text-[#1F3423]/85 hover:text-[#1EC672] hover:bg-[#1F3423]/5 transition-colors cursor-pointer"
                   >
                     {language === 'en' ? 'METHODOLOGY' : 'المنهجية'}
                   </button>
                   <button
                     onClick={() => handleNavClick('/', 'programs')}
-                    className="block w-full text-left rtl:text-right px-5 py-2.5 text-[11px] font-bold text-[#1F3423]/80 hover:text-[#1EC672] hover:bg-[#F9F8F5] transition-colors cursor-pointer"
+                    className="block w-full text-left rtl:text-right px-5 py-2.5 text-[11px] font-bold text-[#1F3423]/85 hover:text-[#1EC672] hover:bg-[#1F3423]/5 transition-colors cursor-pointer"
                   >
                     {language === 'en' ? 'PROGRAMS' : 'البرامج'}
                   </button>
                   <button
                     onClick={() => handleNavClick('/', 'experiences')}
-                    className="block w-full text-left rtl:text-right px-5 py-2.5 text-[11px] font-bold text-[#1F3423]/80 hover:text-[#1EC672] hover:bg-[#F9F8F5] transition-colors cursor-pointer"
+                    className="block w-full text-left rtl:text-right px-5 py-2.5 text-[11px] font-bold text-[#1F3423]/85 hover:text-[#1EC672] hover:bg-[#1F3423]/5 transition-colors cursor-pointer"
                   >
                     {language === 'en' ? 'EXPERIENCES' : 'التجارب'}
                   </button>
@@ -222,8 +222,8 @@ export const Header: React.FC<HeaderProps> = ({
                 onClick={onToggleLanguage}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full transition-all cursor-pointer ${
                   isDark
-                    ? 'text-white/90 hover:text-white bg-white/10 hover:bg-white/20 border border-white/20'
-                    : 'text-[#1F3423] hover:text-[#1EC672] bg-white/60 hover:bg-white/90 border border-[#1F3423]/15'
+                    ? 'text-white/95 hover:text-white bg-white/10 hover:bg-white/20 border border-white/20 shadow-sm'
+                    : 'text-[#1F3423] hover:text-[#1EC672] bg-white/70 hover:bg-white border border-[#1F3423]/15 shadow-sm'
                 }`}
                 title={language === 'en' ? 'Switch to Arabic' : 'التحويل للإنجليزية'}
               >
@@ -240,8 +240,8 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => onOpenApplication()}
               className={`px-4 xl:px-5 py-2 xl:py-2.5 font-syne font-bold rounded-full transition-all duration-300 shadow-sm hover:scale-[1.02] text-[11px] xl:text-xs tracking-wider cursor-pointer ${
                 isDark
-                  ? 'bg-white text-[#1F3423] hover:bg-[#F9F8F5]'
-                  : 'bg-[#1F3423] text-white hover:bg-[#142317]'
+                  ? 'bg-white text-[#1F3423] hover:bg-[#1EC672] hover:text-[#0C100E]'
+                  : 'bg-[#1F3423] text-white hover:bg-[#1EC672] hover:text-[#0C100E]'
               }`}
             >
               {language === 'en' ? 'GET STARTED' : 'ابدأ رحلتك'}
@@ -262,9 +262,9 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Drawer Menu with glass-neutral-dark */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#0C100E] border-b border-white/10 px-6 py-6 text-white animate-in slide-in-from-top-4 duration-300">
+        <div className="lg:hidden glass-neutral-dark border-b border-white/15 px-6 py-6 text-white animate-in slide-in-from-top-4 duration-300">
           <nav className="flex flex-col gap-3 font-syne text-sm font-semibold tracking-wider">
             <Link
               to="/"

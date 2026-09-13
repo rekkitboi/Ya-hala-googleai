@@ -19,25 +19,26 @@ export const ExperiencesSection: React.FC<ExperiencesSectionProps> = ({
     <section
       id="experiences"
       data-theme="dark"
-      className="relative py-24 md:py-36 bg-[#0C100E] text-white overflow-hidden"
+      data-header-theme="dark"
+      className="relative py-24 md:py-36 text-white overflow-hidden z-10"
     >
-      {/* 1. Full-section cultural background image with restrained atmospheric overlay */}
+      {/* 1. Atmospheric backdrop with smooth progressive gradient - avoids harsh black cut */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <img
           src={ASSETS.bujairiHero}
           alt="Saudi Historic Bujairi Heritage Architecture"
-          className="w-full h-full object-cover object-center scale-105 transition-transform duration-1000"
+          className="w-full h-full object-cover object-center scale-105 transition-transform duration-1000 opacity-60"
           referrerPolicy="no-referrer"
         />
-        {/* Restrained dark atmospheric overlay that lets imagery remain genuinely visible */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0C100E]/90 via-[#0C100E]/70 to-[#0C100E]/95 pointer-events-none" />
-        <div className="absolute inset-0 bg-[#1F3423]/35 mix-blend-multiply pointer-events-none" />
+        {/* Smooth progressive transition from transparent light top to rich dark atmosphere */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0C100E]/85 to-[#0C100E] pointer-events-none" />
+        <div className="absolute inset-0 bg-[#1F3423]/25 mix-blend-multiply pointer-events-none" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="max-w-3xl mb-16 text-left rtl:text-right">
-          <div className="inline-flex items-center gap-2 mb-3">
+          <div className="inline-flex items-center gap-2 mb-3 px-3.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15">
             <Sparkles className="w-3.5 h-3.5 text-[#1EC672]" />
             <span className="text-[#1EC672] uppercase tracking-[0.2em] font-syne font-semibold text-xs">
               {language === 'en' ? 'CULTURAL IMMERSION' : 'الانغماس الثقافي الحي'}
@@ -58,8 +59,16 @@ export const ExperiencesSection: React.FC<ExperiencesSectionProps> = ({
           {/* FEATURED EXPERIENCE: Heroic photograph-led anchor card */}
           {featured && (
             <div
+              role="button"
+              tabIndex={0}
               onClick={() => onSelectExperience(featured)}
-              className="lg:col-span-7 group relative rounded-2xl overflow-hidden cursor-pointer min-h-[460px] md:min-h-[520px] flex flex-col justify-end p-8 sm:p-10 border border-white/15 shadow-xl transition-all duration-500 hover:border-[#1EC672]/50 hover:shadow-2xl"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onSelectExperience(featured);
+                }
+              }}
+              className="lg:col-span-7 group relative rounded-2xl overflow-hidden cursor-pointer min-h-[460px] md:min-h-[520px] flex flex-col justify-end p-8 sm:p-10 border border-white/20 shadow-2xl transition-all duration-500 hover:border-[#1EC672]/60 hover:shadow-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1EC672]"
             >
               {/* Background photo */}
               <img
@@ -69,20 +78,20 @@ export const ExperiencesSection: React.FC<ExperiencesSectionProps> = ({
                 referrerPolicy="no-referrer"
               />
               {/* Integrated gradient overlay ensuring high text readability */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0C100E] via-[#0C100E]/60 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0C100E] via-[#0C100E]/65 to-transparent pointer-events-none" />
 
               <div className="relative z-10 text-left rtl:text-right">
                 {/* Meta pills */}
                 <div className="flex flex-wrap items-center gap-2.5 mb-4">
-                  <span className="px-3 py-1 rounded-full bg-[#1EC672] text-[#0C100E] text-xs font-syne font-bold uppercase tracking-wider">
+                  <span className="px-3 py-1 rounded-full bg-[#1EC672] text-[#0C100E] text-xs font-syne font-bold uppercase tracking-wider shadow-sm">
                     {language === 'en' ? 'FEATURED JOURNEY' : 'الرحلة المميزة'}
                   </span>
-                  <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white/90 text-xs font-medium">
-                    <MapPin className="w-3 h-3 text-[#1EC672]" />
+                  <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-white text-xs font-medium">
+                    <MapPin className="w-3.5 h-3.5 text-[#1EC672]" />
                     {language === 'en' ? featured.location : featured.locationAr}
                   </span>
-                  <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white/90 text-xs font-medium">
-                    <Clock className="w-3 h-3 text-[#1EC672]" />
+                  <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-white text-xs font-medium">
+                    <Clock className="w-3.5 h-3.5 text-[#1EC672]" />
                     {language === 'en' ? featured.duration : featured.durationAr}
                   </span>
                 </div>
@@ -95,9 +104,9 @@ export const ExperiencesSection: React.FC<ExperiencesSectionProps> = ({
                   {language === 'en' ? featured.description : featured.descriptionAr}
                 </p>
 
-                <div className="flex items-center gap-2 text-xs font-syne font-bold uppercase tracking-wider text-white group-hover:text-[#1EC672] transition-colors">
+                <div className="flex items-center gap-2 text-xs font-syne font-bold uppercase tracking-wider text-[#1EC672] group-hover:text-white transition-colors">
                   <span>{language === 'en' ? 'DISCOVER ITINERARY' : 'تفاصيل المسار'}</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform rtl:group-hover:-translate-x-1" />
+                  <ArrowRight className="w-4 h-4 text-[#1EC672] group-hover:text-white group-hover:translate-x-1 transition-all rtl:group-hover:-translate-x-1" />
                 </div>
               </div>
             </div>
@@ -108,16 +117,24 @@ export const ExperiencesSection: React.FC<ExperiencesSectionProps> = ({
             {secondary.map((item) => (
               <div
                 key={item.id}
+                role="button"
+                tabIndex={0}
                 onClick={() => onSelectExperience(item)}
-                className="group p-6 sm:p-7 rounded-2xl glass-subtle-dark border border-white/10 hover:border-[#1EC672]/40 hover:bg-black/60 transition-all duration-300 cursor-pointer flex flex-col justify-between text-left rtl:text-right"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    onSelectExperience(item);
+                  }
+                }}
+                className="group p-6 sm:p-7 rounded-2xl glass-dark-card border border-white/15 hover:border-[#1EC672]/60 hover:bg-black/70 transition-all duration-300 cursor-pointer flex flex-col justify-between text-left rtl:text-right focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1EC672]"
               >
                 <div>
                   <div className="flex items-center justify-between gap-3 mb-3">
-                    <div className="flex items-center gap-1.5 text-xs text-white/70 font-medium">
+                    <div className="flex items-center gap-1.5 text-xs text-white/85 font-medium">
                       <MapPin className="w-3.5 h-3.5 text-[#1EC672]" />
                       <span>{language === 'en' ? item.location : item.locationAr}</span>
                     </div>
-                    <span className="px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-[11px] text-white/80 font-medium">
+                    <span className="px-2.5 py-0.5 rounded-full bg-white/10 border border-white/15 text-[11px] text-white/90 font-medium">
                       {language === 'en' ? item.duration : item.durationAr}
                     </span>
                   </div>
@@ -132,12 +149,12 @@ export const ExperiencesSection: React.FC<ExperiencesSectionProps> = ({
                   </p>
                 </div>
 
-                <div className="flex items-center justify-between pt-3 border-t border-white/10">
-                  <span className="inline-flex items-center gap-2 text-xs font-syne font-bold uppercase tracking-wider text-white/90 group-hover:text-[#1EC672] transition-colors">
+                <div className="flex items-center justify-between pt-3 border-t border-white/15">
+                  <span className="inline-flex items-center gap-2 text-xs font-syne font-bold uppercase tracking-wider text-[#1EC672] group-hover:text-white transition-colors">
                     <span>{language === 'en' ? 'DISCOVER ITINERARY' : 'تفاصيل المسار'}</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform rtl:group-hover:-translate-x-1" />
+                    <ArrowRight className="w-3.5 h-3.5 text-[#1EC672] group-hover:text-white group-hover:translate-x-1 transition-all rtl:group-hover:-translate-x-1" />
                   </span>
-                  <Compass className="w-4 h-4 text-white/40 group-hover:text-[#1EC672] transition-colors" />
+                  <Compass className="w-4 h-4 text-[#1EC672] group-hover:rotate-45 transition-transform" />
                 </div>
               </div>
             ))}

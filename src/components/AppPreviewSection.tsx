@@ -39,15 +39,19 @@ export const AppPreviewSection: React.FC<AppPreviewSectionProps> = ({ language }
     <section
       id="app-preview"
       data-theme="dark"
-      className="py-24 md:py-32 bg-[#0C100E] text-white px-6 overflow-hidden relative"
+      data-header-theme="dark"
+      className="py-24 md:py-32 text-white px-6 overflow-hidden relative z-10"
     >
+      {/* Smooth atmospheric backdrop allowing background continuity */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0C100E]/70 via-[#0C100E]/85 to-[#0C100E] pointer-events-none -z-10" />
+
       {/* Subtle atmospheric ambient glow */}
-      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[450px] h-[450px] bg-[#1EC672]/8 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[450px] h-[450px] bg-[#1EC672]/10 rounded-full blur-[140px] pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto grid lg:grid-cols-12 items-center gap-12 lg:gap-16 relative z-10">
         {/* Left Copy & Early Access (7 cols on lg) */}
         <div className="lg:col-span-7 text-left rtl:text-right">
-          <div className="inline-flex items-center gap-2 mb-4">
+          <div className="inline-flex items-center gap-2 mb-4 px-3.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15">
             <Sparkles className="w-3.5 h-3.5 text-[#1EC672]" />
             <span className="text-[#1EC672] uppercase tracking-[0.2em] font-syne font-semibold text-xs">
               {language === 'en' ? 'YA HALA MOBILE APP' : 'تطبيق يا هلا الذكي'}
@@ -68,30 +72,30 @@ export const AppPreviewSection: React.FC<AppPreviewSectionProps> = ({ language }
             )}
           </h2>
 
-          <p className="text-base sm:text-lg text-white/80 mb-8 font-light leading-relaxed max-w-xl">
+          <p className="text-base sm:text-lg text-white/85 mb-8 font-light leading-relaxed max-w-xl">
             {language === 'en'
               ? 'Complement your coursework with bite-sized daily audio lessons, interactive dialect flashcards, native accent playback, and our cultural etiquette compass.'
               : 'عزز مهاراتك اليومية عبر دروس صوتية تفاعلية، بطاقات لهجات نجدية وحجازية، وتوجيهات الإتيكيت الاجتماعي السعودي على مدار الساعة.'}
           </p>
 
           <div className="flex flex-wrap items-center gap-3 mb-8">
-            <span className="px-3.5 py-1.5 rounded-full border border-white/15 bg-white/5 text-xs font-syne font-semibold uppercase tracking-wider text-[#1EC672]">
+            <span className="px-3.5 py-1.5 rounded-full border border-white/20 bg-white/10 text-xs font-syne font-semibold uppercase tracking-wider text-[#1EC672]">
               {language === 'en' ? 'COMING SOON TO IOS & ANDROID' : 'قريباً على آبل ستور وجوجل بلاي'}
             </span>
-            <span className="text-xs text-white/60">
+            <span className="text-xs text-white/70">
               {language === 'en' ? '• Included for all enrolled students' : '• متاح لكافة طلاب المعهد'}
             </span>
           </div>
 
           {/* Waitlist Form */}
           {isJoined ? (
-            <div className="p-4 rounded-xl bg-white/5 border border-[#1EC672]/40 text-white flex items-center gap-3 max-w-md">
+            <div className="p-4 rounded-2xl bg-white/10 border border-[#1EC672]/60 text-white flex items-center gap-3 max-w-md shadow-lg">
               <Check className="w-5 h-5 text-[#1EC672] shrink-0" />
               <div>
                 <p className="font-syne font-bold text-sm text-white">
                   {language === 'en' ? 'You are on the Early Access List' : 'تم تسجيلك بنجاح في قائمة الوصول المبكر!'}
                 </p>
-                <p className="text-xs text-white/70 mt-0.5">
+                <p className="text-xs text-white/75 mt-0.5">
                   {language === 'en'
                     ? "We'll send your beta testing pass when released."
                     : 'سنرسل لك رابط النسخة التجريبية فور إطلاقها.'}
@@ -106,11 +110,12 @@ export const AppPreviewSection: React.FC<AppPreviewSectionProps> = ({ language }
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder={language === 'en' ? 'Enter email for beta pass...' : 'أدخل بريدك الإلكتروني...'}
-                className="flex-1 px-4 py-3 rounded-full bg-white/5 border border-white/15 text-white placeholder-white/40 text-sm focus:outline-none focus:border-[#1EC672] transition-colors"
+                className="flex-1 px-4 py-3 rounded-full bg-white/10 border border-white/20 text-white placeholder-white/50 text-sm focus:outline-none focus:border-[#1EC672] focus:ring-1 focus:ring-[#1EC672] transition-colors"
+                aria-label={language === 'en' ? 'Email for beta waitlist' : 'البريد الإلكتروني للانضمام للقائمة'}
               />
               <button
                 type="submit"
-                className="px-6 py-3 rounded-full bg-[#1EC672] text-[#0C100E] font-syne font-bold text-xs uppercase tracking-wider hover:bg-white transition-colors shrink-0 cursor-pointer"
+                className="px-6 py-3 rounded-full bg-[#1EC672] text-[#0C100E] font-syne font-bold text-xs uppercase tracking-wider hover:bg-white transition-colors shrink-0 cursor-pointer shadow-md"
               >
                 {language === 'en' ? 'GET ACCESS' : 'انضم للقائمة'}
               </button>
@@ -120,7 +125,7 @@ export const AppPreviewSection: React.FC<AppPreviewSectionProps> = ({ language }
 
         {/* Right Phone Mockup (5 cols on lg, scaled gracefully) */}
         <div className="lg:col-span-5 relative flex justify-center">
-          <div className="relative w-[290px] sm:w-[310px] h-[580px] bg-[#0A0E0C] rounded-[3.2rem] border-[8px] border-white/15 shadow-2xl p-4 flex flex-col justify-between overflow-hidden">
+          <div className="relative w-[290px] sm:w-[310px] h-[580px] bg-[#0A0E0C]/90 backdrop-blur-xl rounded-[3.2rem] border-[6px] border-white/20 shadow-2xl p-4 flex flex-col justify-between overflow-hidden">
             {/* Top Speaker / Dynamic Island */}
             <div className="w-24 h-4 bg-white/15 rounded-full mx-auto mb-3 flex items-center justify-center">
               <div className="w-2 h-2 rounded-full bg-black/80 mr-2" />
@@ -131,9 +136,9 @@ export const AppPreviewSection: React.FC<AppPreviewSectionProps> = ({ language }
             <div className="flex-1 flex flex-col justify-between text-left rtl:text-right px-2">
               {/* App Header */}
               <div>
-                <div className="flex items-center justify-between text-[11px] text-white/50 mb-2 font-syne">
-                  <span>YA HALA</span>
-                  <span className="flex items-center gap-1 text-[#FED65B]">
+                <div className="flex items-center justify-between text-[11px] text-white/60 mb-2 font-syne">
+                  <span className="font-bold">YA HALA</span>
+                  <span className="flex items-center gap-1 text-[#FED65B] font-semibold">
                     <Award className="w-3.5 h-3.5" /> 14 Day Streak
                   </span>
                 </div>
@@ -142,12 +147,12 @@ export const AppPreviewSection: React.FC<AppPreviewSectionProps> = ({ language }
                 </h4>
 
                 {/* Dialect Selector Inside App */}
-                <div className="grid grid-cols-2 gap-1 p-1 bg-white/5 border border-white/10 rounded-xl mb-3 text-[11px] text-center font-bold">
+                <div className="grid grid-cols-2 gap-1 p-1 bg-white/10 border border-white/15 rounded-xl mb-3 text-[11px] text-center font-bold">
                   <button
                     type="button"
                     onClick={() => setActiveDialectTab('najdi')}
                     className={`py-1.5 rounded-lg transition-all cursor-pointer ${
-                      activeDialectTab === 'najdi' ? 'bg-[#1EC672] text-[#0C100E]' : 'text-white/70 hover:text-white'
+                      activeDialectTab === 'najdi' ? 'bg-[#1EC672] text-[#0C100E] shadow-sm' : 'text-white/80 hover:text-white'
                     }`}
                   >
                     Najdi (الرياض)
@@ -156,7 +161,7 @@ export const AppPreviewSection: React.FC<AppPreviewSectionProps> = ({ language }
                     type="button"
                     onClick={() => setActiveDialectTab('hejazi')}
                     className={`py-1.5 rounded-lg transition-all cursor-pointer ${
-                      activeDialectTab === 'hejazi' ? 'bg-[#1EC672] text-[#0C100E]' : 'text-white/70 hover:text-white'
+                      activeDialectTab === 'hejazi' ? 'bg-[#1EC672] text-[#0C100E] shadow-sm' : 'text-white/80 hover:text-white'
                     }`}
                   >
                     Hejazi (جدة)
@@ -164,45 +169,45 @@ export const AppPreviewSection: React.FC<AppPreviewSectionProps> = ({ language }
                 </div>
 
                 {/* Interactive Flashcard */}
-                <div className="p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md text-center mb-3">
+                <div className="p-4 rounded-xl bg-white/10 border border-white/15 backdrop-blur-md text-center mb-3">
                   <span className="text-[10px] text-[#1EC672] uppercase font-bold tracking-widest block mb-1">
                     {activeDialectTab === 'najdi' ? 'RIYADH ESSENTIAL' : 'JEDDAH ESSENTIAL'}
                   </span>
                   <div className="text-xl font-bold font-arabic text-white mb-1">
                     {activeDialectTab === 'najdi' ? 'وش مسوي طال عمرك؟' : 'إيش أخبارك يا غالي؟'}
                   </div>
-                  <div className="text-[11px] text-white/70 italic mb-2">
+                  <div className="text-[11px] text-white/75 italic mb-2">
                     {activeDialectTab === 'najdi' ? "Wesh msawwi tāl 'omrak?" : "Eish akhbarak ya ghāli?"}
                   </div>
-                  <div className="text-[11px] text-white/90 bg-black/40 py-1 px-3 rounded-full inline-block">
+                  <div className="text-[11px] text-white/95 bg-black/60 py-1 px-3 rounded-full inline-block border border-white/10">
                     "How have you been doing, noble friend?"
                   </div>
                 </div>
 
                 {/* Interactive Listening Bar */}
-                <div className="p-2.5 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-xs">
+                <div className="p-2.5 rounded-xl bg-white/10 border border-white/15 flex items-center justify-between">
+                  <div className="flex items-center gap-2.5 text-xs">
                     <button
                       type="button"
                       onClick={handlePlayVoice}
-                      className={`w-7 h-7 rounded-full flex items-center justify-center transition-colors cursor-pointer ${
-                        isPlayingVoice ? 'bg-white text-[#0C100E]' : 'bg-[#1EC672] text-[#0C100E]'
+                      className={`w-8 h-8 rounded-full flex items-center justify-center transition-all cursor-pointer shadow-sm ${
+                        isPlayingVoice ? 'bg-white text-[#0C100E] scale-105' : 'bg-[#1EC672] text-[#0C100E] hover:scale-105'
                       }`}
                       aria-label="Play native audio note"
                     >
                       <Play className="w-3.5 h-3.5 ml-0.5 fill-current" />
                     </button>
                     <div>
-                      <div className="text-white font-bold text-[10px]">Native Voice Audio</div>
-                      <div className="text-[9px] text-white/50">0:08 • Normal Tempo</div>
+                      <div className="text-white font-bold text-[11px]">Native Voice Audio</div>
+                      <div className="text-[9px] text-white/60">0:08 • Normal Tempo</div>
                     </div>
                   </div>
-                  <Volume2 className={`w-3.5 h-3.5 ${isPlayingVoice ? 'text-white animate-pulse' : 'text-[#1EC672]'}`} />
+                  <Volume2 className={`w-4 h-4 ${isPlayingVoice ? 'text-white animate-pulse' : 'text-[#1EC672]'}`} />
                 </div>
               </div>
 
               {/* Bottom Nav Simulation */}
-              <div className="pt-3 border-t border-white/10 flex justify-around text-[9px] text-white/50 font-syne">
+              <div className="pt-3 border-t border-white/15 flex justify-around text-[10px] text-white/70 font-syne">
                 <span className="text-[#1EC672] font-bold">Lessons</span>
                 <span>Phrases</span>
                 <span>Majlis</span>
@@ -211,7 +216,7 @@ export const AppPreviewSection: React.FC<AppPreviewSectionProps> = ({ language }
             </div>
 
             {/* Bottom Bar */}
-            <div className="w-28 h-1 bg-white/30 rounded-full mx-auto mt-2" />
+            <div className="w-28 h-1 bg-white/35 rounded-full mx-auto mt-2" />
           </div>
         </div>
       </div>
