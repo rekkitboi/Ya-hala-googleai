@@ -40,13 +40,11 @@ export const StudentExperienceHero: React.FC<StudentExperienceHeroProps> = ({ la
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-syne font-bold mb-6 leading-tight tracking-tight text-white max-w-3xl mx-auto">
           {language === 'en' ? (
             <>
-              Curriculum &{' '}
-              <span className="text-white/85 font-light">Student Experience</span>
+              Our Curriculum
             </>
           ) : (
             <>
-              المنهج و{' '}
-              <span className="text-white/85 font-light">التجربة التعليمية</span>
+              مناهجنا
             </>
           )}
         </h1>

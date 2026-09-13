@@ -45,8 +45,8 @@ export const ScrollToTop: React.FC<ScrollToTopProps> = ({ language }) => {
     } else if (pathname === '/student-experience') {
       title =
         language === 'en'
-          ? 'Curriculum & Student Experience | Ya Hala'
-          : 'المنهج وتجربة الطالب | معهد يا هلا';
+          ? 'Our Curriculum | Ya Hala'
+          : 'مناهجنا | معهد يا هلا';
       description =
         language === 'en'
           ? 'Explore our 4-level CEFR curriculum, learning journey, and cultural immersion.'

@@ -196,7 +196,7 @@ export const Footer: React.FC<FooterProps> = ({ language, onSelectProgramId }) =
             {language === 'en' ? 'About Us' : 'عن المعهد'}
           </Link>
           <Link to="/student-experience" className="hover:text-white transition-colors">
-            {language === 'en' ? 'Student Experience' : 'تجربة الطالب'}
+            {language === 'en' ? 'Our Curriculum' : 'مناهجنا'}
           </Link>
         </div>
       </div>

@@ -23,7 +23,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ language, onOpenApplicatio
       {/* 3. Founder's Message: Editorial Layout without Photo */}
       <FounderMessageSection language={language} />
 
-      {/* 4. Meet Our Team: Amin Al Zahrani featured first with photo, followed by advisors */}
+      {/* 4. Meet Our Team: Unified team grid */}
       <MeetOurTeamSection language={language} />
 
       {/* 5. Final CTA */}

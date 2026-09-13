@@ -139,7 +139,7 @@ export const Header: React.FC<HeaderProps> = ({
                   : 'text-[#1F3423] hover:text-[#1EC672]'
               }`}
             >
-              <span>{language === 'en' ? 'STUDENT EXPERIENCE' : 'تجربة الطالب'}</span>
+              <span>{language === 'en' ? 'OUR CURRICULUM' : 'مناهجنا'}</span>
               {isRouteActive('/student-experience') && (
                 <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#1EC672] rounded-full" />
               )}
@@ -295,7 +295,7 @@ export const Header: React.FC<HeaderProps> = ({
                   : 'text-white/80 hover:text-[#1EC672]'
               }`}
             >
-              {language === 'en' ? 'STUDENT EXPERIENCE' : 'تجربة الطالب'}
+              {language === 'en' ? 'OUR CURRICULUM' : 'مناهجنا'}
             </Link>
 
             <button

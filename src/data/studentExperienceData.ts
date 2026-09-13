@@ -1,11 +1,11 @@
 import { CurriculumLevel, JourneyStage, CulturalTopic, StudentActivity } from '../types';
 
 export const STUDENT_EXPERIENCE_INTRO = {
-  eyebrowEn: 'STUDENT EXPERIENCE',
-  eyebrowAr: 'تجربة الطالب والمنهج',
-  titleEn: 'Curriculum & Student Experience',
-  titleAr: 'المنهج والتجربة التعليمية',
-  metadataTitle: 'Curriculum & Student Experience | Ya Hala',
+  eyebrowEn: 'OUR CURRICULUM',
+  eyebrowAr: 'مناهجنا',
+  titleEn: 'Our Curriculum',
+  titleAr: 'مناهجنا',
+  metadataTitle: 'Our Curriculum | Ya Hala',
   metadataDescription: 'Explore Ya Hala’s four-level Saudi dialect and culture program and discover how students learn, experience, practise, progress, and belong.',
   programOverviewEn: 'Ya Hala is an educational program designed to teach the Saudi dialect and culture to non-Arabic speakers. The program develops listening and speaking communication skills through everyday, social, and professional situations in Saudi Arabia. It also includes foundational lessons in reading and writing.',
   programOverviewAr: 'يا هلا هو برنامج تعليمي مصمم لتعليم اللهجة والثقافة السعودية لغير الناطقين بالعربية. ينمي البرنامج مهارات التواصل الشفهي استماعاً وتحدثاً من خلال مواقف يومية واجتماعية ومهنية في المملكة العربية السعودية، إلى جانب دروس تأسيسية في القراءة والكتابة.',
