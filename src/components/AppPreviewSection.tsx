@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Language } from '../types';
-import { Smartphone, Sparkles, Check, Play, Award, Volume2 } from 'lucide-react';
+import { Smartphone, Check, Play, Volume2, Award } from 'lucide-react';
 
 interface AppPreviewSectionProps {
   language: Language;
@@ -11,79 +11,75 @@ export const AppPreviewSection: React.FC<AppPreviewSectionProps> = ({ language }
   const [isJoined, setIsJoined] = useState(false);
   const [activeDialectTab, setActiveDialectTab] = useState<'najdi' | 'hejazi'>('najdi');
   const [isPlayingVoice, setIsPlayingVoice] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    const element = document.getElementById('app-preview-reveal');
+    if (element) observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
 
   const handleWaitlistSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim()) {
+    if (email) {
       setIsJoined(true);
     }
   };
 
   const handlePlayVoice = () => {
     setIsPlayingVoice(true);
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-      const text = activeDialectTab === 'najdi' ? 'وش مسوي طال عمرك؟' : 'إيش أخبارك يا غالي؟';
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'ar-SA';
-      utterance.rate = 0.85;
-      utterance.onend = () => setIsPlayingVoice(false);
-      utterance.onerror = () => setIsPlayingVoice(false);
-      window.speechSynthesis.speak(utterance);
-    } else {
-      setTimeout(() => setIsPlayingVoice(false), 1200);
-    }
+    setTimeout(() => setIsPlayingVoice(false), 2000);
   };
 
   return (
     <section
-      id="app-preview"
+      id="digital-companion"
       data-theme="dark"
       data-header-theme="dark"
-      className="py-24 md:py-32 text-white px-6 overflow-hidden relative z-10"
+      className="py-16 md:py-24 relative overflow-hidden bg-[#0a100d] text-white"
     >
-      {/* Smooth atmospheric backdrop allowing background continuity */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0C100E]/70 via-[#0C100E]/85 to-[#0C100E] pointer-events-none -z-10" />
+      {/* Background gradients for dark environment */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#1EC672]/10 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#FED65B]/5 blur-[120px] rounded-full pointer-events-none" />
 
-      {/* Subtle atmospheric ambient glow */}
-      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[450px] h-[450px] bg-[#1EC672]/10 rounded-full blur-[140px] pointer-events-none -z-10" />
-
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-12 items-center gap-12 lg:gap-16 relative z-10">
-        {/* Left Copy & Early Access (7 cols on lg) */}
-        <div className="lg:col-span-7 text-left rtl:text-right">
-          <div className="inline-flex items-center gap-2 mb-4 px-3.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15">
-            <Sparkles className="w-3.5 h-3.5 text-[#1EC672]" />
-            <span className="text-[#1EC672] uppercase tracking-[0.2em] font-syne font-semibold text-xs">
-              {language === 'en' ? 'YA HALA MOBILE APP' : 'تطبيق يا هلا الذكي'}
+      <div id="app-preview-reveal" className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+        
+        {/* Left Content (7 cols on lg) */}
+        <div 
+          className={`lg:col-span-7 text-center md:text-left rtl:md:text-right transition-all duration-1000 ease-out ${
+            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12 rtl:translate-x-12'
+          }`}
+        >
+          <div className="inline-flex items-center justify-center md:justify-start gap-2 mb-6">
+            <span className="p-2 rounded-full bg-white/10 border border-white/20">
+              <Smartphone className="w-5 h-5 text-[#1EC672]" />
+            </span>
+            <span className="text-white/80 font-syne font-bold uppercase tracking-widest text-xs">
+              {language === 'en' ? 'Ya Hala Digital Companion' : 'الرفيق الرقمي لمعهد يا هلا'}
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-syne font-bold mb-5 leading-tight tracking-tight text-white">
-            {language === 'en' ? (
-              <>
-                Saudi Dialects <br />
-                <span className="text-white/80 font-light">in Your Pocket</span>
-              </>
-            ) : (
-              <>
-                اللهجة السعودية <br />
-                <span className="text-white/80 font-light">معك أينما كنت</span>
-              </>
-            )}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-syne font-bold mb-6 text-white leading-tight">
+            {language === 'en' ? 'Your Pocket Language Mentor' : 'مرشدك اللغوي في متناول يدك'}
           </h2>
-
-          <p className="text-base sm:text-lg text-white/85 mb-8 font-light leading-relaxed max-w-xl">
+          <p className="text-sm md:text-base text-white/75 font-light leading-relaxed mb-8 max-w-2xl mx-auto md:mx-0">
             {language === 'en'
-              ? 'Complement your coursework with bite-sized daily audio lessons, interactive dialect flashcards, native accent playback, and our cultural etiquette compass.'
-              : 'عزز مهاراتك اليومية عبر دروس صوتية تفاعلية، بطاقات لهجات نجدية وحجازية، وتوجيهات الإتيكيت الاجتماعي السعودي على مدار الساعة.'}
+              ? 'Extend your learning seamlessly. Access pronunciation playback, dialect flashcards, and Saudi social etiquette guidance 24/7.'
+              : 'استمر في التعلم في أي وقت. يوفر التطبيق تشغيل النطق، بطاقات لهجات نجدية وحجازية، وتوجيهات الإتيكيت الاجتماعي السعودي على مدار الساعة.'}
           </p>
 
           <div className="flex flex-wrap items-center gap-3 mb-8">
             <span className="px-3.5 py-1.5 rounded-full border border-white/20 bg-white/10 text-xs font-syne font-semibold uppercase tracking-wider text-[#1EC672]">
-              {language === 'en' ? 'COMING SOON TO IOS & ANDROID' : 'قريباً على آبل ستور وجوجل بلاي'}
-            </span>
-            <span className="text-xs text-white/70">
-              {language === 'en' ? '• Included for all enrolled students' : '• متاح لكافة طلاب المعهد'}
+              {language === 'en' ? 'Mobile app concept preview' : 'تصور مبدئي لتطبيق يا هلا'}
             </span>
           </div>
 
@@ -115,7 +111,7 @@ export const AppPreviewSection: React.FC<AppPreviewSectionProps> = ({ language }
               />
               <button
                 type="submit"
-                className="px-6 py-3 rounded-full bg-[#1EC672] text-[#0C100E] font-syne font-bold text-xs uppercase tracking-wider hover:bg-white transition-colors shrink-0 cursor-pointer shadow-md"
+                className="px-6 py-3 rounded-full bg-[#1EC672] text-[#0C100E] font-syne font-bold text-xs uppercase tracking-wider hover:bg-white transition-colors shrink-0 cursor-pointer shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1EC672]"
               >
                 {language === 'en' ? 'GET ACCESS' : 'انضم للقائمة'}
               </button>
@@ -123,9 +119,13 @@ export const AppPreviewSection: React.FC<AppPreviewSectionProps> = ({ language }
           )}
         </div>
 
-        {/* Right Phone Mockup (5 cols on lg, scaled gracefully) */}
-        <div className="lg:col-span-5 relative flex justify-center">
-          <div className="relative w-[290px] sm:w-[310px] h-[580px] bg-[#0A0E0C]/90 backdrop-blur-xl rounded-[3.2rem] border-[6px] border-white/20 shadow-2xl p-4 flex flex-col justify-between overflow-hidden">
+        {/* Right Phone Mockup */}
+        <div className="lg:col-span-5 relative flex justify-center perspective-[1000px]">
+          <div 
+            className={`relative w-[290px] sm:w-[310px] h-[580px] bg-[#0A0E0C]/90 backdrop-blur-xl rounded-[3.2rem] border-[6px] border-white/20 shadow-2xl p-4 flex flex-col justify-between overflow-hidden transition-all duration-1000 delay-300 ease-out transform ${
+              isVisible ? 'opacity-100 translate-y-0 rotate-x-0' : 'opacity-0 translate-y-24 rotate-x-12'
+            }`}
+          >
             {/* Top Speaker / Dynamic Island */}
             <div className="w-24 h-4 bg-white/15 rounded-full mx-auto mb-3 flex items-center justify-center">
               <div className="w-2 h-2 rounded-full bg-black/80 mr-2" />
@@ -134,6 +134,7 @@ export const AppPreviewSection: React.FC<AppPreviewSectionProps> = ({ language }
 
             {/* In-App Screen Content */}
             <div className="flex-1 flex flex-col justify-between text-left rtl:text-right px-2">
+              
               {/* App Header */}
               <div>
                 <div className="flex items-center justify-between text-[11px] text-white/60 mb-2 font-syne">
@@ -151,7 +152,7 @@ export const AppPreviewSection: React.FC<AppPreviewSectionProps> = ({ language }
                   <button
                     type="button"
                     onClick={() => setActiveDialectTab('najdi')}
-                    className={`py-1.5 rounded-lg transition-all cursor-pointer ${
+                    className={`py-1.5 rounded-lg transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1EC672] ${
                       activeDialectTab === 'najdi' ? 'bg-[#1EC672] text-[#0C100E] shadow-sm' : 'text-white/80 hover:text-white'
                     }`}
                   >
@@ -160,7 +161,7 @@ export const AppPreviewSection: React.FC<AppPreviewSectionProps> = ({ language }
                   <button
                     type="button"
                     onClick={() => setActiveDialectTab('hejazi')}
-                    className={`py-1.5 rounded-lg transition-all cursor-pointer ${
+                    className={`py-1.5 rounded-lg transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1EC672] ${
                       activeDialectTab === 'hejazi' ? 'bg-[#1EC672] text-[#0C100E] shadow-sm' : 'text-white/80 hover:text-white'
                     }`}
                   >
@@ -180,7 +181,7 @@ export const AppPreviewSection: React.FC<AppPreviewSectionProps> = ({ language }
                     {activeDialectTab === 'najdi' ? "Wesh msawwi tāl 'omrak?" : "Eish akhbarak ya ghāli?"}
                   </div>
                   <div className="text-[11px] text-white/95 bg-black/60 py-1 px-3 rounded-full inline-block border border-white/10">
-                    "How have you been doing, noble friend?"
+                    "How have you been?"
                   </div>
                 </div>
 
@@ -190,15 +191,15 @@ export const AppPreviewSection: React.FC<AppPreviewSectionProps> = ({ language }
                     <button
                       type="button"
                       onClick={handlePlayVoice}
-                      className={`w-8 h-8 rounded-full flex items-center justify-center transition-all cursor-pointer shadow-sm ${
+                      className={`w-8 h-8 rounded-full flex items-center justify-center transition-all cursor-pointer shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1EC672] ${
                         isPlayingVoice ? 'bg-white text-[#0C100E] scale-105' : 'bg-[#1EC672] text-[#0C100E] hover:scale-105'
                       }`}
-                      aria-label="Play native audio note"
+                      aria-label={language === "en" ? "Play pronunciation preview" : "تشغيل النطق التجريبي"}
                     >
                       <Play className="w-3.5 h-3.5 ml-0.5 fill-current" />
                     </button>
                     <div>
-                      <div className="text-white font-bold text-[11px]">Native Voice Audio</div>
+                      <div className="text-white font-bold text-[11px]">Pronunciation Preview</div>
                       <div className="text-[9px] text-white/60">0:08 • Normal Tempo</div>
                     </div>
                   </div>

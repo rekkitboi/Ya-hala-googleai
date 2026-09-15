@@ -1,6 +1,5 @@
 import React from 'react';
 import { Language, Program, Experience } from '../types';
-import { EnvironmentalBackground } from '../components/EnvironmentalBackground';
 import { Hero } from '../components/Hero';
 import { AboutTeaser } from '../components/AboutTeaser';
 import { MethodologySection } from '../components/MethodologySection';
@@ -10,6 +9,7 @@ import { ExperiencesSection } from '../components/ExperiencesSection';
 import { EditorialSection } from '../components/EditorialSection';
 import { AppPreviewSection } from '../components/AppPreviewSection';
 import { FinalCTA } from '../components/FinalCTA';
+import { ASSETS } from '../data/yaHalaData';
 
 interface HomePageProps {
   language: Language;
@@ -27,19 +27,31 @@ export const HomePage: React.FC<HomePageProps> = ({
   onScrollToSection,
 }) => {
   return (
-    <div className="relative">
-      {/* Dynamic Environmental Continuous Background with scroll-linked focal points */}
-      <EnvironmentalBackground />
+    <div className="relative bg-[#F9F8F5]">
+      {/* 1 & 2. Opening Sequence with Shared Architectural Background */}
+      <div className="relative">
+        <div className="absolute inset-0 z-0">
+          <img
+            src={ASSETS.heroBg}
+            alt=""
+            className="w-full h-full object-cover object-[50%_12%]"
+            referrerPolicy="no-referrer"
+          />
+          {/* Subtle vignette for header and readability */}
+          <div className="absolute inset-0 bg-black/30 pointer-events-none" />
+          <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-black/60 to-transparent pointer-events-none" />
+          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#F9F8F5] to-transparent pointer-events-none" />
+        </div>
 
-      {/* 1. Cinematic Hero */}
-      <Hero
-        language={language}
-        onExplorePrograms={() => onScrollToSection('programs')}
-        onDiscoverExperiences={() => onScrollToSection('experiences')}
-      />
-
-      {/* 2. Shortened Homepage Introduction / Teaser linking to /about */}
-      <AboutTeaser language={language} />
+        <div className="relative z-10">
+          <Hero
+            language={language}
+            onExplorePrograms={() => onScrollToSection('programs')}
+            onDiscoverExperiences={() => onScrollToSection('experiences')}
+          />
+          <AboutTeaser language={language} />
+        </div>
+      </div>
 
       {/* 3. Methodology / 4-Stage Pedagogy */}
       <MethodologySection language={language} />

@@ -47,62 +47,58 @@ export const AboutTeaser: React.FC<AboutTeaserProps> = ({ language }) => {
             : 'يربط معهد يا هلا بين تعلم اللهجة السعودية الأصيلة والفهم الثقافي العميق. نؤمن بأن اللغة تحيا في كرم المجالس، وعفوية الحديث اليومي، وتفاصيل الحياة في المملكة؛ لتمكينك من التحدث بثقة وانتماء.'}
         </p>
 
-        {/* Core pillars summary in translucent dark glass */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 max-w-3xl mx-auto mb-8 text-left rtl:text-right">
-          <div className="p-4 rounded-xl glass-subtle-dark border border-white/10 flex items-start gap-3">
-            <CheckCircle2 className="w-4 h-4 text-[#1EC672] shrink-0 mt-0.5" />
-            <div>
+        {/* Core pillars summary in quiet text columns */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 max-w-4xl mx-auto mb-12 relative">
+          <div className="flex flex-col items-center sm:items-start text-center sm:text-left rtl:sm:text-right">
+            <div className="flex items-center justify-center sm:justify-start gap-2 mb-2 text-[#1EC672]">
+              <CheckCircle2 className="w-4 h-4 shrink-0" />
               <div className="font-syne font-bold text-sm text-white">
                 {language === 'en' ? 'Living Dialects' : 'اللهجات الحية'}
               </div>
-              <div className="text-xs text-white/60 mt-0.5 font-light">
-                {language === 'en' ? 'Najdi & Hejazi immersion' : 'انغماس في اللهجات النجدية والحجازية'}
-              </div>
+            </div>
+            <div className="text-sm text-white/60 font-light pl-0 sm:pl-6 rtl:sm:pr-6 rtl:sm:pl-0">
+              {language === 'en' ? 'Najdi & Hejazi immersion' : 'انغماس في اللهجات النجدية والحجازية'}
             </div>
           </div>
-
-          <div className="p-4 rounded-xl glass-subtle-dark border border-white/10 flex items-start gap-3">
-            <CheckCircle2 className="w-4 h-4 text-[#1EC672] shrink-0 mt-0.5" />
-            <div>
+          
+          <div className="hidden sm:block w-[1px] h-12 bg-white/10" />
+          
+          <div className="flex flex-col items-center sm:items-start text-center sm:text-left rtl:sm:text-right">
+            <div className="flex items-center justify-center sm:justify-start gap-2 mb-2 text-[#1EC672]">
+              <CheckCircle2 className="w-4 h-4 shrink-0" />
               <div className="font-syne font-bold text-sm text-white">
                 {language === 'en' ? 'Cultural Mentorship' : 'إرشاد ثقافي سعودي'}
               </div>
-              <div className="text-xs text-white/60 mt-0.5 font-light">
-                {language === 'en' ? 'Guided by native mentors' : 'بمرافقة مرشدين سعوديين متمرسين'}
-              </div>
+            </div>
+            <div className="text-sm text-white/60 font-light pl-0 sm:pl-6 rtl:sm:pr-6 rtl:sm:pl-0">
+              {language === 'en' ? 'Guided by native mentors' : 'بمرافقة مرشدين سعوديين متمرسين'}
             </div>
           </div>
-
-          <div className="p-4 rounded-xl glass-subtle-dark border border-white/10 flex items-start gap-3">
-            <CheckCircle2 className="w-4 h-4 text-[#1EC672] shrink-0 mt-0.5" />
-            <div>
+          
+          <div className="hidden sm:block w-[1px] h-12 bg-white/10" />
+          
+          <div className="flex flex-col items-center sm:items-start text-center sm:text-left rtl:sm:text-right">
+            <div className="flex items-center justify-center sm:justify-start gap-2 mb-2 text-[#1EC672]">
+              <CheckCircle2 className="w-4 h-4 shrink-0" />
               <div className="font-syne font-bold text-sm text-white">
                 {language === 'en' ? 'Practical Communication' : 'تواصل عملي واقعي'}
               </div>
-              <div className="text-xs text-white/60 mt-0.5 font-light">
-                {language === 'en' ? 'Everyday situations & life' : 'مواقف حية ومحادثات اجتماعية ومهنية'}
-              </div>
+            </div>
+            <div className="text-sm text-white/60 font-light pl-0 sm:pl-6 rtl:sm:pr-6 rtl:sm:pl-0">
+              {language === 'en' ? 'Everyday situations & life' : 'مواقف حية ومحادثات اجتماعية ومهنية'}
             </div>
           </div>
         </div>
 
         {/* CTAs to /about */}
-        <div className="flex flex-wrap items-center justify-center gap-3">
+        <div className="flex flex-wrap items-center justify-center gap-4">
           <Link
             to="/about"
             id="discover-our-story-btn"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-[#0C100E] hover:bg-[#F9F8F5] font-syne font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-sm hover:scale-105"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-[#0C100E] hover:bg-[#F9F8F5] font-syne font-bold text-xs uppercase tracking-wider transition-transform duration-300 hover:scale-105"
           >
             <span>{language === 'en' ? 'Discover Our Story' : 'اكتشف قصتنا ورؤيتنا'}</span>
             <ArrowRight className="w-4 h-4 rtl:rotate-180" />
-          </Link>
-
-          <Link
-            to="/about#team"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/5 border border-white/15 text-white/90 font-syne font-semibold text-xs uppercase tracking-wider hover:bg-white/10 transition-all duration-300"
-          >
-            <Users className="w-3.5 h-3.5 text-[#1EC672]" />
-            <span>{language === 'en' ? 'Meet Our Team' : 'تعرف على فريق العمل'}</span>
           </Link>
         </div>
       </div>

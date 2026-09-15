@@ -151,35 +151,29 @@ body {
 
 /* Header Glass System: Neutral transparent glass with blur for diffusion and text clarity */
 .glass-header-neutral-top-dark {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px);
-
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  background: rgba(12, 16, 14, 0.2);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .glass-header-neutral-top-light {
-  background: rgba(255, 255, 255, 0.32);
-  backdrop-filter: blur(16px);
-
-  border-bottom: 1px solid rgba(31, 52, 35, 0.08);
-  box-shadow: 0 4px 24px rgba(31, 52, 35, 0.03);
+  background: rgba(253, 251, 247, 0.5);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(31, 52, 35, 0.05);
 }
 
 .glass-header-neutral-scrolled-dark {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(20px);
-
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2);
+  background: rgba(8, 11, 10, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.3);
 }
 
 .glass-header-neutral-scrolled-light {
-  background: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(20px);
-
-  border-bottom: 1px solid rgba(31, 52, 35, 0.1);
-  box-shadow: 0 10px 30px -10px rgba(31, 52, 35, 0.06);
+  background: rgba(253, 251, 247, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(31, 52, 35, 0.08);
+  box-shadow: 0 4px 20px -2px rgba(31, 52, 35, 0.05);
 }
 
 /* Reduced motion preference */

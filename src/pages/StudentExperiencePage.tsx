@@ -22,8 +22,11 @@ export const StudentExperiencePage: React.FC<StudentExperiencePageProps> = ({
       {/* 1. Student Experience Hero */}
       <StudentExperienceHero language={language} />
 
-      {/* 2. Emotional Narrative / 6-Stage Learning Journey */}
-      <LearningJourneySection language={language} />
+      {/* 2. Emotional Narrative / 6-Stage Learning Journey
+          Preserved in the codebase for a future Student Experience page as requested,
+          but removed from the visible Curriculum page layout to avoid competing frameworks.
+          <LearningJourneySection language={language} />
+      */}
 
       {/* 3. 4 Program Levels Aligned with CEFR */}
       <ProgramLevelsSection language={language} />

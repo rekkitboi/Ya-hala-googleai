@@ -1,4 +1,5 @@
 import { TeamMember } from '../types';
+import aminImage from '../assets/team/amin-al-zahrani.webp';
 
 export const TEAM_HEADER_DATA = {
   eyebrowEn: 'THE PEOPLE BEHIND YA HALA',
@@ -18,7 +19,7 @@ export const YA_HALA_TEAM: TeamMember[] = [
     roleAr: 'المؤسس والرئيس التنفيذي',
     bio: 'Amin Al Zahrani is the Founder and CEO of Ya Hala. He established Ya Hala around the belief that learning the Saudi dialect should help people participate more confidently in everyday life and connect more closely with Saudi culture.',
     bioAr: 'أمين الزهراني هو المؤسس والرئيس التنفيذي لمعهد يا هلا. أسس المعهد انطلاقاً من إيمانه بأن تعلم اللهجة السعودية يجب أن يساعد الأفراد على المشاركة بثقة في الحياة اليومية والاتصال الوثيق بالثقافة السعودية.',
-    image: '/assets/team/amin-al-zahrani.webp',
+    image: aminImage,
     imageStatus: 'confirmed',
     bioStatus: 'confirmed',
     isFeatured: true,

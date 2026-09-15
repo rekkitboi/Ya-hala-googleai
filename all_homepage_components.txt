@@ -1,0 +1,1252 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { ASSETS } from '../data/yaHalaData';
+import { Language } from '../types';
+import { ArrowRight, Users, Sparkles, CheckCircle2 } from 'lucide-react';
+
+interface AboutTeaserProps {
+  language: Language;
+}
+
+export const AboutTeaser: React.FC<AboutTeaserProps> = ({ language }) => {
+  return (
+    <section
+      id="why"
+      data-theme="dark"
+      data-header-theme="dark"
+      className="relative py-20 md:py-28 bg-[#0C100E]/75 backdrop-blur-md text-white overflow-hidden border-y border-white/5"
+    >
+      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+        {/* Eyebrow badge */}
+        <div className="inline-flex items-center gap-2 mb-4">
+          <Sparkles className="w-3.5 h-3.5 text-[#1EC672]" />
+          <span className="text-[#1EC672] uppercase tracking-[0.2em] font-syne font-semibold text-xs">
+            {language === 'en' ? 'ABOUT YA HALA' : 'عن معهد يا هلا'}
+          </span>
+        </div>
+
+        {/* Section Heading: Predominantly clean white */}
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-syne font-bold mb-4 leading-tight tracking-tight text-white max-w-3xl mx-auto">
+          {language === 'en' ? (
+            <>
+              Language Opens the Door.{' '}
+              <span className="text-white/85 font-light block sm:inline">Culture Makes You Feel at Home.</span>
+            </>
+          ) : (
+            <>
+              اللغة تفتح الأبواب..{' '}
+              <span className="text-white/85 font-light block sm:inline">والثقافة تشعرك بالانتماء</span>
+            </>
+          )}
+        </h2>
+
+        {/* Brief introduction paragraph */}
+        <p className="text-base sm:text-lg text-white/80 leading-relaxed font-light max-w-2xl mx-auto mb-8">
+          {language === 'en'
+            ? 'Ya Hala connects Saudi dialect learning with cultural understanding. We believe language lives in the warmth of the majlis, the hospitality of the people, and the rhythm of daily life—helping you communicate with natural confidence in the Kingdom.'
+            : 'يربط معهد يا هلا بين تعلم اللهجة السعودية الأصيلة والفهم الثقافي العميق. نؤمن بأن اللغة تحيا في كرم المجالس، وعفوية الحديث اليومي، وتفاصيل الحياة في المملكة؛ لتمكينك من التحدث بثقة وانتماء.'}
+        </p>
+
+        {/* Core pillars summary in translucent dark glass */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 max-w-3xl mx-auto mb-8 text-left rtl:text-right">
+          <div className="p-4 rounded-xl glass-subtle-dark border border-white/10 flex items-start gap-3">
+            <CheckCircle2 className="w-4 h-4 text-[#1EC672] shrink-0 mt-0.5" />
+            <div>
+              <div className="font-syne font-bold text-sm text-white">
+                {language === 'en' ? 'Living Dialects' : 'اللهجات الحية'}
+              </div>
+              <div className="text-xs text-white/60 mt-0.5 font-light">
+                {language === 'en' ? 'Najdi & Hejazi immersion' : 'انغماس في اللهجات النجدية والحجازية'}
+              </div>
+            </div>
+          </div>
+
+          <div className="p-4 rounded-xl glass-subtle-dark border border-white/10 flex items-start gap-3">
+            <CheckCircle2 className="w-4 h-4 text-[#1EC672] shrink-0 mt-0.5" />
+            <div>
+              <div className="font-syne font-bold text-sm text-white">
+                {language === 'en' ? 'Cultural Mentorship' : 'إرشاد ثقافي سعودي'}
+              </div>
+              <div className="text-xs text-white/60 mt-0.5 font-light">
+                {language === 'en' ? 'Guided by native mentors' : 'بمرافقة مرشدين سعوديين متمرسين'}
+              </div>
+            </div>
+          </div>
+
+          <div className="p-4 rounded-xl glass-subtle-dark border border-white/10 flex items-start gap-3">
+            <CheckCircle2 className="w-4 h-4 text-[#1EC672] shrink-0 mt-0.5" />
+            <div>
+              <div className="font-syne font-bold text-sm text-white">
+                {language === 'en' ? 'Practical Communication' : 'تواصل عملي واقعي'}
+              </div>
+              <div className="text-xs text-white/60 mt-0.5 font-light">
+                {language === 'en' ? 'Everyday situations & life' : 'مواقف حية ومحادثات اجتماعية ومهنية'}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* CTAs to /about */}
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <Link
+            to="/about"
+            id="discover-our-story-btn"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-[#0C100E] hover:bg-[#F9F8F5] font-syne font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-sm hover:scale-105"
+          >
+            <span>{language === 'en' ? 'Discover Our Story' : 'اكتشف قصتنا ورؤيتنا'}</span>
+            <ArrowRight className="w-4 h-4 rtl:rotate-180" />
+          </Link>
+
+          <Link
+            to="/about#team"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/5 border border-white/15 text-white/90 font-syne font-semibold text-xs uppercase tracking-wider hover:bg-white/10 transition-all duration-300"
+          >
+            <Users className="w-3.5 h-3.5 text-[#1EC672]" />
+            <span>{language === 'en' ? 'Meet Our Team' : 'تعرف على فريق العمل'}</span>
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+};
+import React, { useState } from 'react';
+import { METHODOLOGY_STAGES, ASSETS } from '../data/yaHalaData';
+import { Language } from '../types';
+import { BookOpen, MessageSquare, Compass, HeartHandshake, CheckCircle, Sparkles } from 'lucide-react';
+
+interface MethodologySectionProps {
+  language: Language;
+}
+
+export const MethodologySection: React.FC<MethodologySectionProps> = ({ language }) => {
+  const [activeStep, setActiveStep] = useState<string>('01');
+
+  const getStepIcon = (step: string) => {
+    switch (step) {
+      case '01':
+        return <BookOpen className="w-5 h-5 text-[#1F3423]" />;
+      case '02':
+        return <MessageSquare className="w-5 h-5 text-[#1F3423]" />;
+      case '03':
+        return <Compass className="w-5 h-5 text-[#1F3423]" />;
+      default:
+        return <HeartHandshake className="w-5 h-5 text-[#1F3423]" />;
+    }
+  };
+
+  const getStepDetail = (step: string) => {
+    switch (step) {
+      case '01':
+        return {
+          en: 'You start by decoding phonetics, everyday slang, and tonal greetings. Rather than dry grammar memorization, you internalize rhythmic dialect chunks through interactive audio labs.',
+          ar: 'تبدأ بفهم النبرات الصوتية والمفردات الدارجة والتحيات اليومية. بدلاً من حفظ القواعد الجافة، تكتسب التراكيب اللغوية الحية عبر تمارين الاستماع التفاعلية.'
+        };
+      case '02':
+        return {
+          en: 'Step into simulated Saudi social environments: ordering in a traditional Gahwa, bargaining in a date market, or exchanging congratulations at an invitation.',
+          ar: 'محاكاة مواقف اجتماعية سعودية واقعية: الطلب في المقهى الشعبي، الفصال في سوق التمور، أو تبادل التهاني والترحيب في المناسبات.'
+        };
+      case '03':
+        return {
+          en: 'Take your learning outside the classroom with faculty-guided trips to Diriyah, Al-Balad, camel heritage centers, and craft workshops across the Kingdom.',
+          ar: 'الانطلاق الميداني بصحبة أساتذة المعهد إلى حي الطريف، أسواق جدة القديمة، ميادين الإبل، ومشاغل الحرف التراثية.'
+        };
+      default:
+        return {
+          en: 'Join the alumni network, language exchange circles, and community dinners where language bridges become permanent personal and professional friendships.',
+          ar: 'الانضمام لمجتمع خريجي يا هلا، جلسات تبادل اللغات، وموائد العشاء الدورية التي تحوّل مهاراتك اللغوية إلى صداقات وفرص مهنية واعدة.'
+        };
+    }
+  };
+
+  return (
+    <section
+      id="methodology"
+      data-theme="light"
+      data-header-theme="light"
+      className="py-24 md:py-32 bg-[#F9F8F5] relative overflow-hidden z-10"
+    >
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <div className="text-center mb-20 max-w-2xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-syne font-bold text-[#1F3423] tracking-tight mb-4">
+            {language === 'en' ? 'Our 4-Stage Methodology' : 'منهجية المراحل الأربع'}
+          </h2>
+          <p className="text-base text-[#1F3423]/70 font-light leading-relaxed">
+            {language === 'en'
+              ? 'A proven, immersive approach connecting classroom instruction with genuine Saudi cultural life.'
+              : 'نهج تعليمي مُجرَّب ينقل المتعلم بانسيابية من قاعة التدريب إلى معايشة الثقافة السعودية في الواقع.'}
+          </p>
+        </div>
+
+        {/* Cleaner connected progression */}
+        <div className="relative">
+          {/* Horizontal connecting line on desktop */}
+          <div className="hidden md:block absolute top-[28px] left-[10%] right-[10%] h-[1px] bg-[#1F3423]/10 z-0">
+            <div 
+              className="absolute top-0 left-0 h-full bg-[#1EC672] transition-all duration-500 ease-out rtl:right-0 rtl:left-auto"
+              style={{ width: `${(parseInt(activeStep) - 1) * 33.33}%` }}
+            />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 relative z-10">
+            {METHODOLOGY_STAGES.map((stage) => {
+              const isActive = activeStep === stage.step;
+              return (
+                <div
+                  key={stage.step}
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={isActive}
+                  onClick={() => setActiveStep(stage.step)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setActiveStep(stage.step);
+                    }
+                  }}
+                  className="flex flex-row md:flex-col items-center md:text-center group cursor-pointer focus-visible:outline-none"
+                >
+                  {/* Step Marker */}
+                  <div
+                    className={`w-14 h-14 rounded-full flex items-center justify-center shrink-0 mb-0 md:mb-6 transition-all duration-300 font-syne font-bold text-lg ${
+                      isActive
+                        ? 'bg-[#1EC672] text-[#0C100E] scale-110 shadow-lg'
+                        : 'bg-white border border-[#1F3423]/10 text-[#1F3423]/60 group-hover:border-[#1EC672]/50'
+                    }`}
+                  >
+                    {stage.step}
+                  </div>
+
+                  {/* Vertical line on mobile */}
+                  <div className="md:hidden w-[1px] h-12 bg-[#1F3423]/10 mx-4" />
+
+                  {/* Title & Tagline */}
+                  <div className="flex-1 md:flex-none">
+                    <h3 className={`text-lg font-syne font-bold mb-1 transition-colors ${isActive ? 'text-[#1F3423]' : 'text-[#1F3423]/60 group-hover:text-[#1F3423]/80'}`}>
+                      {language === 'en' ? stage.title : stage.titleAr}
+                    </h3>
+                    <p className={`text-xs uppercase tracking-wider font-medium transition-colors ${isActive ? 'text-[#1EC672]' : 'text-[#1F3423]/40'}`}>
+                      {language === 'en' ? stage.tagline : stage.taglineAr}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Focused Explanation */}
+        <div className="mt-16 md:mt-24 max-w-3xl mx-auto text-center transition-all duration-500 min-h-[120px]">
+          <h4 className="text-xl md:text-2xl font-syne font-bold text-[#1F3423] mb-4">
+            {language === 'en'
+              ? METHODOLOGY_STAGES.find((s) => s.step === activeStep)?.title
+              : METHODOLOGY_STAGES.find((s) => s.step === activeStep)?.titleAr}
+          </h4>
+          <p className="text-base md:text-lg text-[#1F3423]/80 leading-relaxed font-light">
+            {language === 'en' ? getStepDetail(activeStep).en : getStepDetail(activeStep).ar}
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+import React, { useState } from 'react';
+import { PROGRAMS, ASSETS } from '../data/yaHalaData';
+import { Program, Language } from '../types';
+import { ArrowRight, ChevronDown } from 'lucide-react';
+
+interface ProgramsSectionProps {
+  language: Language;
+  onSelectProgram: (program: Program) => void;
+  onApplyProgram: (programId: string) => void;
+}
+
+export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
+  language,
+  onSelectProgram,
+  onApplyProgram,
+}) => {
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+
+  const toggleExpand = (id: string) => {
+    setExpandedId(expandedId === id ? null : id);
+  };
+
+  return (
+    <section
+      id="programs"
+      data-theme="light"
+      data-header-theme="light"
+      className="py-24 md:py-32 bg-white relative z-10"
+    >
+      <div className="max-w-7xl mx-auto px-6">
+        
+        {/* A. Photography-led Introduction */}
+        <div className="relative mb-24 md:mb-32">
+          <div className="relative h-[60vh] min-h-[400px] w-full md:w-4/5 lg:w-3/4 mr-auto overflow-hidden">
+            <img 
+              src={ASSETS.heroBg} 
+              alt="Ya Hala Programs" 
+              className="w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+            />
+          </div>
+          
+          <div className="md:absolute top-1/2 md:-translate-y-1/2 right-0 md:right-[5%] lg:right-[10%] w-full md:w-[45%] lg:w-[40%] bg-[#F9F8F5] p-8 md:p-12 shadow-2xl -mt-20 md:mt-0 relative z-10">
+            <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-[#1EC672] mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1EC672]" />
+              <span>{language === 'en' ? 'OUR PROGRAMS' : 'برامجنا التعليمية'}</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-syne font-bold text-[#1F3423] leading-tight mb-6">
+              {language === 'en' ? 'Choose Your Learning Path' : 'اختر مسارك التعليمي'}
+            </h2>
+            <p className="text-sm md:text-base text-[#1F3423]/80 leading-relaxed font-light mb-8">
+              {language === 'en'
+                ? 'Flexible, cohort-based and personalized tracks designed for diplomats, professionals, and language enthusiasts.'
+                : 'مسارات متنوعة حضورية وافتراضية وخاصة تلائم الدبلوماسيين والتنفيذيين والباحثين وعشاق اللغة العربية.'}
+            </p>
+            <button
+              onClick={() => onApplyProgram(PROGRAMS[0].id)}
+              className="group inline-flex items-center gap-3 px-6 py-3 bg-[#1F3423] text-white rounded-full hover:bg-[#1EC672] hover:text-[#0C100E] transition-all duration-300 font-syne font-bold text-xs uppercase tracking-wider cursor-pointer"
+            >
+              <span>{language === 'en' ? 'APPLY FOR DIPLOMACY' : 'التقديم للبرنامج الدبلوماسي'}</span>
+              <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform rtl:group-hover:-translate-x-1" />
+            </button>
+          </div>
+        </div>
+
+        {/* B. Compact Program Comparison */}
+        <div className="max-w-5xl mx-auto">
+          <div className="border-t border-[#1F3423]/10">
+            {PROGRAMS.map((program) => {
+              const isExpanded = expandedId === program.id;
+              
+              return (
+                <div key={program.id} className="border-b border-[#1F3423]/10">
+                  {/* Row Header - Clickable for mobile expansion or general view */}
+                  <div 
+                    className="flex flex-col md:flex-row md:items-center py-6 md:py-8 gap-4 md:gap-8 cursor-pointer group"
+                    onClick={() => toggleExpand(program.id)}
+                  >
+                    <div className="w-full md:w-1/3">
+                      <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-[#1EC672] mb-2">
+                        <span>{language === 'en' ? program.category : program.categoryAr}</span>
+                      </div>
+                      <h3 className="text-xl md:text-2xl font-syne font-bold text-[#1F3423] group-hover:text-[#1EC672] transition-colors">
+                        {language === 'en' ? program.title : program.titleAr}
+                      </h3>
+                    </div>
+                    
+                    <div className="w-full md:w-1/3 flex flex-col md:flex-row gap-2 md:gap-6 text-sm text-[#1F3423]/70 font-light">
+                      <span><strong className="font-medium text-[#1F3423]">{language === 'en' ? 'Duration: ' : 'المدة: '}</strong>{language === 'en' ? program.duration : program.durationAr}</span>
+                      <span className="hidden lg:inline text-[#1F3423]/20">|</span>
+                      <span><strong className="font-medium text-[#1F3423]">{language === 'en' ? 'Format: ' : 'النمط: '}</strong>{language === 'en' ? program.format : program.formatAr}</span>
+                    </div>
+
+                    <div className="w-full md:w-1/3 flex items-center justify-between md:justify-end gap-4 mt-2 md:mt-0">
+                      <div className="flex items-center gap-2 text-xs font-semibold text-[#1F3423] uppercase tracking-wider">
+                        {isExpanded ? (
+                          <ChevronDown className="w-4 h-4 transform rotate-180 transition-transform" />
+                        ) : (
+                          <ChevronDown className="w-4 h-4 transition-transform" />
+                        )}
+                        <span className="md:hidden">{language === 'en' ? 'Details' : 'تفاصيل'}</span>
+                      </div>
+                      
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onApplyProgram(program.id);
+                        }}
+                        className="px-6 py-2.5 rounded-full bg-[#F9F8F5] text-[#1F3423] text-[11px] font-bold uppercase tracking-wider hover:bg-[#1EC672] hover:text-white transition-colors cursor-pointer"
+                      >
+                        {language === 'en' ? 'Apply' : 'تقديم'}
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Expanded Content */}
+                  <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-96 opacity-100 pb-8' : 'max-h-0 opacity-0'}`}>
+                    <div className="flex flex-col md:flex-row gap-6 md:gap-8 pt-4 md:pt-0">
+                      <p className="text-sm md:text-base text-[#1F3423]/80 leading-relaxed font-light md:w-2/3">
+                        {language === 'en' ? program.description : program.descriptionAr}
+                      </p>
+                      <div className="md:w-1/3 flex items-start">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onSelectProgram(program);
+                          }}
+                          className="inline-flex items-center gap-2 text-[#1EC672] hover:text-[#1F3423] font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer"
+                        >
+                          <span>{language === 'en' ? 'View Full Curriculum' : 'عرض المنهج كاملاً'}</span>
+                          <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform rtl:group-hover:-translate-x-1" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+import React, { useState, useEffect } from 'react';
+import { SAUDI_PHRASES } from '../data/yaHalaData';
+import { SaudiPhrase, Language } from '../types';
+import { Volume2, VolumeX, ChevronLeft, ChevronRight, Sparkles, Info } from 'lucide-react';
+
+interface SaudiPhraseSectionProps {
+  language: Language;
+}
+
+export const SaudiPhraseSection: React.FC<SaudiPhraseSectionProps> = ({ language }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [showCulturalNote, setShowCulturalNote] = useState(true);
+
+  const currentPhrase: SaudiPhrase = SAUDI_PHRASES[currentIndex] || SAUDI_PHRASES[0];
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % SAUDI_PHRASES.length);
+    stopAudio();
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + SAUDI_PHRASES.length) % SAUDI_PHRASES.length);
+    stopAudio();
+  };
+
+  const stopAudio = () => {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
+    setIsPlaying(false);
+  };
+
+  const playAudioPronunciation = () => {
+    if (isPlaying) {
+      stopAudio();
+      return;
+    }
+
+    setIsPlaying(true);
+
+    const win = typeof window !== 'undefined' ? (window as any) : null;
+    const hasSpeech = Boolean(win && win.speechSynthesis);
+
+    if (hasSpeech) {
+      win.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(currentPhrase.audioPronunciationText);
+      utterance.lang = 'ar-SA';
+      utterance.rate = 0.85; // Slightly slower for clear dialect articulation
+      utterance.pitch = 1.0;
+
+      // Try to find Arabic voice if available
+      const voices = win.speechSynthesis.getVoices();
+      const arVoice = voices.find(
+        (v: any) => v.lang.startsWith('ar') || v.name.includes('Arabic') || v.name.includes('Saudi')
+      );
+      if (arVoice) {
+        utterance.voice = arVoice;
+      }
+
+      utterance.onend = () => {
+        setIsPlaying(false);
+      };
+
+      utterance.onerror = () => {
+        setIsPlaying(false);
+      };
+
+      win.speechSynthesis.speak(utterance);
+    } else {
+      // Fallback synthesizer chime using Web Audio API
+      try {
+        const AudioContextClass = win?.AudioContext || win?.webkitAudioContext;
+        if (AudioContextClass) {
+          const audioCtx = new AudioContextClass();
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(440, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.4);
+          gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.8);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.8);
+        }
+        setTimeout(() => setIsPlaying(false), 900);
+      } catch {
+        setIsPlaying(false);
+      }
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      stopAudio();
+    };
+  }, []);
+
+  return (
+    <section
+      id="phrase-feature"
+      data-theme="light"
+      data-header-theme="light"
+      className="py-24 md:py-32 px-6 relative overflow-hidden z-10"
+    >
+      <div className="max-w-4xl mx-auto relative z-10">
+        {/* Unified Feature Container Card with Integrated Header */}
+        <div className="glass-neutral-frosted rounded-[2.5rem] p-7 sm:p-12 md:p-14 text-center shadow-2xl border border-white/40 relative overflow-hidden">
+          {/* Integrated Header at the top of the module */}
+          <div className="text-center mb-8 max-w-xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#1F3423]/10 backdrop-blur-md border border-[#1F3423]/15 text-[#1F3423] text-xs font-bold uppercase tracking-widest mb-3">
+              <Sparkles className="w-3.5 h-3.5 text-[#1EC672]" />
+              <span>{language === 'en' ? 'DIALECT DISCOVERY' : 'اكتشف تعابير اللهجة السعودية'}</span>
+            </div>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-syne font-bold text-[#1F3423] mb-2">
+              {language === 'en' ? 'Living Dialect Phrasebook' : 'قاموس العبارات اليومية الحية'}
+            </h3>
+            <p className="text-xs sm:text-sm text-[#1F3423]/80 font-medium">
+              {language === 'en'
+                ? 'Hear authentic native pronunciation and everyday cultural cadence across Saudi regions.'
+                : 'استمع إلى النطق الأصيل والتنغيم الطبيعي لأشهر التعابير المستخدمة يومياً في مختلف مناطق المملكة.'}
+            </p>
+          </div>
+
+          <div className="w-full h-px bg-gradient-to-r from-transparent via-[#1F3423]/15 to-transparent mb-8" />
+
+          {/* Top Dialect Selector Pills */}
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
+            {SAUDI_PHRASES.map((phrase, idx) => (
+              <button
+                key={phrase.id}
+                onClick={() => {
+                  setCurrentIndex(idx);
+                  stopAudio();
+                }}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-[#1EC672] ${
+                  currentIndex === idx
+                    ? 'bg-[#1F3423] text-[#1EC672] shadow-sm scale-105 font-bold'
+                    : 'bg-[#1F3423]/8 text-[#1F3423] hover:bg-[#1F3423]/15 border border-[#1F3423]/10'
+                }`}
+              >
+                {language === 'en' ? phrase.dialect : phrase.dialectAr}
+              </button>
+            ))}
+          </div>
+
+          {/* Category Tag */}
+          <div className="text-[#1F3423] uppercase tracking-widest font-semibold text-xs md:text-sm mb-6 flex items-center justify-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-[#1EC672]" />
+            <span>{language === 'en' ? currentPhrase.category : currentPhrase.categoryAr}</span>
+          </div>
+
+          {/* Arabic Phrase with High-Legibility Typeface */}
+          <p
+            className="text-4xl sm:text-5xl md:text-7xl font-bold text-[#1F3423] mb-5 leading-tight select-all drop-shadow-sm font-arabic"
+            dir="rtl"
+          >
+            {currentPhrase.arabic}
+          </p>
+
+          {/* Transliteration */}
+          <p className="text-lg sm:text-xl md:text-2xl text-[#1F3423]/85 font-medium mb-3 italic tracking-wide font-syne">
+            {currentPhrase.transliteration}
+          </p>
+
+          {/* English Meaning */}
+          <p className="text-base md:text-lg text-[#1F3423]/75 mb-8 max-w-xl mx-auto font-light leading-relaxed">
+            "{language === 'en' ? currentPhrase.englishMeaning : currentPhrase.englishMeaningAr}"
+          </p>
+
+          {/* Audio Pronunciation Button & Controls */}
+          <div className="flex items-center justify-center gap-6 mb-7">
+            <button
+              onClick={handlePrev}
+              className="w-11 h-11 rounded-full bg-[#1F3423]/10 text-[#1F3423] flex items-center justify-center shadow-sm hover:bg-[#1F3423] hover:text-[#1EC672] border border-[#1F3423]/15 transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-[#1EC672]"
+              aria-label={language === 'en' ? 'Previous Phrase' : 'العبارة السابقة'}
+            >
+              <ChevronLeft className="w-5 h-5 rtl:rotate-180" />
+            </button>
+
+            {/* Play Button with animated ping indicator */}
+            <div className="relative">
+              {isPlaying && (
+                <div className="absolute inset-0 rounded-full bg-[#1EC672] animate-ping opacity-75" />
+              )}
+              <button
+                id="audio-pronunciation-btn"
+                onClick={playAudioPronunciation}
+                className={`relative w-20 h-20 rounded-full flex items-center justify-center shadow-xl transition-all duration-300 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#1EC672] ${
+                  isPlaying
+                    ? 'bg-[#1F3423] text-[#1EC672] scale-105 border-2 border-[#1EC672]'
+                    : 'bg-[#1F3423] text-[#1EC672] hover:scale-105 hover:bg-[#1EC672] hover:text-[#0C100E] border-2 border-[#1EC672]/40'
+                }`}
+                aria-label={isPlaying ? (language === 'en' ? 'Stop audio' : 'إيقاف الصوت') : (language === 'en' ? 'Listen to native pronunciation' : 'الاستماع للنطق الصوتي')}
+                title={isPlaying ? 'Stop playback' : 'Listen to native pronunciation'}
+              >
+                {isPlaying ? (
+                  <VolumeX className="w-8 h-8" />
+                ) : (
+                  <Volume2 className="w-8 h-8 ml-0.5" />
+                )}
+              </button>
+            </div>
+
+            <button
+              onClick={handleNext}
+              className="w-11 h-11 rounded-full bg-[#1F3423]/10 text-[#1F3423] flex items-center justify-center shadow-sm hover:bg-[#1F3423] hover:text-[#1EC672] border border-[#1F3423]/15 transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-[#1EC672]"
+              aria-label={language === 'en' ? 'Next Phrase' : 'العبارة التالية'}
+            >
+              <ChevronRight className="w-5 h-5 rtl:rotate-180" />
+            </button>
+          </div>
+
+          <div className="text-xs text-[#1F3423]/75 font-medium mb-6">
+            {isPlaying ? (
+              <span className="text-[#1F3423] font-bold inline-flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-[#1EC672] animate-ping" />
+                <span>{language === 'en' ? 'Playing dialect audio...' : 'جاري الاستماع للنطق الأصلي...'}</span>
+              </span>
+            ) : (
+              <span>{language === 'en' ? 'Click to listen to native pronunciation' : 'انقر للاستماع إلى النطق الصحيح'}</span>
+            )}
+          </div>
+
+          {/* Cultural Context Accordion Card */}
+          <div className="mt-6 pt-6 border-t border-[#1F3423]/15 text-left rtl:text-right max-w-2xl mx-auto">
+            <button
+              onClick={() => setShowCulturalNote(!showCulturalNote)}
+              className="flex items-center justify-between w-full text-xs font-bold uppercase tracking-wider text-[#1F3423] hover:text-[#1EC672] transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-[#1EC672] rounded-md py-1"
+            >
+              <span className="flex items-center gap-2">
+                <Info className="w-4 h-4 text-[#1F3423]" />
+                {language === 'en' ? 'Cultural Context & Etiquette' : 'السياق الثقافي وآداب الاستخدام'}
+              </span>
+              <span className="text-base font-bold">{showCulturalNote ? '−' : '+'}</span>
+            </button>
+
+            {showCulturalNote && (
+              <div className="mt-3 p-4 rounded-xl bg-[#1F3423]/5 text-xs md:text-sm text-[#1F3423]/90 leading-relaxed border border-[#1F3423]/10">
+                {language === 'en'
+                  ? currentPhrase.culturalContext
+                  : currentPhrase.culturalContextAr}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+import React from 'react';
+import { EXPERIENCES } from '../data/yaHalaData';
+import { Experience, Language } from '../types';
+import { MapPin, Clock, ArrowRight, Compass, Sparkles } from 'lucide-react';
+
+interface ExperiencesSectionProps {
+  language: Language;
+  onSelectExperience: (experience: Experience) => void;
+}
+
+export const ExperiencesSection: React.FC<ExperiencesSectionProps> = ({
+  language,
+  onSelectExperience,
+}) => {
+  const featured = EXPERIENCES[0];
+  const secondary = EXPERIENCES.slice(1, 3);
+
+  return (
+    <section
+      id="experiences"
+      data-theme="light"
+      data-header-theme="light"
+      className="py-24 md:py-32 bg-[#F9F8F5] relative overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        
+        {/* Editorial composition: Large photograph with overlapping text panel */}
+        <div className="flex flex-col lg:flex-row relative mb-20 lg:mb-32">
+          {/* Large Photograph */}
+          <div className="w-full lg:w-3/5 h-[50vh] lg:h-[70vh] relative z-0">
+            {featured && (
+              <img
+                src={featured.image}
+                alt={language === 'en' ? featured.title : featured.titleAr}
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
+            )}
+          </div>
+          
+          {/* Text Panel crossing image boundary */}
+          <div className="w-full lg:w-1/2 lg:-ml-[10%] lg:mt-16 rtl:lg:ml-0 rtl:lg:-mr-[10%] relative z-10">
+            <div className="bg-white p-8 md:p-12 shadow-2xl">
+              <div className="flex items-center gap-2 mb-6 text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[#1EC672]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#1EC672]" />
+                <span>{language === 'en' ? 'CULTURAL IMMERSION' : 'الانغماس الثقافي الحي'}</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-syne font-bold mb-6 tracking-tight text-[#1F3423] leading-tight">
+                {language === 'en' ? 'Beyond the Classroom' : 'ما وراء جدران الفصول'}
+              </h2>
+              <p className="text-sm md:text-base text-[#1F3423]/80 font-light leading-relaxed mb-10">
+                {language === 'en'
+                  ? 'Step into historical quarters, nomadic trails, and coastal alleyways. Language comes alive when paired with coffee traditions, desert campfires, and vibrant souqs.'
+                  : 'انطلق في مسارات الطريف التراثية، وأزقة جدة التاريخية، ومخيمات البادية الساحرة. تُكتسب اللغة بعمق حين تمتزج بحديث المجالس وعطر القهوة السعودية.'}
+              </p>
+
+              {/* Featured Experience integrated into the panel */}
+              {featured && (
+                <div 
+                  className="border-t border-[#1F3423]/10 pt-8 cursor-pointer group"
+                  onClick={() => onSelectExperience(featured)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      onSelectExperience(featured);
+                    }
+                  }}
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="px-3 py-1 rounded-full bg-[#1F3423] text-white text-[10px] font-bold uppercase tracking-wider">
+                      {language === 'en' ? 'FEATURED' : 'المميزة'}
+                    </span>
+                    <span className="flex items-center gap-1 text-[11px] text-[#1F3423]/70 font-medium">
+                      <MapPin className="w-3.5 h-3.5" />
+                      {language === 'en' ? featured.location : featured.locationAr}
+                    </span>
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-syne font-bold mb-3 text-[#1F3423] group-hover:text-[#1EC672] transition-colors">
+                    {language === 'en' ? featured.title : featured.titleAr}
+                  </h3>
+                  <div className="flex items-center gap-2 text-xs font-syne font-bold uppercase tracking-wider text-[#1EC672]">
+                    <span>{language === 'en' ? 'DISCOVER ITINERARY' : 'تفاصيل المسار'}</span>
+                    <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform rtl:group-hover:-translate-x-1" />
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Secondary Experiences as text-led rows */}
+        <div className="max-w-5xl mx-auto border-t border-[#1F3423]/10">
+          {secondary.map((item) => (
+            <div
+              key={item.id}
+              role="button"
+              tabIndex={0}
+              onClick={() => onSelectExperience(item)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onSelectExperience(item);
+                }
+              }}
+              className="group flex flex-col md:flex-row items-center gap-6 md:gap-12 py-8 border-b border-[#1F3423]/10 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1EC672]"
+            >
+              <div className="w-full md:w-1/4 h-48 md:h-32 shrink-0 overflow-hidden">
+                <img 
+                  src={item.image} 
+                  alt={language === 'en' ? item.title : item.titleAr}
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center gap-4 mb-2 text-[#1F3423]/60 text-xs font-medium">
+                  <span className="flex items-center gap-1.5">
+                    <MapPin className="w-3.5 h-3.5" />
+                    {language === 'en' ? item.location : item.locationAr}
+                  </span>
+                  <span>|</span>
+                  <span className="flex items-center gap-1.5">
+                    <Clock className="w-3.5 h-3.5" />
+                    {language === 'en' ? item.duration : item.durationAr}
+                  </span>
+                </div>
+                <h4 className="text-xl md:text-2xl font-syne font-bold mb-3 text-[#1F3423] group-hover:text-[#1EC672] transition-colors">
+                  {language === 'en' ? item.title : item.titleAr}
+                </h4>
+                <p className="text-sm text-[#1F3423]/70 leading-relaxed font-light line-clamp-2 md:line-clamp-1">
+                  {language === 'en' ? item.description : item.descriptionAr}
+                </p>
+              </div>
+              <div className="md:shrink-0 flex items-center justify-end w-full md:w-auto mt-2 md:mt-0">
+                <span className="w-10 h-10 rounded-full border border-[#1F3423]/20 flex items-center justify-center group-hover:bg-[#1EC672] group-hover:border-[#1EC672] group-hover:text-white transition-all">
+                  <ArrowRight className="w-4 h-4 transform group-hover:-rotate-45 rtl:group-hover:rotate-45 transition-transform" />
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+};
+import React, { useState } from 'react';
+import { EDITORIAL_HIGHLIGHTS } from '../data/yaHalaData';
+import { EditorialHighlight, Language } from '../types';
+import { Calendar, Clock, ArrowRight, BookOpen, X, Sparkles } from 'lucide-react';
+
+interface EditorialSectionProps {
+  language: Language;
+}
+
+export const EditorialSection: React.FC<EditorialSectionProps> = ({ language }) => {
+  const [selectedArticle, setSelectedArticle] = useState<EditorialHighlight | null>(null);
+
+  return (
+    <section
+      id="upcoming"
+      data-theme="light"
+      data-header-theme="light"
+      className="py-24 md:py-32 px-6 relative z-10"
+    >
+      <div className="max-w-7xl mx-auto">
+        {/* Unified Editorial Module with Integrated Header */}
+        <div className="glass-neutral-frosted rounded-[2.5rem] p-8 sm:p-10 lg:p-12 shadow-2xl border border-white/40">
+          {/* Integrated Module Header */}
+          <div className="mb-10 text-center md:text-left rtl:md:text-right max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#1F3423]/10 backdrop-blur-md border border-[#1F3423]/15 text-[#1F3423] text-xs font-bold uppercase tracking-widest mb-3">
+              <Sparkles className="w-3.5 h-3.5 text-[#1EC672]" />
+              <span>{language === 'en' ? 'UPCOMING EXPERIENCES & JOURNAL' : 'تجارب قادمة ومقالات مختارة'}</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-syne font-bold text-[#1F3423] tracking-tight mb-2">
+              {language === 'en' ? 'Editorial Highlights' : 'إضاءات ثقافية وأدبية'}
+            </h2>
+            <p className="text-sm md:text-base text-[#1F3423]/80 font-medium">
+              {language === 'en'
+                ? 'Deep dives into Saudi linguistic heritage, architectural journeys, and student narratives.'
+                : 'مقالات معمقة عن التراث اللغوي، والرحلات المعمارية، وتجارب الطلاب الملهمة في رحاب المملكة.'}
+            </p>
+          </div>
+
+          {/* 3 Articles Grid with Warm Glass Cards */}
+          <div className="grid md:grid-cols-3 gap-8">
+          {EDITORIAL_HIGHLIGHTS.map((item) => (
+            <div
+              key={item.id}
+              role="button"
+              tabIndex={0}
+              onClick={() => setSelectedArticle(item)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setSelectedArticle(item);
+                }
+              }}
+              className="glass-warm-card rounded-2xl overflow-hidden border border-[#1F3423]/12 hover:border-[#1EC672]/60 hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1EC672]"
+            >
+              <div>
+                <div className="aspect-[16/10] overflow-hidden relative">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4">
+                    <span className="px-3 py-1 rounded-full bg-[#1F3423]/95 backdrop-blur-md text-[#1EC672] text-[10px] font-bold tracking-widest uppercase border border-[#1EC672]/20 shadow-sm">
+                      {language === 'en' ? item.category : item.categoryAr}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-7">
+                  <div className="flex items-center gap-4 text-xs text-[#1F3423]/80 mb-3 font-medium">
+                    <span className="flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5 text-[#1EC672]" />
+                      {language === 'en' ? item.date : item.dateAr}
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <Clock className="w-3.5 h-3.5 text-[#1EC672]" />
+                      {language === 'en' ? item.readTime : item.readTimeAr}
+                    </span>
+                  </div>
+
+                  <h3 className="font-syne font-bold text-xl mb-3 text-[#1F3423] group-hover:text-[#1EC672] transition-colors leading-snug">
+                    {language === 'en' ? item.title : item.titleAr}
+                  </h3>
+
+                  <p className="text-sm text-[#1F3423]/75 leading-relaxed font-light line-clamp-3">
+                    {language === 'en' ? item.description : item.descriptionAr}
+                  </p>
+                </div>
+              </div>
+
+              <div className="px-7 pb-6 pt-2 border-t border-[#1F3423]/10 flex items-center justify-between">
+                <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#1F3423] group-hover:text-[#1EC672] transition-colors">
+                  <span>{language === 'en' ? 'Read Full Story' : 'اقرأ المقال كاملاً'}</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-[#1F3423] group-hover:text-[#1EC672] transform group-hover:translate-x-1 transition-all rtl:group-hover:-translate-x-1" />
+                </span>
+                <BookOpen className="w-4 h-4 text-[#1F3423]/40 group-hover:text-[#1EC672] transition-colors" />
+              </div>
+            </div>
+          ))}
+        </div>
+        </div>
+      </div>
+
+      {/* Article Reader Modal */}
+      {selectedArticle && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/65 backdrop-blur-md animate-in fade-in">
+          <div className="glass-warm-light rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-8 relative shadow-2xl border border-[#1F3423]/20">
+            <button
+              onClick={() => setSelectedArticle(null)}
+              className="absolute top-6 right-6 rtl:right-auto rtl:left-6 p-2 rounded-full hover:bg-[#1F3423]/10 text-[#1F3423] transition-colors cursor-pointer"
+              aria-label="Close modal"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="mb-4">
+              <span className="px-3 py-1 rounded-full bg-[#1F3423] text-[#1EC672] text-[10px] font-bold tracking-widest uppercase shadow-sm">
+                {language === 'en' ? selectedArticle.category : selectedArticle.categoryAr}
+              </span>
+            </div>
+
+            <h3 className="text-2xl md:text-3xl font-syne font-bold text-[#1F3423] mb-4">
+              {language === 'en' ? selectedArticle.title : selectedArticle.titleAr}
+            </h3>
+
+            <div className="aspect-video rounded-2xl overflow-hidden mb-6 shadow-md border border-[#1F3423]/10">
+              <img
+                src={selectedArticle.image}
+                alt={selectedArticle.title}
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+
+            <p className="text-base text-[#1F3423]/85 leading-relaxed mb-6 font-light">
+              {language === 'en' ? selectedArticle.description : selectedArticle.descriptionAr}
+            </p>
+
+            <div className="p-4 rounded-2xl bg-[#1F3423]/5 border border-[#1F3423]/12 text-sm text-[#1F3423]">
+              <h5 className="font-bold mb-1">
+                {language === 'en' ? 'Linguistic Field Note:' : 'ملاحظة لغوية ميدانية:'}
+              </h5>
+              <p className="text-xs text-[#1F3423]/75 leading-relaxed">
+                {language === 'en'
+                  ? 'All participants in our upcoming cultural excursions receive a printed dialect glossarium and audio companion app sync.'
+                  : 'يحصل جميع المشاركين في رحلاتنا الثقافية على معجم مطبوع لألفاظ المنطقة وتطبيق صوتي مرافق للتدريب.'}
+              </p>
+            </div>
+
+            <div className="mt-8 flex justify-end">
+              <button
+                onClick={() => setSelectedArticle(null)}
+                className="px-6 py-2.5 rounded-full bg-[#1F3423] text-white text-xs font-bold font-syne uppercase hover:bg-[#1EC672] hover:text-[#0C100E] transition-colors cursor-pointer shadow-sm"
+              >
+                {language === 'en' ? 'Close Reader' : 'إغلاق'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+};
+import React, { useState } from 'react';
+import { Language } from '../types';
+import { Smartphone, Sparkles, Check, Play, Award, Volume2 } from 'lucide-react';
+
+interface AppPreviewSectionProps {
+  language: Language;
+}
+
+export const AppPreviewSection: React.FC<AppPreviewSectionProps> = ({ language }) => {
+  const [email, setEmail] = useState('');
+  const [isJoined, setIsJoined] = useState(false);
+  const [activeDialectTab, setActiveDialectTab] = useState<'najdi' | 'hejazi'>('najdi');
+  const [isPlayingVoice, setIsPlayingVoice] = useState(false);
+
+  const handleWaitlistSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email.trim()) {
+      setIsJoined(true);
+    }
+  };
+
+  const handlePlayVoice = () => {
+    setIsPlayingVoice(true);
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      const text = activeDialectTab === 'najdi' ? 'وش مسوي طال عمرك؟' : 'إيش أخبارك يا غالي؟';
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'ar-SA';
+      utterance.rate = 0.85;
+      utterance.onend = () => setIsPlayingVoice(false);
+      utterance.onerror = () => setIsPlayingVoice(false);
+      window.speechSynthesis.speak(utterance);
+    } else {
+      setTimeout(() => setIsPlayingVoice(false), 1200);
+    }
+  };
+
+  return (
+    <section
+      id="app-preview"
+      data-theme="dark"
+      data-header-theme="dark"
+      className="py-24 md:py-32 text-white px-6 overflow-hidden relative z-10"
+    >
+      {/* Smooth atmospheric backdrop allowing background continuity */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0C100E]/70 via-[#0C100E]/85 to-[#0C100E] pointer-events-none -z-10" />
+
+      {/* Subtle atmospheric ambient glow */}
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[450px] h-[450px] bg-[#1EC672]/10 rounded-full blur-[140px] pointer-events-none -z-10" />
+
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-12 items-center gap-12 lg:gap-16 relative z-10">
+        {/* Left Copy & Early Access (7 cols on lg) */}
+        <div className="lg:col-span-7 text-left rtl:text-right">
+          <div className="inline-flex items-center gap-2 mb-4 px-3.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15">
+            <Sparkles className="w-3.5 h-3.5 text-[#1EC672]" />
+            <span className="text-[#1EC672] uppercase tracking-[0.2em] font-syne font-semibold text-xs">
+              {language === 'en' ? 'YA HALA MOBILE APP' : 'تطبيق يا هلا الذكي'}
+            </span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-syne font-bold mb-5 leading-tight tracking-tight text-white">
+            {language === 'en' ? (
+              <>
+                Saudi Dialects <br />
+                <span className="text-white/80 font-light">in Your Pocket</span>
+              </>
+            ) : (
+              <>
+                اللهجة السعودية <br />
+                <span className="text-white/80 font-light">معك أينما كنت</span>
+              </>
+            )}
+          </h2>
+
+          <p className="text-base sm:text-lg text-white/85 mb-8 font-light leading-relaxed max-w-xl">
+            {language === 'en'
+              ? 'Complement your coursework with bite-sized daily audio lessons, interactive dialect flashcards, native accent playback, and our cultural etiquette compass.'
+              : 'عزز مهاراتك اليومية عبر دروس صوتية تفاعلية، بطاقات لهجات نجدية وحجازية، وتوجيهات الإتيكيت الاجتماعي السعودي على مدار الساعة.'}
+          </p>
+
+          <div className="flex flex-wrap items-center gap-3 mb-8">
+            <span className="px-3.5 py-1.5 rounded-full border border-white/20 bg-white/10 text-xs font-syne font-semibold uppercase tracking-wider text-[#1EC672]">
+              {language === 'en' ? 'COMING SOON TO IOS & ANDROID' : 'قريباً على آبل ستور وجوجل بلاي'}
+            </span>
+            <span className="text-xs text-white/70">
+              {language === 'en' ? '• Included for all enrolled students' : '• متاح لكافة طلاب المعهد'}
+            </span>
+          </div>
+
+          {/* Waitlist Form */}
+          {isJoined ? (
+            <div className="p-4 rounded-2xl bg-white/10 border border-[#1EC672]/60 text-white flex items-center gap-3 max-w-md shadow-lg">
+              <Check className="w-5 h-5 text-[#1EC672] shrink-0" />
+              <div>
+                <p className="font-syne font-bold text-sm text-white">
+                  {language === 'en' ? 'You are on the Early Access List' : 'تم تسجيلك بنجاح في قائمة الوصول المبكر!'}
+                </p>
+                <p className="text-xs text-white/75 mt-0.5">
+                  {language === 'en'
+                    ? "We'll send your beta testing pass when released."
+                    : 'سنرسل لك رابط النسخة التجريبية فور إطلاقها.'}
+                </p>
+              </div>
+            </div>
+          ) : (
+            <form onSubmit={handleWaitlistSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md">
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder={language === 'en' ? 'Enter email for beta pass...' : 'أدخل بريدك الإلكتروني...'}
+                className="flex-1 px-4 py-3 rounded-full bg-white/10 border border-white/20 text-white placeholder-white/50 text-sm focus:outline-none focus:border-[#1EC672] focus:ring-1 focus:ring-[#1EC672] transition-colors"
+                aria-label={language === 'en' ? 'Email for beta waitlist' : 'البريد الإلكتروني للانضمام للقائمة'}
+              />
+              <button
+                type="submit"
+                className="px-6 py-3 rounded-full bg-[#1EC672] text-[#0C100E] font-syne font-bold text-xs uppercase tracking-wider hover:bg-white transition-colors shrink-0 cursor-pointer shadow-md"
+              >
+                {language === 'en' ? 'GET ACCESS' : 'انضم للقائمة'}
+              </button>
+            </form>
+          )}
+        </div>
+
+        {/* Right Phone Mockup (5 cols on lg, scaled gracefully) */}
+        <div className="lg:col-span-5 relative flex justify-center">
+          <div className="relative w-[290px] sm:w-[310px] h-[580px] bg-[#0A0E0C]/90 backdrop-blur-xl rounded-[3.2rem] border-[6px] border-white/20 shadow-2xl p-4 flex flex-col justify-between overflow-hidden">
+            {/* Top Speaker / Dynamic Island */}
+            <div className="w-24 h-4 bg-white/15 rounded-full mx-auto mb-3 flex items-center justify-center">
+              <div className="w-2 h-2 rounded-full bg-black/80 mr-2" />
+              <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
+            </div>
+
+            {/* In-App Screen Content */}
+            <div className="flex-1 flex flex-col justify-between text-left rtl:text-right px-2">
+              {/* App Header */}
+              <div>
+                <div className="flex items-center justify-between text-[11px] text-white/60 mb-2 font-syne">
+                  <span className="font-bold">YA HALA</span>
+                  <span className="flex items-center gap-1 text-[#FED65B] font-semibold">
+                    <Award className="w-3.5 h-3.5" /> 14 Day Streak
+                  </span>
+                </div>
+                <h4 className="text-base font-syne font-bold text-white mb-3">
+                  {language === 'en' ? "Today's Micro-Lesson" : 'درس اليوم السريع'}
+                </h4>
+
+                {/* Dialect Selector Inside App */}
+                <div className="grid grid-cols-2 gap-1 p-1 bg-white/10 border border-white/15 rounded-xl mb-3 text-[11px] text-center font-bold">
+                  <button
+                    type="button"
+                    onClick={() => setActiveDialectTab('najdi')}
+                    className={`py-1.5 rounded-lg transition-all cursor-pointer ${
+                      activeDialectTab === 'najdi' ? 'bg-[#1EC672] text-[#0C100E] shadow-sm' : 'text-white/80 hover:text-white'
+                    }`}
+                  >
+                    Najdi (الرياض)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setActiveDialectTab('hejazi')}
+                    className={`py-1.5 rounded-lg transition-all cursor-pointer ${
+                      activeDialectTab === 'hejazi' ? 'bg-[#1EC672] text-[#0C100E] shadow-sm' : 'text-white/80 hover:text-white'
+                    }`}
+                  >
+                    Hejazi (جدة)
+                  </button>
+                </div>
+
+                {/* Interactive Flashcard */}
+                <div className="p-4 rounded-xl bg-white/10 border border-white/15 backdrop-blur-md text-center mb-3">
+                  <span className="text-[10px] text-[#1EC672] uppercase font-bold tracking-widest block mb-1">
+                    {activeDialectTab === 'najdi' ? 'RIYADH ESSENTIAL' : 'JEDDAH ESSENTIAL'}
+                  </span>
+                  <div className="text-xl font-bold font-arabic text-white mb-1">
+                    {activeDialectTab === 'najdi' ? 'وش مسوي طال عمرك؟' : 'إيش أخبارك يا غالي؟'}
+                  </div>
+                  <div className="text-[11px] text-white/75 italic mb-2">
+                    {activeDialectTab === 'najdi' ? "Wesh msawwi tāl 'omrak?" : "Eish akhbarak ya ghāli?"}
+                  </div>
+                  <div className="text-[11px] text-white/95 bg-black/60 py-1 px-3 rounded-full inline-block border border-white/10">
+                    "How have you been doing, noble friend?"
+                  </div>
+                </div>
+
+                {/* Interactive Listening Bar */}
+                <div className="p-2.5 rounded-xl bg-white/10 border border-white/15 flex items-center justify-between">
+                  <div className="flex items-center gap-2.5 text-xs">
+                    <button
+                      type="button"
+                      onClick={handlePlayVoice}
+                      className={`w-8 h-8 rounded-full flex items-center justify-center transition-all cursor-pointer shadow-sm ${
+                        isPlayingVoice ? 'bg-white text-[#0C100E] scale-105' : 'bg-[#1EC672] text-[#0C100E] hover:scale-105'
+                      }`}
+                      aria-label="Play native audio note"
+                    >
+                      <Play className="w-3.5 h-3.5 ml-0.5 fill-current" />
+                    </button>
+                    <div>
+                      <div className="text-white font-bold text-[11px]">Native Voice Audio</div>
+                      <div className="text-[9px] text-white/60">0:08 • Normal Tempo</div>
+                    </div>
+                  </div>
+                  <Volume2 className={`w-4 h-4 ${isPlayingVoice ? 'text-white animate-pulse' : 'text-[#1EC672]'}`} />
+                </div>
+              </div>
+
+              {/* Bottom Nav Simulation */}
+              <div className="pt-3 border-t border-white/15 flex justify-around text-[10px] text-white/70 font-syne">
+                <span className="text-[#1EC672] font-bold">Lessons</span>
+                <span>Phrases</span>
+                <span>Majlis</span>
+                <span>Profile</span>
+              </div>
+            </div>
+
+            {/* Bottom Bar */}
+            <div className="w-28 h-1 bg-white/35 rounded-full mx-auto mt-2" />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+import React from 'react';
+import { ASSETS } from '../data/yaHalaData';
+import { Language } from '../types';
+import { ArrowRight, Sparkles } from 'lucide-react';
+
+interface FinalCTAProps {
+  language: Language;
+  onApplyNow: () => void;
+}
+
+export const FinalCTA: React.FC<FinalCTAProps> = ({ language, onApplyNow }) => {
+  return (
+    <section
+      id="start"
+      data-theme="dark"
+      data-header-theme="dark"
+      className="py-24 md:py-32 relative overflow-hidden text-center px-6 z-10"
+    >
+      {/* Background with progressive darkening towards footer */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <img
+          src={ASSETS.experienceStone}
+          alt="Saudi Heritage Architecture"
+          className="w-full h-full object-cover object-center opacity-30 scale-105 transition-transform duration-1000"
+          referrerPolicy="no-referrer"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#080B0A] via-[#0C100E]/80 to-[#0C100E]/70 pointer-events-none" />
+      </div>
+
+      <div className="relative z-10 max-w-3xl mx-auto glass-dark-card rounded-3xl p-8 sm:p-12 md:p-14 border border-white/15 shadow-2xl">
+        <div className="inline-flex items-center gap-2 mb-4 px-3.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15">
+          <Sparkles className="w-3.5 h-3.5 text-[#1EC672]" />
+          <span className="text-[#1EC672] uppercase tracking-[0.2em] font-syne font-semibold text-xs">
+            {language === 'en' ? 'ENROLLMENT NOW OPEN' : 'التسجيل متاح الآن'}
+          </span>
+        </div>
+
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-syne font-bold text-white mb-4 tracking-tight leading-tight">
+          {language === 'en' ? 'Begin Your Ya Hala Journey' : 'ابدأ رحلتك مع يا هلا'}
+        </h2>
+
+        <p className="text-base sm:text-lg text-white/85 mb-8 font-light leading-relaxed max-w-xl mx-auto">
+          {language === 'en'
+            ? 'Take the first step towards fluency, confidence, and authentic cultural connection in the Kingdom today.'
+            : 'اتخذ خطوتك الأولى نحو الطلاقة اللغوية والاندماج الثقافي الأصيل في أرجاء المملكة اليوم.'}
+        </p>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <button
+            id="final-apply-btn"
+            onClick={onApplyNow}
+            className="px-8 py-3.5 bg-[#1EC672] text-[#0C100E] font-syne font-bold text-xs uppercase tracking-wider rounded-full hover:bg-white hover:scale-105 transition-all duration-300 shadow-xl flex items-center justify-center gap-2.5 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          >
+            <span>{language === 'en' ? 'APPLY NOW' : 'سجّل الآن'}</span>
+            <ArrowRight className="w-4 h-4 rtl:rotate-180" />
+          </button>
+        </div>
+
+        <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap justify-center items-center gap-6 text-xs text-white/70">
+          <span>{language === 'en' ? '✓ Initial dialect assessment' : '✓ تقييم مبدئي لتحديد المستوى'}</span>
+          <span>{language === 'en' ? '✓ Flexible scheduling' : '✓ أوقات مرنة صباحية ومسائية'}</span>
+          <span>{language === 'en' ? '✓ Certificate included' : '✓ شهادة كفاءة معتمدة'}</span>
+        </div>
+      </div>
+    </section>
+  );
+};

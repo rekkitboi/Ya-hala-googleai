@@ -14,52 +14,54 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ language, onApplyNow }) => {
       id="start"
       data-theme="dark"
       data-header-theme="dark"
-      className="py-24 md:py-32 relative overflow-hidden text-center px-6 z-10"
+      className="relative overflow-hidden z-10 bg-[#0C100E] min-h-[60vh] flex items-center"
     >
-      {/* Background with progressive darkening towards footer */}
+      {/* Restrained photographic environment */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 bg-[#0C100E] z-10 opacity-70 lg:opacity-50 lg:bg-gradient-to-r lg:from-[#0C100E] lg:via-[#0C100E]/90 lg:to-transparent rtl:lg:bg-gradient-to-l" />
         <img
-          src={ASSETS.experienceStone}
+          src={ASSETS.aboutBg}
           alt="Saudi Heritage Architecture"
-          className="w-full h-full object-cover object-center opacity-30 scale-105 transition-transform duration-1000"
+          className="w-full h-full object-cover object-right-top md:object-center opacity-80"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#080B0A] via-[#0C100E]/80 to-[#0C100E]/70 pointer-events-none" />
+        {/* Gradient transition to footer */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0C100E] to-transparent z-10" />
       </div>
 
-      <div className="relative z-10 max-w-3xl mx-auto glass-dark-card rounded-3xl p-8 sm:p-12 md:p-14 border border-white/15 shadow-2xl">
-        <div className="inline-flex items-center gap-2 mb-4 px-3.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15">
-          <Sparkles className="w-3.5 h-3.5 text-[#1EC672]" />
-          <span className="text-[#1EC672] uppercase tracking-[0.2em] font-syne font-semibold text-xs">
-            {language === 'en' ? 'ENROLLMENT NOW OPEN' : 'التسجيل متاح الآن'}
-          </span>
-        </div>
-
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-syne font-bold text-white mb-4 tracking-tight leading-tight">
-          {language === 'en' ? 'Begin Your Ya Hala Journey' : 'ابدأ رحلتك مع يا هلا'}
-        </h2>
-
-        <p className="text-base sm:text-lg text-white/85 mb-8 font-light leading-relaxed max-w-xl mx-auto">
-          {language === 'en'
-            ? 'Take the first step towards fluency, confidence, and authentic cultural connection in the Kingdom today.'
-            : 'اتخذ خطوتك الأولى نحو الطلاقة اللغوية والاندماج الثقافي الأصيل في أرجاء المملكة اليوم.'}
-        </p>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button
-            id="final-apply-btn"
-            onClick={onApplyNow}
-            className="px-8 py-3.5 bg-[#1EC672] text-[#0C100E] font-syne font-bold text-xs uppercase tracking-wider rounded-full hover:bg-white hover:scale-105 transition-all duration-300 shadow-xl flex items-center justify-center gap-2.5 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-          >
-            <span>{language === 'en' ? 'APPLY NOW' : 'سجّل الآن'}</span>
-            <ArrowRight className="w-4 h-4 rtl:rotate-180" />
-          </button>
-        </div>
-
-        <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap justify-center items-center gap-6 text-xs text-white/70">
-          <span>{language === 'en' ? '✓ Initial dialect assessment' : '✓ تقييم مبدئي لتحديد المستوى'}</span>
-          <span>{language === 'en' ? '✓ Flexible scheduling' : '✓ أوقات مرنة صباحية ومسائية'}</span>
-          <span>{language === 'en' ? '✓ Certificate included' : '✓ شهادة كفاءة معتمدة'}</span>
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-24 md:py-32">
+        <div className="w-full lg:w-[55%] text-left rtl:text-right">
+          <div className="inline-flex items-center gap-2 mb-6 text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[#1EC672]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1EC672]" />
+            <span>{language === 'en' ? 'ENROLLMENT NOW OPEN' : 'التسجيل متاح الآن'}</span>
+          </div>
+          
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-syne font-bold text-white mb-6 tracking-tight leading-none">
+            {language === 'en' ? 'Begin Your Ya Hala Journey' : 'ابدأ رحلتك مع يا هلا'}
+          </h2>
+          
+          <p className="text-base sm:text-lg md:text-xl text-white/80 mb-10 font-light leading-relaxed max-w-lg">
+            {language === 'en'
+              ? 'Take the first step towards fluency, confidence, and authentic cultural connection in the Kingdom today.'
+              : 'اتخذ خطوتك الأولى نحو الطلاقة اللغوية والاندماج الثقافي الأصيل في أرجاء المملكة اليوم.'}
+          </p>
+          
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+            <button
+              id="final-apply-btn"
+              onClick={onApplyNow}
+              className="px-8 py-4 bg-white text-[#0C100E] font-syne font-bold text-xs uppercase tracking-wider rounded-full hover:bg-[#1EC672] transition-colors duration-300 flex items-center justify-center gap-3 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1EC672]"
+            >
+              <span>{language === 'en' ? 'Apply Now' : 'سجّل الآن'}</span>
+              <ArrowRight className="w-4 h-4 rtl:rotate-180" />
+            </button>
+            
+            <p className="text-xs text-white/50 font-light border-l border-white/20 pl-4 rtl:border-l-0 rtl:border-r rtl:pl-0 rtl:pr-4 py-1">
+              {language === 'en' 
+                ? 'Applications open for upcoming cohorts.' 
+                : 'التقديم متاح للدفعات القادمة.'}
+            </p>
+          </div>
         </div>
       </div>
     </section>
