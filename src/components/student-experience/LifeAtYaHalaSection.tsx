@@ -1,98 +1,95 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { LIFE_AT_YA_HALA_DATA } from '../../data/studentExperienceData';
 import { Language } from '../../types';
-import { ASSETS } from '../../data/yaHalaData';
+import {
+  MessageSquare,
+  Users,
+  UserPlus,
+  Gamepad2,
+  Palette,
+  PartyPopper,
+  Compass,
+  Sparkles,
+} from 'lucide-react';
 
 interface LifeAtYaHalaSectionProps {
   language: Language;
 }
 
 export const LifeAtYaHalaSection: React.FC<LifeAtYaHalaSectionProps> = ({ language }) => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+  const getActivityIcon = (id: string) => {
+    switch (id) {
+      case 'conversations':
+        return <MessageSquare className="w-4 h-4 text-[#1EC672]" />;
+      case 'gatherings':
+        return <Users className="w-4 h-4 text-[#1EC672]" />;
+      case 'group-activities':
+        return <UserPlus className="w-4 h-4 text-[#1EC672]" />;
+      case 'games':
+        return <Gamepad2 className="w-4 h-4 text-[#1EC672]" />;
+      case 'cultural-days':
+        return <Palette className="w-4 h-4 text-[#1EC672]" />;
+      case 'celebrations':
+        return <PartyPopper className="w-4 h-4 text-[#1EC672]" />;
+      case 'outside-practice':
+        return <Compass className="w-4 h-4 text-[#1EC672]" />;
+      default:
+        return <Sparkles className="w-4 h-4 text-[#1EC672]" />;
     }
-
-    return () => observer.disconnect();
-  }, []);
+  };
 
   return (
     <section
-      ref={sectionRef}
-      id="life-at-yahala"
+      id="life-at-ya-hala"
       data-theme="light"
-      className="py-20 md:py-32 bg-[#F9F8F5] relative overflow-hidden"
+      className="py-20 md:py-28 bg-[#F9F8F5] text-[#1F3423] relative overflow-hidden"
     >
-      {/* Connected background path */}
-      <div className="absolute top-0 bottom-0 left-8 md:left-1/2 -ml-[1px] w-[2px] bg-gradient-to-b from-[#1F3423]/5 via-[#1EC672]/20 to-[#1F3423]/5 rtl:right-8 rtl:left-auto rtl:md:right-1/2 rtl:md:mr-[1px] rtl:md:ml-0" />
-
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-16 md:mb-24 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full bg-white border border-[#1F3423]/10">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#1EC672]" />
-            <span className="text-[#1F3423] uppercase tracking-widest font-syne font-bold text-[10px]">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Section Header */}
+        <div className="max-w-2xl mb-12 text-left rtl:text-right">
+          <div className="inline-flex items-center gap-2 mb-3">
+            <Sparkles className="w-3.5 h-3.5 text-[#1EC672]" />
+            <span className="text-[#1F3423]/70 uppercase tracking-[0.2em] font-syne font-semibold text-xs">
               {language === 'en' ? LIFE_AT_YA_HALA_DATA.eyebrowEn : LIFE_AT_YA_HALA_DATA.eyebrowAr}
             </span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-syne font-bold text-[#1F3423] tracking-tight mb-6 leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-syne font-bold text-[#1F3423] tracking-tight mb-3">
             {language === 'en' ? LIFE_AT_YA_HALA_DATA.headingEn : LIFE_AT_YA_HALA_DATA.headingAr}
           </h2>
-          <p className="text-base md:text-lg text-[#1F3423]/80 leading-relaxed font-light">
+          <p className="text-sm sm:text-base text-[#1F3423]/75 leading-relaxed font-light">
             {language === 'en' ? LIFE_AT_YA_HALA_DATA.leadEn : LIFE_AT_YA_HALA_DATA.leadAr}
           </p>
         </div>
 
-        <div className="flex flex-col gap-12">
-          {LIFE_AT_YA_HALA_DATA.activities.map((activity, index) => {
-            const isEven = index % 2 === 0;
-            const delay = index * 100;
-            
-            return (
-              <div 
-                key={activity.id}
-                className={`relative transition-all duration-1000 ease-out flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-                }`}
-                style={{ transitionDelay: `${delay}ms` }}
-              >
-                {/* Visual marker dot */}
-                <div className="absolute left-8 md:left-1/2 -ml-[4px] md:-ml-[5px] top-4 md:top-1/2 md:-translate-y-1/2 w-2 h-2 md:w-3 md:h-3 rounded-full bg-[#1EC672] ring-4 ring-white z-10 rtl:right-8 rtl:left-auto rtl:md:right-1/2 rtl:md:-mr-[5px] rtl:md:ml-0" />
-                
-                {/* Content Side 1 */}
-                <div className={`w-full md:w-[45%] pl-16 md:pl-0 rtl:pr-16 rtl:md:pr-0 text-left rtl:text-right ${isEven ? 'md:order-1 md:text-right rtl:md:text-left' : 'md:order-2'}`}>
-                  <span className="text-4xl md:text-5xl font-syne font-bold text-[#1F3423]/5 mb-2 block">
-                    0{index + 1}
-                  </span>
-                  <h3 className="text-xl md:text-2xl font-syne font-bold text-[#1F3423] mb-3">
-                    {language === 'en' ? activity.title : activity.titleAr}
-                  </h3>
-                  <p className="text-sm md:text-base text-[#1F3423]/70 font-light leading-relaxed">
-                    {language === 'en' ? activity.description : activity.descriptionAr}
-                  </p>
+        {/* 7 Activities Bento / Flow Layout */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {LIFE_AT_YA_HALA_DATA.activities.map((act, idx) => (
+            <div
+              key={act.id}
+              className={`bg-white rounded-xl border border-[#1F3423]/10 p-6 shadow-xs hover:border-[#1EC672]/40 transition-all duration-300 flex flex-col justify-between text-left rtl:text-right ${
+                idx === 0 ? 'sm:col-span-2 lg:col-span-2' : ''
+              }`}
+            >
+              <div>
+                <div className="w-9 h-9 rounded-lg bg-[#1F3423]/5 border border-[#1F3423]/10 flex items-center justify-center mb-4">
+                  {getActivityIcon(act.id)}
                 </div>
-                
-                {/* Content Side 2 (Empty or subtle image placeholder) */}
-                <div className={`hidden md:block w-[45%] ${isEven ? 'order-2' : 'order-1'}`}>
-                  <div className="w-full h-[1px] bg-[#1F3423]/5 relative">
-                    <div className={`absolute top-1/2 -translate-y-1/2 w-16 h-[1px] bg-[#1EC672]/30 ${isEven ? 'left-0' : 'right-0'}`} />
-                  </div>
-                </div>
-                
+
+                <h3 className="text-base sm:text-lg font-syne font-bold text-[#1F3423] mb-2 leading-snug">
+                  {language === 'en' ? act.title : act.titleAr}
+                </h3>
+
+                <p className="text-xs sm:text-sm text-[#1F3423]/75 leading-relaxed font-light">
+                  {language === 'en' ? act.description : act.descriptionAr}
+                </p>
               </div>
-            );
-          })}
+
+              <div className="mt-5 pt-3 border-t border-[#1F3423]/5 flex items-center justify-between text-[11px] font-syne text-[#1F3423]/50">
+                <span>{language === 'en' ? 'Community Life' : 'الحياة المجتمعية'}</span>
+                <span className="font-bold text-[#1EC672]">0{idx + 1}</span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

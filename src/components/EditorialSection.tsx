@@ -1,4 +1,3 @@
-import { useFocusTrap } from "../hooks/useFocusTrap";
 import React, { useState, useEffect, useRef } from 'react';
 import { EDITORIAL_HIGHLIGHTS } from '../data/yaHalaData';
 import { Language, EditorialHighlight } from '../types';
@@ -14,7 +13,7 @@ export const EditorialSection: React.FC<EditorialSectionProps> = ({ language }) 
   const secondaryArticles = EDITORIAL_HIGHLIGHTS.slice(1, 3);
   
   // Accessibility & focus trap for modal
-  const trappedModalRef = useFocusTrap(!!selectedArticle);
+  const modalRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -137,11 +136,7 @@ export const EditorialSection: React.FC<EditorialSectionProps> = ({ language }) 
                     <h4 className="font-syne font-bold text-lg mb-2 text-[#1F3423] group-hover:text-[#1EC672] transition-colors leading-snug line-clamp-2">
                       {language === 'en' ? article.title : article.titleAr}
                     </h4>
-<div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-[#1EC672] mt-1 group-hover:text-[#1F3423] transition-colors">
-  <span>{language === "en" ? "Explore Story" : "استكشف المقال"}</span>
-  <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform rtl:group-hover:-translate-x-1" />
-</div>
-                    <div className="flex items-center gap-4 text-[11px] text-[#1F3423]/50 font-medium mb-3">
+                    <div className="flex items-center gap-4 text-[11px] text-[#1F3423]/50 font-medium">
                       <span className="flex items-center gap-1.5">
                         <Calendar className="w-3 h-3" />
                         {language === 'en' ? article.date : article.dateAr}
@@ -165,7 +160,7 @@ export const EditorialSection: React.FC<EditorialSectionProps> = ({ language }) 
           className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#0C100E]/80 backdrop-blur-sm animate-in fade-in"
         >
           <div 
-            ref={trappedModalRef}
+            ref={modalRef}
             className="bg-[#F9F8F5] rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-8 md:p-12 relative shadow-2xl"
           >
             <button

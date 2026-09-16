@@ -150,8 +150,8 @@ export const CURRICULUM_LEVELS_DATA: CurriculumLevel[] = [
     id: 'b2',
     level: 'LEVEL 4 | B2',
     cefr: 'B2',
-    title: 'Confident and Fluent Communication',
-    titleAr: 'التواصل الفعال والواثق',
+    title: 'More Independent and Fluent Communication',
+    titleAr: 'التواصل الأكثر طلاقة واستقلالية',
     description: 'Learners understand more complex texts and conversations, discuss different points of view, justify their opinions, present detailed information, and communicate effectively in social and professional situations.',
     descriptionAr: 'يفهم المتعلمون النصوص والمحادثات الأكثر تعقيداً، ويناقشون وجهات النظر المختلفة، ويعللون آراءهم، ويقدمون معلومات تفصيلية ويتواصلون بفاعلية في المواقف الاجتماعية والمهنية.',
     focus: 'Nuanced Professional & Social Fluency',
@@ -253,8 +253,8 @@ export const LIFE_AT_YA_HALA_DATA = {
   titleAr: 'الحياة في يا هلا',
   headingEn: 'Ya Hala Experiences Go Beyond the Classroom',
   headingAr: 'تجارب يا هلا تمتد إلى ما بعد قاعة الدرس',
-  leadEn: 'Learning at Ya Hala is not limited to lesson time. Ya Hala provides a social environment that helps students practise Arabic, meet others, build friendships, and enjoy the learning experience.',
-  leadAr: 'لا يقتصر التعلم في يا هلا على أوقات الدروس؛ بل توفر يا هلا بيئة اجتماعية محفزة تساعد الطلاب على ممارسة العربية، والالتقاء بالآخرين، وتكوين الصداقات، والاستمتاع بالتجربة.',
+  leadEn: 'Learning at Ya Hala is not limited to lesson time. The academy provides a social environment that helps students practise Arabic, meet others, build friendships, and enjoy the learning experience.',
+  leadAr: 'لا يقتصر التعلم في يا هلا على أوقات الدروس؛ بل يوفر المعهد بيئة اجتماعية محفزة تساعد الطلاب على ممارسة العربية، والالتقاء بالآخرين، وتكوين الصداقات، والاستمتاع بالتجربة.',
   activities: [
     {
       id: 'conversations',

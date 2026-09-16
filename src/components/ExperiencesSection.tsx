@@ -99,7 +99,7 @@ export const ExperiencesSection: React.FC<ExperiencesSectionProps> = ({
                       {language === 'en' ? featured.title : featured.titleAr}
                     </h3>
                     <div className="flex items-center gap-2 text-xs font-syne font-bold uppercase tracking-wider text-[#1EC672]">
-                      <span>{language === "en" ? "EXPLORE EXPERIENCE" : "استكشف التجربة"}</span>
+                      <span>{language === 'en' ? 'DISCOVER ITINERARY' : 'تفاصيل المسار'}</span>
                       <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform rtl:group-hover:-translate-x-1" />
                     </div>
                   </button>

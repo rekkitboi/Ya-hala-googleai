@@ -1,94 +1,72 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { ASSETS } from '../../data/yaHalaData';
+import { STUDENT_EXPERIENCE_INTRO } from '../../data/studentExperienceData';
 import { Language } from '../../types';
-import { ArrowRight } from 'lucide-react';
+import { Sparkles, CheckCircle2 } from 'lucide-react';
 
 interface StudentExperienceHeroProps {
   language: Language;
 }
 
 export const StudentExperienceHero: React.FC<StudentExperienceHeroProps> = ({ language }) => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
-  const scrollToCurriculum = () => {
-    const el = document.getElementById('program-levels');
-    if (el) {
-      const headerOffset = 80;
-      const elementPosition = el.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   return (
-    <section 
-      className="relative min-h-[90vh] flex items-center justify-center pt-20 overflow-hidden"
+    <section
+      id="student-hero"
       data-theme="dark"
-      data-header-theme="dark"
+      className="relative min-h-[70vh] md:min-h-[75vh] flex items-center justify-center pt-32 pb-20 overflow-hidden bg-[#0C100E] text-white"
     >
-      <div className="absolute inset-0 z-0">
+      {/* Environmental Oasis Background: Architectural stone arches and palm grove */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <img
-          src={ASSETS.heroBg}
-          alt="Ya Hala Curriculum"
-          className={`w-full h-full object-cover transition-transform duration-[3000ms] ease-out ${
-            isVisible ? 'scale-100' : 'scale-105'
-          }`}
+          src={ASSETS.oasisStoneTerrace}
+          alt="Saudi Oasis Architectural Terrace"
+          className="w-full h-full object-cover object-center scale-105 transition-transform duration-1000"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0C100E] via-[#0C100E]/70 to-[#0C100E]/40" />
+        {/* Directional localized gradient: preserving natural sunlight while guaranteeing text legibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0C100E] via-[#0C100E]/70 to-[#0C100E]/60 pointer-events-none" />
       </div>
 
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-6 text-center mt-12 md:mt-20">
-        <div className={`transition-all duration-1000 ease-out delay-300 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}>
-          <div className="inline-flex items-center gap-2 mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#1EC672]" />
-            <span className="text-[#1EC672] uppercase tracking-[0.2em] font-syne font-semibold text-xs">
-              {language === 'en' ? 'CURRICULUM & EXPERIENCE' : 'المنهج والتجربة التعليمية'}
-            </span>
-          </div>
+      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center mt-4">
+        {/* Eyebrow badge */}
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-5 shadow-sm">
+          <Sparkles className="w-3.5 h-3.5 text-[#1EC672]" />
+          <span className="text-white/95 uppercase tracking-[0.2em] font-syne font-semibold text-xs">
+            {language === 'en' ? STUDENT_EXPERIENCE_INTRO.eyebrowEn : STUDENT_EXPERIENCE_INTRO.eyebrowAr}
+          </span>
+        </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-syne font-bold text-white mb-8 tracking-tight leading-tight">
-            {language === 'en' ? 'Learn the Language.' : 'تعلم اللغة.'}
-            <br className="hidden sm:block" />
-            <span className="text-white/80 font-light italic">
-              {language === 'en' ? ' Live the Culture.' : ' عش الثقافة.'}
-            </span>
-          </h1>
+        {/* Page Title: Refined, controlled display heading */}
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-syne font-bold mb-6 leading-tight tracking-tight text-white max-w-3xl mx-auto">
+          {language === 'en' ? (
+            <>
+              Our Curriculum
+            </>
+          ) : (
+            <>
+              مناهجنا
+            </>
+          )}
+        </h1>
 
-          <p className="text-base md:text-lg text-white/80 leading-relaxed font-light max-w-3xl mx-auto mb-12">
-            {language === 'en' 
-              ? 'Ya Hala helps non-Arabic speakers communicate confidently in everyday, social, and professional situations in Saudi Arabia. The program brings together Saudi dialect, cultural understanding, listening and speaking practice, with foundational reading and writing.' 
-              : 'يساعد معهد يا هلا غير الناطقين بالعربية على التواصل بثقة في المواقف اليومية والاجتماعية والمهنية في السعودية. يجمع البرنامج بين تعلم اللهجة السعودية، والفهم الثقافي، وممارسة الاستماع والتحدث، إلى جانب التأسيس في القراءة والكتابة.'}
-          </p>
+        {/* Approved Program Description */}
+        <p className="text-base sm:text-lg text-white/90 leading-relaxed font-light max-w-2xl mx-auto mb-10">
+          {language === 'en'
+            ? STUDENT_EXPERIENCE_INTRO.programOverviewEn
+            : STUDENT_EXPERIENCE_INTRO.programOverviewAr}
+        </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
-            <div className="flex items-center gap-4 text-white/50 font-syne font-bold text-sm tracking-widest">
-              <span className="text-white">A1</span>
-              <ArrowRight className="w-3 h-3 text-[#1EC672] rtl:rotate-180" />
-              <span className="text-white">A2</span>
-              <ArrowRight className="w-3 h-3 text-[#1EC672] rtl:rotate-180" />
-              <span className="text-white">B1</span>
-              <ArrowRight className="w-3 h-3 text-[#1EC672] rtl:rotate-180" />
-              <span className="text-white">B2</span>
+        {/* Focus Pillars Strip */}
+        <div className="flex flex-wrap justify-center items-center gap-3 max-w-3xl mx-auto text-xs font-syne font-semibold">
+          {STUDENT_EXPERIENCE_INTRO.focusPillars.map((pillar, idx) => (
+            <div
+              key={idx}
+              className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-white shadow-xs"
+            >
+              <CheckCircle2 className="w-3.5 h-3.5 text-[#1EC672]" />
+              <span>{language === 'en' ? pillar.en : pillar.ar}</span>
             </div>
-          </div>
-
-          <button
-            onClick={scrollToCurriculum}
-            className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-[#0C100E] hover:bg-[#F9F8F5] font-syne font-bold text-xs uppercase tracking-wider transition-transform duration-300 hover:scale-105 shadow-xl cursor-pointer"
-          >
-            <span>{language === 'en' ? 'Explore the Framework' : 'استكشف الإطار المنهجي'}</span>
-            <ArrowRight className="w-4 h-4 transform group-hover:translate-y-1 transition-transform rtl:rotate-90 rtl:group-hover:translate-x-0 rtl:group-hover:translate-y-1 rotate-90" />
-          </button>
+          ))}
         </div>
       </div>
     </section>

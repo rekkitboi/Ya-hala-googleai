@@ -194,7 +194,7 @@ export const AppPreviewSection: React.FC<AppPreviewSectionProps> = ({ language }
                       className={`w-8 h-8 rounded-full flex items-center justify-center transition-all cursor-pointer shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1EC672] ${
                         isPlayingVoice ? 'bg-white text-[#0C100E] scale-105' : 'bg-[#1EC672] text-[#0C100E] hover:scale-105'
                       }`}
-                      aria-label={language === "en" ? "Play pronunciation preview" : "تشغيل النطق التجريبي"}
+                      aria-label="Play pronunciation preview"
                     >
                       <Play className="w-3.5 h-3.5 ml-0.5 fill-current" />
                     </button>

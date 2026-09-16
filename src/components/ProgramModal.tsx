@@ -1,4 +1,3 @@
-import { useFocusTrap } from "../hooks/useFocusTrap";
 import React from 'react';
 import { Program, Language } from '../types';
 import { X, CheckCircle2, Clock, Users, MapPin, ArrowRight } from 'lucide-react';

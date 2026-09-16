@@ -1,4 +1,3 @@
-import { useFocusTrap } from "../hooks/useFocusTrap";
 import React, { useState } from 'react';
 import { Language, Program } from '../types';
 import { X, CheckCircle2, ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';

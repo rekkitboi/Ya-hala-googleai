@@ -1,9 +1,8 @@
-import { Check, Twitter, Instagram, Linkedin } from "lucide-react";
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ASSETS } from '../data/yaHalaData';
 import { Language } from '../types';
-
+import { Check } from 'lucide-react';
 
 interface FooterProps {
   language: Language;
@@ -191,7 +190,7 @@ export const Footer: React.FC<FooterProps> = ({ language, onSelectProgramId }) =
 
       {/* Copyright Bar */}
       <div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-white/50 relative z-10 gap-4">
-        <p>© 2026 YA HALA Cultural Institute. All rights reserved.</p>
+        <p>© 2026 Ya Hala Cultural Institute. All rights reserved.</p>
         <div className="flex gap-6">
           <Link to="/about" className="hover:text-white transition-colors">
             {language === 'en' ? 'About Us' : 'عن المعهد'}
