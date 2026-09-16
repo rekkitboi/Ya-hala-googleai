@@ -295,7 +295,7 @@ export const EXPERIENCES: Experience[] = [
     description: 'Navigate the bustling souqs and coral-stone alleys of Al-Balad while practicing conversational Hejazi Arabic with local merchants, craftsmen, and historians.',
     descriptionAr: 'تجوّل في أزقة البلد الحجرية ومنازل الرواشين وتحدث باللهجة الحجازية العذبة مع أهالي وتجار جدة التاريخية.',
     highlights: [
-      'Rawashin architecture architectural vocabulary workshop',
+      'Rawashin architectural vocabulary workshop',
       'Spices & perfume bartering in Souq Al-Alawi with local vendors',
       'Traditional tea tasting in a restored merchant salon',
       'Evening folklore session and poetic banter'

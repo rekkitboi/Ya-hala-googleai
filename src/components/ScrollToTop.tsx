@@ -51,6 +51,42 @@ export const ScrollToTop: React.FC<ScrollToTopProps> = ({ language }) => {
         language === 'en'
           ? 'Explore our 4-level CEFR curriculum, learning journey, and cultural immersion.'
           : 'استكشف المنهج المعتمد عبر 4 مستويات CEFR، ومسار الرحلة التعليمية، والأنشطة الثقافية.';
+    } else if (pathname === '/beyond-the-classroom') {
+      title =
+        language === 'en'
+          ? 'Beyond the Classroom | Ya Hala'
+          : 'ما وراء جدران الفصول | معهد يا هلا';
+      description =
+        language === 'en'
+          ? 'Discover Ya Hala cultural immersion, heritage journeys, and real-world field learning experiences across Saudi Arabia.'
+          : 'اكتشف تجارب المعايشة الثقافية والرحلات التراثية والتعلم الميداني لبرنامج يا هلا في مختلف مناطق المملكة.';
+    } else if (pathname === '/cultural-highlights') {
+      title =
+        language === 'en'
+          ? 'Cultural and Literary Highlights | Ya Hala'
+          : 'إضاءات ثقافية وأدبية | معهد يا هلا';
+      description =
+        language === 'en'
+          ? 'Explore curated dialect essays, architectural heritage stories, and cultural reflections from Ya Hala.'
+          : 'استكشف مقالات منتقاة حول اللهجة السعودية وقصص التراث المعماري وإضاءات ثقافية من برنامج يا هلا.';
+    } else if (pathname === '/terms-and-conditions') {
+      title =
+        language === 'en'
+          ? 'Terms and Conditions | Ya Hala'
+          : 'الشروط والأحكام | معهد يا هلا';
+      description =
+        language === 'en'
+          ? 'Official student services charter, academic regulations, attendance policies, and financial guidelines for Ya Hala Program.'
+          : 'دليل الخدمات الطلابية واللائحة الأكاديمية وضوابط الحضور واللائحة المالية الرسمية لبرنامج يا هلا.';
+    } else if (pathname === '/terms-of-use') {
+      title =
+        language === 'en'
+          ? 'Terms of Use | Ya Hala'
+          : 'سياسة الاستخدام | معهد يا هلا';
+      description =
+        language === 'en'
+          ? 'Digital terms of use, intellectual property policies, and legal guidelines governing the Ya Hala demonstration website.'
+          : 'شروط الاستخدام الرقمي وسياسات الملكية الفكرية والضوابط القانونية الحاكمة لتصفح موقع يا هلا التجريبي.';
     } else {
       title =
         language === 'en'

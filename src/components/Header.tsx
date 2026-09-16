@@ -194,7 +194,20 @@ export const Header: React.FC<HeaderProps> = ({
                 </button>
                 
                 {/* Dropdown Menu */}
-                <div className="absolute top-[80%] left-1/2 -translate-x-1/2 rtl:translate-x-1/2 mt-2 w-48 py-2 glass-warm-light rounded-xl shadow-2xl border border-[#1F3423]/15 opacity-0 invisible group-hover/explore:opacity-100 group-hover/explore:visible transition-all duration-300 z-50">
+                <div className="absolute top-[80%] left-1/2 -translate-x-1/2 rtl:translate-x-1/2 mt-2 w-56 py-2 glass-warm-light rounded-xl shadow-2xl border border-[#1F3423]/15 opacity-0 invisible group-hover/explore:opacity-100 group-hover/explore:visible transition-all duration-300 z-50">
+                  <Link
+                    to="/beyond-the-classroom"
+                    className="block w-full text-left rtl:text-right px-5 py-2.5 text-[11px] font-bold text-[#1F3423]/85 hover:text-[#1EC672] hover:bg-[#1F3423]/5 transition-colors"
+                  >
+                    {language === 'en' ? 'BEYOND THE CLASSROOM' : 'ما وراء جدران الفصول'}
+                  </Link>
+                  <Link
+                    to="/cultural-highlights"
+                    className="block w-full text-left rtl:text-right px-5 py-2.5 text-[11px] font-bold text-[#1F3423]/85 hover:text-[#1EC672] hover:bg-[#1F3423]/5 transition-colors"
+                  >
+                    {language === 'en' ? 'CULTURAL HIGHLIGHTS' : 'إضاءات ثقافية وأدبية'}
+                  </Link>
+                  <div className="my-1 border-t border-[#1F3423]/10" />
                   <button
                     onClick={() => handleNavClick('/', 'methodology')}
                     className="block w-full text-left rtl:text-right px-5 py-2.5 text-[11px] font-bold text-[#1F3423]/85 hover:text-[#1EC672] hover:bg-[#1F3423]/5 transition-colors cursor-pointer"
@@ -296,6 +309,30 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               {language === 'en' ? 'OUR CURRICULUM' : 'مناهجنا'}
+            </Link>
+
+            <Link
+              to="/beyond-the-classroom"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`py-2.5 border-b border-white/10 transition-colors ${
+                isRouteActive('/beyond-the-classroom')
+                  ? 'text-[#1EC672] font-bold'
+                  : 'text-white/80 hover:text-[#1EC672]'
+              }`}
+            >
+              {language === 'en' ? 'BEYOND THE CLASSROOM' : 'ما وراء جدران الفصول'}
+            </Link>
+
+            <Link
+              to="/cultural-highlights"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`py-2.5 border-b border-white/10 transition-colors ${
+                isRouteActive('/cultural-highlights')
+                  ? 'text-[#1EC672] font-bold'
+                  : 'text-white/80 hover:text-[#1EC672]'
+              }`}
+            >
+              {language === 'en' ? 'CULTURAL HIGHLIGHTS' : 'إضاءات ثقافية وأدبية'}
             </Link>
 
             <button

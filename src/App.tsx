@@ -7,6 +7,10 @@ import { ScrollToTop } from './components/ScrollToTop';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { StudentExperiencePage } from './pages/StudentExperiencePage';
+import { BeyondTheClassroomPage } from './pages/BeyondTheClassroomPage';
+import { CulturalHighlightsPage } from './pages/CulturalHighlightsPage';
+import { TermsAndConditionsPage } from './pages/TermsAndConditionsPage';
+import { TermsOfUsePage } from './pages/TermsOfUsePage';
 import { ApplicationModal } from './components/ApplicationModal';
 import { ProgramModal } from './components/ProgramModal';
 import { ExperienceModal } from './components/ExperienceModal';
@@ -100,6 +104,44 @@ export default function App() {
               <StudentExperiencePage
                 language={language}
                 onOpenApplication={handleOpenApplication}
+              />
+            }
+          />
+
+          <Route
+            path="/beyond-the-classroom"
+            element={
+              <BeyondTheClassroomPage
+                language={language}
+                onOpenApplication={handleOpenApplication}
+                onSelectExperience={(exp) => setInspectedExperience(exp)}
+              />
+            }
+          />
+
+          <Route
+            path="/cultural-highlights"
+            element={
+              <CulturalHighlightsPage
+                language={language}
+              />
+            }
+          />
+
+          <Route
+            path="/terms-and-conditions"
+            element={
+              <TermsAndConditionsPage
+                language={language}
+              />
+            }
+          />
+
+          <Route
+            path="/terms-of-use"
+            element={
+              <TermsOfUsePage
+                language={language}
               />
             }
           />

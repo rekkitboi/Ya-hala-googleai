@@ -139,6 +139,16 @@ export const Footer: React.FC<FooterProps> = ({ language, onSelectProgramId }) =
               </Link>
             </li>
             <li>
+              <Link to="/beyond-the-classroom" className="hover:text-white transition-colors">
+                {language === 'en' ? 'Beyond the Classroom' : 'ما وراء جدران الفصول'}
+              </Link>
+            </li>
+            <li>
+              <Link to="/cultural-highlights" className="hover:text-white transition-colors">
+                {language === 'en' ? 'Cultural Highlights' : 'إضاءات ثقافية وأدبية'}
+              </Link>
+            </li>
+            <li>
               <Link to="/#methodology" className="hover:text-white transition-colors">
                 {language === 'en' ? '4-Stage Methodology' : 'المنهجية التعليمية'}
               </Link>
@@ -191,12 +201,18 @@ export const Footer: React.FC<FooterProps> = ({ language, onSelectProgramId }) =
       {/* Copyright Bar */}
       <div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-white/50 relative z-10 gap-4">
         <p>© 2026 Ya Hala Cultural Institute. All rights reserved.</p>
-        <div className="flex gap-6">
+        <div className="flex flex-wrap gap-4 sm:gap-6 justify-center">
           <Link to="/about" className="hover:text-white transition-colors">
             {language === 'en' ? 'About Us' : 'عن المعهد'}
           </Link>
           <Link to="/student-experience" className="hover:text-white transition-colors">
             {language === 'en' ? 'Our Curriculum' : 'مناهجنا'}
+          </Link>
+          <Link to="/terms-and-conditions" className="hover:text-white transition-colors">
+            {language === 'en' ? 'Terms & Conditions' : 'الشروط والأحكام'}
+          </Link>
+          <Link to="/terms-of-use" className="hover:text-white transition-colors">
+            {language === 'en' ? 'Terms of Use' : 'سياسة الاستخدام'}
           </Link>
         </div>
       </div>

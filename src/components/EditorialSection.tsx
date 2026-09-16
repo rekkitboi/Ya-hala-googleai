@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { EDITORIAL_HIGHLIGHTS } from '../data/yaHalaData';
 import { Language, EditorialHighlight } from '../types';
 import { Calendar, Clock, ArrowRight, X, Sparkles } from 'lucide-react';
@@ -148,6 +149,17 @@ export const EditorialSection: React.FC<EditorialSectionProps> = ({ language }) 
               </React.Fragment>
             ))}
           </div>
+        </div>
+
+        {/* View All Cultural Highlights CTA */}
+        <div className="mt-14 text-center">
+          <Link
+            to="/cultural-highlights"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#1F3423] text-white text-xs font-syne font-bold uppercase tracking-wider hover:bg-[#1EC672] hover:text-[#0C100E] transition-all shadow-sm group"
+          >
+            <span>{language === 'en' ? 'View All Cultural & Literary Highlights' : 'استكشف جميع الإضاءات الثقافية والأدبية'}</span>
+            <ArrowRight className="w-4 h-4 rtl:rotate-180 transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
+          </Link>
         </div>
       </div>
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { EXPERIENCES } from '../data/yaHalaData';
 import { Experience, Language } from '../types';
 import { MapPin, Clock, ArrowRight, Compass, Sparkles } from 'lucide-react';
@@ -152,6 +153,17 @@ export const ExperiencesSection: React.FC<ExperiencesSectionProps> = ({
               </div>
             </button>
           ))}
+        </div>
+
+        {/* Explore Beyond the Classroom CTA */}
+        <div className="mt-12 text-center">
+          <Link
+            to="/beyond-the-classroom"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#1F3423] text-white text-xs font-syne font-bold uppercase tracking-wider hover:bg-[#1EC672] hover:text-[#0C100E] transition-all shadow-sm group"
+          >
+            <span>{language === 'en' ? 'Explore All Cultural Experiences' : 'استكشف جميع التجارب الثقافية'}</span>
+            <ArrowRight className="w-4 h-4 rtl:rotate-180 transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
+          </Link>
         </div>
       </div>
     </section>
