@@ -2,6 +2,7 @@ import React from 'react';
 import { Language, Program, Experience } from '../types';
 import { Hero } from '../components/Hero';
 import { AboutTeaser } from '../components/AboutTeaser';
+import { VideoShowcaseSection } from '../components/VideoShowcaseSection';
 import { MethodologySection } from '../components/MethodologySection';
 import { ProgramsSection } from '../components/ProgramsSection';
 import { SaudiPhraseSection } from '../components/SaudiPhraseSection';
@@ -53,32 +54,35 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </div>
 
-      {/* 3. Methodology / 4-Stage Pedagogy */}
+      {/* 3. Branded Video Showcase */}
+      <VideoShowcaseSection language={language} />
+
+      {/* 4. Methodology / 4-Stage Pedagogy */}
       <MethodologySection language={language} />
 
-      {/* 4. Programs / Learning Paths */}
+      {/* 5. Programs / Learning Paths */}
       <ProgramsSection
         language={language}
         onSelectProgram={onSelectProgram}
         onApplyProgram={onOpenApplication}
       />
 
-      {/* 5. Dialect Discovery / Interactive Phrase of the Day */}
+      {/* 6. Dialect Discovery / Interactive Phrase of the Day */}
       <SaudiPhraseSection language={language} />
 
-      {/* 6. Cultural Experiences Showcase */}
+      {/* 7. Cultural Experiences Showcase */}
       <ExperiencesSection
         language={language}
         onSelectExperience={onSelectExperience}
       />
 
-      {/* 7. Upcoming Experiences & Editorial Stories */}
+      {/* 8. Upcoming Experiences & Editorial Stories */}
       <EditorialSection language={language} />
 
-      {/* 8. Ya Hala Mobile App Interactive Preview */}
+      {/* 9. Ya Hala Mobile App Interactive Preview */}
       <AppPreviewSection language={language} />
 
-      {/* 9. Final Call to Action */}
+      {/* 10. Final Call to Action */}
       <FinalCTA
         language={language}
         onApplyNow={() => onOpenApplication()}

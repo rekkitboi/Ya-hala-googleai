@@ -1,91 +1,126 @@
 import React from 'react';
+import { motion, useReducedMotion } from 'motion/react';
 import { FOUNDER_MESSAGE_DATA } from '../../data/aboutData';
 import { ASSETS } from '../../data/yaHalaData';
 import { Language } from '../../types';
-import { Quote } from 'lucide-react';
 
 interface FounderMessageSectionProps {
   language: Language;
 }
 
 export const FounderMessageSection: React.FC<FounderMessageSectionProps> = ({ language }) => {
-  const paragraphs = language === 'en' ? FOUNDER_MESSAGE_DATA.paragraphsEn : FOUNDER_MESSAGE_DATA.paragraphsAr;
-  const motto = language === 'en' ? FOUNDER_MESSAGE_DATA.mottoEn : FOUNDER_MESSAGE_DATA.mottoAr;
-
+  const prefersReducedMotion = useReducedMotion();
+  // Use the remaining paragraphs for the text blocks (excluding the first paragraph which is used as the anchor statement)
+  const paragraphs = language === 'en' 
+    ? FOUNDER_MESSAGE_DATA.paragraphsEn.slice(1) 
+    : FOUNDER_MESSAGE_DATA.paragraphsAr.slice(1);
+    
   return (
     <section
-      id="founder-message"
+      id="founder"
       data-theme="dark"
-      className="py-24 md:py-36 relative overflow-hidden bg-[#0C100E] text-white"
+      className="relative pt-24 md:pt-36 pb-12 bg-[#1F3423] text-white overflow-hidden"
     >
-      {/* Rich ambient environmental background (Oasis Garden Passage with warm sunlight & natural flora) */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+      {/* Short top gradient band connecting from the light Purpose section without washing out the entire section */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#F9F8F5] to-transparent z-10 opacity-40 pointer-events-none" />
+
+      {/* Background Environment - Visually distinct from Team section but contiguous */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <img
-          src={ASSETS.oasisGardenPassage}
-          alt="Saudi Oasis Garden Passage"
-          className="w-full h-full object-cover object-center scale-105 transition-transform duration-1000"
+          src={ASSETS.oasisStoneTerrace}
+          alt=""
+          className="w-full h-full object-cover object-[center_20%] opacity-20 transform scale-110"
           referrerPolicy="no-referrer"
         />
-        {/* Cinematic directional gradient keeping the lush garden visible while ensuring deep contrast */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0C100E] via-[#0C100E]/75 to-[#0C100E]/80 pointer-events-none" />
-        <div className="absolute inset-0 bg-radial from-transparent via-[#0C100E]/50 to-[#0C100E] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1F3423]/95 via-[#1F3423]/90 to-[#1F3423]" />
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6">
-        {/* Eyebrow Header */}
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 mb-4 shadow-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#1EC672]" />
-            <span className="text-white/90 uppercase tracking-[0.2em] font-syne font-semibold text-xs">
-              {language === 'en' ? FOUNDER_MESSAGE_DATA.eyebrowEn : FOUNDER_MESSAGE_DATA.eyebrowAr}
-            </span>
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
+          
+          {/* LEADING SIDE: Anchor Statement */}
+          <div className="lg:col-span-5 lg:sticky lg:top-32 self-start">
+            <motion.div 
+              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: prefersReducedMotion ? 0.3 : 0.8 }}
+              className="inline-flex items-center gap-2 mb-6"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1EC672]" />
+              <span className="text-[#1EC672] uppercase tracking-[0.2em] font-syne font-semibold text-xs">
+                {language === 'en' ? 'Why Ya Hala Began' : 'لماذا بدأ يا هلا'}
+              </span>
+            </motion.div>
+            
+            <motion.h2 
+              initial={{ opacity: 0, x: prefersReducedMotion ? 0 : (language === 'en' ? -30 : 30) }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: prefersReducedMotion ? 0.3 : 0.9, delay: prefersReducedMotion ? 0 : 0.2 }}
+              className="text-4xl sm:text-5xl lg:text-6xl font-syne font-bold text-white tracking-tight leading-[1.15]"
+            >
+              {language === 'en' ? (
+                <>
+                  Anyone living in Saudi Arabia needs <span className="text-[#1EC672]">more than Arabic lessons.</span>
+                </>
+              ) : (
+                <>
+                  كل من يقيم في المملكة يحتاج إلى <span className="text-[#1EC672]">أكثر من مجرد دروس في اللغة العربية.</span>
+                </>
+              )}
+            </motion.h2>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-syne font-bold text-white tracking-tight">
-            {language === 'en' ? FOUNDER_MESSAGE_DATA.headingEn : FOUNDER_MESSAGE_DATA.headingAr}
-          </h2>
-        </div>
 
-        {/* Floating Translucent Glass Letter Panel */}
-        <div className="glass-oasis-panel rounded-3xl p-8 sm:p-12 md:p-16 relative overflow-hidden">
-          {/* Accent light ray */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#1EC672]/10 rounded-full blur-3xl pointer-events-none" />
+          {/* OPPOSITE SIDE: Paced Editorial Text Blocks */}
+          <div className="lg:col-span-7 relative">
+            {/* Narrative Line connecting founder text down to the team section */}
+            <div className="absolute top-0 bottom-[-200px] left-0 rtl:left-auto rtl:right-0 w-px bg-gradient-to-b from-transparent via-[#1EC672]/30 to-[#1EC672]/5 hidden lg:block" />
+            
+            <div className="lg:pl-10 rtl:lg:pl-0 rtl:lg:pr-10 pt-4 lg:pt-0 space-y-6 lg:space-y-8 max-w-2xl">
+              {paragraphs.map((para, idx) => {
+                // First paragraph is slightly larger, remaining are body-copy size
+                const isFirst = idx === 0;
+                const textClass = isFirst 
+                  ? 'text-lg sm:text-xl font-normal text-white/90' 
+                  : 'text-base sm:text-lg font-light text-white/80';
+                  
+                return (
+                  <motion.p
+                    key={idx}
+                    initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: prefersReducedMotion ? 0.3 : 0.8, delay: prefersReducedMotion ? 0 : 0.3 + (idx * 0.1) }}
+                    className={`${textClass} leading-[1.75]`}
+                  >
+                    {para}
+                  </motion.p>
+                );
+              })}
 
-          <Quote className="w-12 h-12 text-[#1EC672]/40 mb-6 rtl:rotate-180" />
-
-          {/* Letter / Message Body with distinguished rhythm */}
-          <div className="space-y-6 text-base sm:text-lg text-white/90 font-light leading-relaxed">
-            {paragraphs.map((para, idx) => (
-              <p
-                key={idx}
-                className={idx === 0 ? 'text-lg sm:text-xl font-normal text-white leading-relaxed' : ''}
+              <motion.div 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: prefersReducedMotion ? 0.3 : 1, delay: prefersReducedMotion ? 0 : 0.7 }}
+                className="pt-8 mt-4 border-t border-white/10"
               >
-                {para}
-              </p>
-            ))}
-          </div>
-
-          {/* Core Motto Callout with Saudi Oasis warmth */}
-          <div className="my-10 py-5 px-6 rounded-2xl bg-white/5 border border-white/10 text-center backdrop-blur-sm">
-            <span className="font-syne font-bold text-base sm:text-lg text-white tracking-wide">
-              "{motto}"
-            </span>
-          </div>
-
-          {/* Signature & Attribution */}
-          <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-left rtl:text-right">
-            <div>
-              <div className="text-xl font-syne font-bold text-white">
-                {language === 'en' ? FOUNDER_MESSAGE_DATA.founderNameEn : FOUNDER_MESSAGE_DATA.founderNameAr}
-              </div>
-              <div className="text-xs text-[#1EC672] font-semibold tracking-wider uppercase mt-0.5">
-                {language === 'en' ? FOUNDER_MESSAGE_DATA.founderRoleEn : FOUNDER_MESSAGE_DATA.founderRoleAr}
-              </div>
-            </div>
-
-            <div className="font-serif italic text-2xl text-white/50 select-none tracking-wide">
-              Amin Al Zahrani
+                <div className="font-syne font-bold text-xl text-white mb-1">
+                  {language === 'en' ? FOUNDER_MESSAGE_DATA.founderNameEn : FOUNDER_MESSAGE_DATA.founderNameAr}
+                </div>
+                <div className="text-xs text-[#1EC672] font-semibold tracking-wider uppercase mb-4 mt-1">
+                  {language === 'en' ? FOUNDER_MESSAGE_DATA.signatureAttributionEn : FOUNDER_MESSAGE_DATA.signatureAttributionAr}
+                </div>
+                
+                {/* Restrained Signature Treatment */}
+                <div className="font-serif italic text-3xl sm:text-4xl text-white/30 select-none tracking-wide">
+                  Amin Al Zahrani
+                </div>
+              </motion.div>
             </div>
           </div>
+
         </div>
       </div>
     </section>

@@ -88,6 +88,9 @@ export interface TeamMember {
   imageStatus: 'confirmed' | 'temporary' | 'temporary-generated';
   bioStatus: 'confirmed' | 'requires-confirmation';
   isFeatured?: boolean;
+  portraitScale?: number;
+  portraitObjectPosition?: string;
+  bioPanelSide?: 'left' | 'center' | 'right';
 }
 
 export interface CurriculumLevel {

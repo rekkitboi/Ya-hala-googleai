@@ -23,6 +23,9 @@ export const YA_HALA_TEAM: TeamMember[] = [
     imageStatus: 'confirmed',
     bioStatus: 'confirmed',
     isFeatured: true,
+    portraitScale: 1.15,
+    portraitObjectPosition: 'center 10%',
+    bioPanelSide: 'right',
   },
   {
     id: 'mohsen-alqaisy',
@@ -36,6 +39,9 @@ export const YA_HALA_TEAM: TeamMember[] = [
     imageStatus: 'temporary-generated',
     bioStatus: 'confirmed',
     isFeatured: false,
+    portraitScale: 1,
+    portraitObjectPosition: 'center 15%',
+    bioPanelSide: 'right',
   },
   {
     id: 'muna-al-baltan',
@@ -49,6 +55,9 @@ export const YA_HALA_TEAM: TeamMember[] = [
     imageStatus: 'temporary-generated',
     bioStatus: 'requires-confirmation',
     isFeatured: false,
+    portraitScale: 1,
+    portraitObjectPosition: 'center top',
+    bioPanelSide: 'center',
   },
   {
     id: 'abdulrahman-alsaramy',
@@ -62,6 +71,9 @@ export const YA_HALA_TEAM: TeamMember[] = [
     imageStatus: 'temporary-generated',
     bioStatus: 'requires-confirmation',
     isFeatured: false,
+    portraitScale: 1,
+    portraitObjectPosition: 'center 10%',
+    bioPanelSide: 'left',
   },
   {
     id: 'shatha-aldossary',
@@ -75,5 +87,8 @@ export const YA_HALA_TEAM: TeamMember[] = [
     imageStatus: 'temporary-generated',
     bioStatus: 'requires-confirmation',
     isFeatured: false,
+    portraitScale: 1,
+    portraitObjectPosition: 'center 10%',
+    bioPanelSide: 'left',
   },
 ];

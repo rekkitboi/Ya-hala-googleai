@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ABOUT_PURPOSE_DATA } from '../../data/aboutData';
 import { ASSETS } from '../../data/yaHalaData';
 import { Language } from '../../types';
-import { Eye, Compass, Heart, Target, CheckCircle2, ChevronRight, Sparkles } from 'lucide-react';
+import { Eye, Compass, Heart, Target, CheckCircle2, Sparkles } from 'lucide-react';
 
 interface OurPurposeSectionProps {
   language: Language;
@@ -143,43 +143,37 @@ export const OurPurposeSection: React.FC<OurPurposeSectionProps> = ({ language }
           </div>
         </div>
 
-        {/* 4 Connected Cards Summary Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {ABOUT_PURPOSE_DATA.map((sec) => {
-            const isCurrent = sec.id === activeTab;
-            return (
-              <div
-                key={sec.id}
-                onClick={() => setActiveTab(sec.id)}
-                className={`p-6 rounded-2xl cursor-pointer transition-all duration-300 border flex flex-col justify-between ${
-                  isCurrent
-                    ? 'bg-white border-[#1F3423] shadow-md ring-1 ring-[#1F3423]/20'
-                    : 'bg-white/70 hover:bg-white text-[#1F3423] border-[#1F3423]/10'
-                }`}
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className={`text-xs font-syne font-bold ${isCurrent ? 'text-[#1EC672]' : 'text-[#1F3423]/50'}`}>
+        {/* Editorial Index / Chapter Selector */}
+        <div className="border-t border-[#1F3423]/10 pt-8">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <h4 className="text-xs uppercase tracking-widest font-syne font-bold text-[#1F3423]/50 shrink-0">
+              {language === 'en' ? 'Foundation Index' : 'فهرس المرتكزات'}
+            </h4>
+            
+            <div className="flex flex-wrap md:flex-nowrap gap-3 w-full justify-start md:justify-end">
+              {ABOUT_PURPOSE_DATA.map((sec) => {
+                const isCurrent = sec.id === activeTab;
+                return (
+                  <button
+                    key={sec.id}
+                    onClick={() => setActiveTab(sec.id)}
+                    className={`group flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-left rtl:text-right border ${
+                      isCurrent
+                        ? 'bg-white border-[#1F3423]/20 shadow-sm'
+                        : 'bg-transparent border-transparent hover:bg-white/50 hover:border-[#1F3423]/10'
+                    }`}
+                  >
+                    <span className={`text-[10px] font-syne font-bold transition-colors ${isCurrent ? 'text-[#1EC672]' : 'text-[#1F3423]/40 group-hover:text-[#1F3423]/60'}`}>
                       {sec.number}
                     </span>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#1F3423]/60 font-syne">
+                    <span className={`text-xs font-syne font-bold transition-colors ${isCurrent ? 'text-[#1F3423]' : 'text-[#1F3423]/60 group-hover:text-[#1F3423]'}`}>
                       {language === 'en' ? sec.eyebrow : sec.eyebrowAr}
                     </span>
-                  </div>
-                  <h4 className="text-sm sm:text-base font-syne font-bold leading-snug text-[#1F3423]">
-                    {language === 'en' ? sec.title : sec.titleAr}
-                  </h4>
-                </div>
-                
-                <div className="mt-5 pt-3 border-t border-[#1F3423]/5 flex items-center justify-between text-xs font-semibold">
-                  <span className={isCurrent ? 'text-[#1EC672]' : 'text-[#1F3423]/60'}>
-                    {language === 'en' ? 'Explore Pillar' : 'استكشف المرتكز'}
-                  </span>
-                  <ChevronRight className="w-3.5 h-3.5 text-[#1EC672] rtl:rotate-180" />
-                </div>
-              </div>
-            );
-          })}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </section>
