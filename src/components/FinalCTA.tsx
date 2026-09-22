@@ -1,7 +1,7 @@
 import React from 'react';
 import { ASSETS } from '../data/yaHalaData';
 import { Language } from '../types';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 interface FinalCTAProps {
   language: Language;
@@ -18,14 +18,24 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ language, onApplyNow }) => {
     >
       {/* Restrained photographic environment */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        {/* 1. Top seamless transition gradient from Meet Our Team #0C100E */}
+        <div className="absolute top-0 left-0 right-0 h-24 sm:h-28 md:h-36 bg-gradient-to-b from-[#0C100E] via-[#0C100E]/85 to-transparent z-20 pointer-events-none" />
+
+        {/* 2. Forest-green color grade near the top inheriting the dark green atmosphere of Meet Our Team */}
+        <div className="absolute top-0 left-0 right-0 h-48 sm:h-64 md:h-80 bg-gradient-to-b from-[#0E1A11]/85 via-[#0E1A11]/40 to-transparent z-10 pointer-events-none" />
+
+        {/* 3. Lateral text legibility scrim */}
         <div className="absolute inset-0 bg-[#0C100E] z-10 opacity-70 lg:opacity-50 lg:bg-gradient-to-r lg:from-[#0C100E] lg:via-[#0C100E]/90 lg:to-transparent rtl:lg:bg-gradient-to-l" />
+
+        {/* 4. Photographic Landscape Image */}
         <img
           src={ASSETS.aboutBg}
           alt="Saudi Heritage Architecture"
           className="w-full h-full object-cover object-right-top md:object-center opacity-80"
           referrerPolicy="no-referrer"
         />
-        {/* Gradient transition to footer */}
+
+        {/* 5. Gradient transition to footer */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0C100E] to-transparent z-10" />
       </div>
 
@@ -35,17 +45,17 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ language, onApplyNow }) => {
             <span className="w-1.5 h-1.5 rounded-full bg-[#1EC672]" />
             <span>{language === 'en' ? 'ENROLLMENT NOW OPEN' : 'التسجيل متاح الآن'}</span>
           </div>
-          
+
           <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-syne font-bold text-white mb-6 tracking-tight leading-none">
             {language === 'en' ? 'Begin Your Ya Hala Journey' : 'ابدأ رحلتك مع يا هلا'}
           </h2>
-          
+
           <p className="text-base sm:text-lg md:text-xl text-white/80 mb-10 font-light leading-relaxed max-w-lg">
             {language === 'en'
               ? 'Take the first step towards fluency, confidence, and authentic cultural connection in the Kingdom today.'
               : 'اتخذ خطوتك الأولى نحو الطلاقة اللغوية والاندماج الثقافي الأصيل في أرجاء المملكة اليوم.'}
           </p>
-          
+
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
             <button
               id="final-apply-btn"
@@ -55,10 +65,10 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ language, onApplyNow }) => {
               <span>{language === 'en' ? 'Apply Now' : 'سجّل الآن'}</span>
               <ArrowRight className="w-4 h-4 rtl:rotate-180" />
             </button>
-            
+
             <p className="text-xs text-white/50 font-light border-l border-white/20 pl-4 rtl:border-l-0 rtl:border-r rtl:pl-0 rtl:pr-4 py-1">
-              {language === 'en' 
-                ? 'Applications open for upcoming cohorts.' 
+              {language === 'en'
+                ? 'Applications open for upcoming cohorts.'
                 : 'التقديم متاح للدفعات القادمة.'}
             </p>
           </div>

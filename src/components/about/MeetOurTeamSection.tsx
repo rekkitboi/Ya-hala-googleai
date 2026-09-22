@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { TEAM_HEADER_DATA, YA_HALA_TEAM } from '../../data/teamData';
 import { Language, TeamMember } from '../../types';
 import { ASSETS } from '../../data/yaHalaData';
@@ -9,236 +9,234 @@ interface MeetOurTeamSectionProps {
 }
 
 export const MeetOurTeamSection: React.FC<MeetOurTeamSectionProps> = ({ language }) => {
-  const [hoveredMember, setHoveredMember] = useState<string | null>(null);
-  const [openMobileBio, setOpenMobileBio] = useState<string | null>(null);
+  const [hoveredMemberId, setHoveredMemberId] = useState<string | null>(null);
   const prefersReducedMotion = useReducedMotion();
 
-  // Handle interaction for both touch and hover/keyboard
-  const handleInteractionStart = (id: string) => {
-    setHoveredMember(id);
-  };
-  const handleInteractionEnd = () => {
-    setHoveredMember(null);
-  };
-  const handleMobileToggle = (id: string) => {
-    setOpenMobileBio(prev => prev === id ? null : id);
-  };
+  const isEn = language === 'en';
 
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: prefersReducedMotion ? 0 : 0.15,
-        delayChildren: prefersReducedMotion ? 0 : 0.4
-      }
-    }
+        staggerChildren: prefersReducedMotion ? 0 : 0.08,
+        delayChildren: prefersReducedMotion ? 0 : 0.15,
+      },
+    },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 30 },
-    visible: { 
-      opacity: 1, 
+    hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 25 },
+    visible: {
+      opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
-        stiffness: 80,
-        damping: 20
-      }
-    }
+        duration: prefersReducedMotion ? 0.2 : 0.6,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
   };
 
   return (
     <section
       id="team"
       data-theme="dark"
-      className="relative min-h-[90vh] py-16 md:py-24 bg-[#1F3423] text-white overflow-hidden flex flex-col justify-center"
+      data-header-theme="dark"
+      className="relative py-12 md:py-16 bg-[#0C100E] text-white z-10 border-t border-[#1F3423]/40 overflow-hidden"
     >
-      {/* Cinematic Background */}
-      <motion.div 
-        initial={{ scale: prefersReducedMotion ? 1 : 1.1, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 0.8 }}
-        viewport={{ once: true, margin: "-10%" }}
-        transition={{ duration: prefersReducedMotion ? 0.3 : 1.5, ease: "easeOut" }}
-        className="absolute inset-0 z-0 pointer-events-none"
-      >
+      {/* Atmospheric Garden Background with Controlled Quieted Overlays */}
+      <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden" aria-hidden="true">
         <img
-          src={ASSETS.oasisStoneTerrace}
+          src={ASSETS.oasisGardenPassage}
           alt=""
-          className="w-full h-full object-cover opacity-50"
+          className="w-full h-full object-cover scale-[1.02] opacity-[0.45] pointer-events-none select-none"
+          style={{ objectPosition: 'center 40%' }}
           referrerPolicy="no-referrer"
+          aria-hidden="true"
         />
-        {/* Adjusted directional overlays for better contrast and legibility */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1F3423] via-[#1F3423]/70 to-[#1F3423]/30" />
-        <div className="absolute inset-0 bg-[#1F3423]/30" />
-      </motion.div>
 
-      <div className="max-w-[1400px] w-full mx-auto px-6 relative z-10 flex-grow flex flex-col justify-center">
-        {/* Section Header */}
-        <div className="max-w-3xl mb-12 md:mb-16 text-left rtl:text-right relative">
-          {/* Animated Light Trace */}
-          <motion.div 
-            initial={{ scaleX: 0, opacity: 0 }}
-            whileInView={{ scaleX: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: prefersReducedMotion ? 0.3 : 1, ease: "easeOut" }}
-            className="absolute -bottom-6 left-0 right-0 h-px bg-gradient-to-r from-[#1EC672]/80 via-transparent to-transparent rtl:from-transparent rtl:via-transparent rtl:to-[#1EC672]/80 origin-left rtl:origin-right opacity-30"
+        {/* 1. Deep forest green wash */}
+        <div className="absolute inset-0 bg-[#0A160E]/45" aria-hidden="true" />
+
+        {/* 2. Vertical atmospheric depth gradient: Keeps upper architectural garden visible */}
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-[#0C100E]/35 via-[#0C100E]/20 to-[#0C100E]/60"
+          aria-hidden="true"
+        />
+
+        {/* 3. Quieted stage backdrop behind portrait lineup to prevent foliage competition */}
+        <div
+          className="absolute bottom-16 sm:bottom-20 left-0 right-0 h-72 sm:h-80 bg-gradient-to-t from-[#0C100E]/75 via-[#0C100E]/35 to-transparent pointer-events-none"
+          aria-hidden="true"
+        />
+
+        {/* 4. Localized bottom dark gradient behind names, roles, and descriptions */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-44 sm:h-52 bg-gradient-to-t from-[#0C100E]/95 via-[#0C100E]/70 to-transparent pointer-events-none"
+          aria-hidden="true"
+        />
+
+        {/* 5. Seamless bottom transition fading the garden photograph into shared brand color #0C100E */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-24 sm:h-28 md:h-36 bg-gradient-to-t from-[#0C100E] via-[#0C100E]/85 to-transparent z-10 pointer-events-none"
+          aria-hidden="true"
+        />
+      </div>
+
+      {/* Ambient Emerald Glow */}
+      <div
+        className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[280px] bg-[#1EC672]/5 rounded-full blur-[100px] pointer-events-none"
+        aria-hidden="true"
+      />
+
+      <div className="max-w-[1400px] mx-auto px-6 relative z-10">
+        {/* Refined Section Header: Connected, balanced two-column composition */}
+        <div className="flex flex-col md:flex-row md:items-end gap-5 md:gap-12 lg:gap-16 xl:gap-20 mb-8 md:mb-10 text-left rtl:text-right max-w-6xl">
+          <div className="max-w-xl flex-1">
+            <div className="inline-flex items-center gap-2 mb-2.5">
+              <span className="w-2 h-2 rounded-full bg-[#1EC672]" aria-hidden="true" />
+              <span
+                className={`text-[#1EC672] font-semibold text-xs ${
+                  isEn ? 'font-syne uppercase tracking-[0.2em]' : 'font-arabic'
+                }`}
+              >
+                {isEn ? TEAM_HEADER_DATA.eyebrowEn : TEAM_HEADER_DATA.eyebrowAr}
+              </span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-syne font-bold text-white tracking-tight leading-[1.15]">
+              {isEn ? TEAM_HEADER_DATA.headingEn : TEAM_HEADER_DATA.headingAr}
+            </h2>
+          </div>
+
+          <div className="max-w-md md:max-w-lg md:pb-1">
+            <p className="text-sm sm:text-base text-white/75 font-light leading-relaxed">
+              {isEn ? TEAM_HEADER_DATA.introEn : TEAM_HEADER_DATA.introAr}
+            </p>
+          </div>
+        </div>
+
+        {/* SHARED PORTRAIT STAGE */}
+        <div className="relative pt-2 pb-2">
+          {/* Subtle Shared Grounding Baseline Shadow Across Entire Stage */}
+          <div
+            className="absolute bottom-24 left-0 right-0 h-8 bg-black/60 blur-xl rounded-full opacity-60 pointer-events-none hidden lg:block"
+            aria-hidden="true"
           />
 
           <motion.div
-            initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: prefersReducedMotion ? 0.3 : 0.8 }}
-            className="inline-flex items-center gap-2 mb-4"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#1EC672]" />
-            <span className="text-white/80 uppercase tracking-[0.2em] font-syne font-semibold text-xs">
-              {language === 'en' ? TEAM_HEADER_DATA.eyebrowEn : TEAM_HEADER_DATA.eyebrowAr}
-            </span>
-          </motion.div>
-          
-          <div className="overflow-hidden mb-5">
-            <motion.h2 
-              initial={{ y: prefersReducedMotion ? 0 : "100%" }}
-              whileInView={{ y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: prefersReducedMotion ? 0.3 : 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="text-4xl sm:text-5xl md:text-6xl font-syne font-bold text-white tracking-tight"
-            >
-              {language === 'en' ? TEAM_HEADER_DATA.headingEn : TEAM_HEADER_DATA.headingAr}
-            </motion.h2>
-          </div>
-          
-          <motion.p 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: prefersReducedMotion ? 0.3 : 0.8, delay: prefersReducedMotion ? 0 : 0.3 }}
-            className="text-lg sm:text-xl text-white/70 leading-relaxed font-light max-w-2xl"
-          >
-            {language === 'en' ? TEAM_HEADER_DATA.introEn : TEAM_HEADER_DATA.introAr}
-          </motion.p>
-        </div>
-
-        {/* TEAM STAGE - Single Row Desktop, Horizontal Scroll Mobile */}
-        <div className="relative pt-6 pb-16">
-          {/* Subtle Shared Grounding Shadow for the entire row */}
-          <div className="absolute bottom-0 left-0 right-0 h-10 bg-black/40 blur-2xl rounded-full opacity-60 pointer-events-none hidden lg:block" />
-          
-          <motion.div 
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-10%" }}
-            className="flex flex-row overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none items-end lg:justify-center gap-4 lg:gap-5 pb-8 lg:pb-0 hide-scrollbar h-auto lg:h-[480px] w-full"
+            viewport={{ once: true, margin: '-10%' }}
+            className="flex lg:grid lg:grid-cols-5 overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none hide-scrollbar items-end gap-5 sm:gap-6 lg:gap-3 xl:gap-5 pb-3 lg:pb-0 w-full"
           >
             {YA_HALA_TEAM.map((member: TeamMember) => {
-              const isActiveHover = hoveredMember === member.id;
-              const isOtherHovered = hoveredMember !== null && hoveredMember !== member.id;
-              const isMobileBioOpen = openMobileBio === member.id;
-              
-              // Panel positioning logic based on data or fallback
-              const side = member.bioPanelSide || 'center';
-              const isRtl = language === 'ar';
-              
-              let panelOrigin = 'left-1/2 -translate-x-1/2 rtl:translate-x-1/2';
-              if (side === 'left') {
-                panelOrigin = isRtl ? 'right-0' : 'left-0';
-              } else if (side === 'right') {
-                panelOrigin = isRtl ? 'left-0' : 'right-0';
-              }
+              const isHovered = hoveredMemberId === member.id;
+              const isOtherHovered =
+                hoveredMemberId !== null && hoveredMemberId !== member.id;
+
+              const restingScale = member.portraitScale ?? 1;
+              const currentScale =
+                isHovered && !prefersReducedMotion
+                  ? restingScale + 0.03
+                  : restingScale;
+
+              const translateX = member.portraitTranslateX || '0%';
+              const translateY = member.portraitTranslateY || '0%';
 
               return (
-                <motion.button
+                <motion.article
                   key={member.id}
                   variants={itemVariants}
-                  onMouseEnter={() => handleInteractionStart(member.id)}
-                  onMouseLeave={handleInteractionEnd}
-                  onFocus={() => handleInteractionStart(member.id)}
-                  onBlur={handleInteractionEnd}
-                  onClick={() => handleMobileToggle(member.id)}
-                  aria-expanded={isMobileBioOpen || isActiveHover}
-                  aria-controls={`bio-${member.id}`}
-                  className="group relative flex-none w-[260px] sm:w-[280px] lg:w-0 lg:flex-1 snap-center outline-none text-left rtl:text-right cursor-pointer flex flex-col items-center"
-                  animate={{
-                    opacity: isOtherHovered ? 0.75 : 1,
-                    scale: isActiveHover ? 1.03 : (isOtherHovered ? 0.99 : 1),
-                    y: isActiveHover ? -12 : 0,
-                    zIndex: isActiveHover ? 50 : 10
-                  }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  onMouseEnter={() => setHoveredMemberId(member.id)}
+                  onMouseLeave={() => setHoveredMemberId(null)}
+                  onFocus={() => setHoveredMemberId(member.id)}
+                  onBlur={() => setHoveredMemberId(null)}
+                  tabIndex={0}
+                  className={`group relative flex-none w-[76vw] max-w-[300px] sm:w-[270px] lg:w-auto snap-center outline-none flex flex-col items-center text-center transition-all duration-300 focus-visible:ring-2 focus-visible:ring-[#1EC672] focus-visible:ring-offset-4 focus-visible:ring-offset-[#0C100E] rounded-2xl p-1.5 ${
+                    isOtherHovered ? 'opacity-85' : 'opacity-100'
+                  }`}
                 >
-                  {/* Transparent Portrait Container */}
-                  <div className="relative w-full h-[320px] sm:h-[360px] lg:h-[400px] flex items-end justify-center">
-                    {/* Contact shadow beneath cutout */}
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[140px] h-4 bg-black/60 blur-[6px] rounded-[100%] pointer-events-none" />
-                    
-                    {/* Ambient shadow slightly behind */}
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[200px] h-20 bg-black/30 blur-2xl rounded-full pointer-events-none" />
+                  {/* Portrait Stage Frame */}
+                  <div className="relative w-full h-[260px] sm:h-[280px] lg:h-[300px] xl:h-[320px] flex items-end justify-center">
+                    {/* Primary Contact Shadow under cutout */}
+                    <div
+                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[130px] sm:w-[150px] h-3 bg-black/80 blur-[6px] rounded-[100%] pointer-events-none z-0"
+                      aria-hidden="true"
+                    />
 
-                    {/* Rim Light / Edge Light Effect */}
-                    <motion.div 
-                      className="absolute inset-0 bg-gradient-to-t from-[#1EC672]/30 via-[#1EC672]/5 to-transparent blur-3xl opacity-0 z-0 pointer-events-none rounded-full"
-                      animate={{ opacity: isActiveHover ? 1 : 0 }}
-                      transition={{ duration: 0.3 }}
+                    {/* Ambient Grounding Shadow */}
+                    <div
+                      className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[180px] h-10 bg-black/40 blur-lg rounded-full pointer-events-none z-0"
+                      aria-hidden="true"
                     />
-                    
-                    <img
-                      src={member.image}
-                      alt={language === 'en' ? member.name : member.nameAr}
-                      className="w-full h-full object-contain object-bottom z-10 transition-transform duration-700 ease-out"
-                      referrerPolicy="no-referrer"
-                      style={{
-                        transform: isActiveHover ? `scale(${(member.portraitScale || 1) + 0.04})` : `scale(${member.portraitScale || 1})`,
-                        objectPosition: member.portraitObjectPosition || 'center bottom',
-                        filter: 'drop-shadow(0 20px 20px rgba(0,0,0,0.3))'
-                      }}
+
+                    {/* Subtle Green Ambient Glow on Hover */}
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-t from-[#1EC672]/15 via-[#1EC672]/5 to-transparent blur-3xl pointer-events-none rounded-full transition-opacity duration-500 z-0 ${
+                        isHovered ? 'opacity-100' : 'opacity-0'
+                      }`}
+                      aria-hidden="true"
                     />
+
+                    {/* Controlled Portrait Viewport (clips bottom overflow for mid-torso crop) */}
+                    <div className="relative w-full h-full overflow-hidden flex items-end justify-center z-10">
+                      {/* Transparent PNG Portrait Element with Combined X/Y translation, scaling, and hover preservation */}
+                      <img
+                        id={`${member.id}-portrait`}
+                        src={member.image}
+                        alt={isEn ? member.name : member.nameAr}
+                        className="absolute bottom-0 left-1/2 w-full h-full object-contain object-bottom z-10 select-none pointer-events-none transition-all duration-500 ease-out"
+                        referrerPolicy="no-referrer"
+                        style={{
+                          transform: `translateX(calc(-50% + ${translateX})) translateY(${translateY}) scale(${currentScale})`,
+                          transformOrigin: 'center bottom',
+                          objectPosition: member.portraitObjectPosition || 'center bottom',
+                          filter: 'drop-shadow(0 14px 20px rgba(0,0,0,0.45))',
+                        }}
+                      />
+                    </div>
                   </div>
 
-                  {/* Universal Name & Role (Resting below for all viewports) */}
-                  <div className="text-center w-full mt-5 mb-2 transition-all duration-300">
-                    <h4 className="text-lg font-syne font-bold mb-1 transition-colors duration-300 text-white group-hover:text-[#1EC672]">
-                      {language === 'en' ? member.name : member.nameAr}
-                    </h4>
-                    <p className="text-xs uppercase tracking-widest text-white/60 font-syne font-semibold">
-                      {language === 'en' ? member.role : member.roleAr}
+                  {/* Team Member Information */}
+                  <div className="w-full pt-3.5 flex flex-col items-center text-center">
+                    {/* Subtle Accent Line */}
+                    <div
+                      className={`w-5 h-[2px] mb-2 rounded-full transition-all duration-300 ${
+                        isHovered ? 'w-8 bg-[#1EC672]' : 'bg-white/20'
+                      }`}
+                      aria-hidden="true"
+                    />
+
+                    {/* Team Member Name */}
+                    <h3
+                      className={`text-base sm:text-lg lg:text-lg font-bold mb-1 transition-colors duration-300 ${
+                        isEn ? 'font-syne' : 'font-arabic'
+                      } ${isHovered ? 'text-[#1EC672]' : 'text-white'}`}
+                    >
+                      {isEn ? member.name : member.nameAr}
+                    </h3>
+
+                    {/* Professional Role: Consistent min-height for uniform baseline alignment */}
+                    <p
+                      className={`text-[11px] sm:text-xs font-semibold mb-1.5 leading-snug min-h-[1.75rem] flex items-center justify-center ${
+                        isEn
+                          ? 'font-syne uppercase tracking-wider text-[#1EC672]'
+                          : 'font-arabic text-[#1EC672]'
+                      }`}
+                    >
+                      {isEn ? member.role : member.roleAr}
                     </p>
-                    {/* Subtle Interaction Indicator */}
-                    <motion.div 
-                      className="mt-3 mx-auto w-1 h-1 rounded-full bg-white/30 hidden lg:block"
-                      animate={{ opacity: isActiveHover ? 0 : 1 }}
-                      transition={{ duration: 0.2 }}
-                    />
-                  </div>
 
-                  {/* Biography Panel (Hover/Focus/Tap State) */}
-                  <AnimatePresence>
-                    {(isActiveHover || isMobileBioOpen) && (
-                      <motion.div
-                        id={`bio-${member.id}`}
-                        initial={{ opacity: 0, y: 10, scale: 0.98 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 5, scale: 0.98 }}
-                        transition={{ duration: 0.25, ease: "easeOut" }}
-                        className={`absolute top-[60%] lg:top-auto lg:bottom-full lg:mb-4 w-full sm:w-[320px] p-6 rounded-2xl bg-[#0C100E]/90 backdrop-blur-xl border border-white/10 shadow-2xl z-50 text-left rtl:text-right ${panelOrigin}`}
-                        style={{ pointerEvents: 'none' }}
-                      >
-                        <h4 className="text-xl font-syne font-bold text-white mb-1">
-                          {language === 'en' ? member.name : member.nameAr}
-                        </h4>
-                        <div className="text-[11px] uppercase tracking-wider text-[#1EC672] font-syne font-bold mb-4">
-                          {language === 'en' ? member.role : member.roleAr}
-                        </div>
-                        <p className="text-sm text-white/80 leading-relaxed font-light">
-                          {language === 'en' ? member.bio : member.bioAr}
-                        </p>
-                      </motion.div>
+                    {/* Short Description: Reduced density, 2 lines max on desktop, consistent baseline */}
+                    {member.description && (
+                      <p className="text-xs text-white/65 font-light leading-relaxed max-w-[240px] line-clamp-2 min-h-[2.25rem] flex items-start justify-center">
+                        {isEn ? member.description : member.descriptionAr}
+                      </p>
                     )}
-                  </AnimatePresence>
-                </motion.button>
+                  </div>
+                </motion.article>
               );
             })}
           </motion.div>

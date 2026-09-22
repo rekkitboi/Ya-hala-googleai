@@ -82,15 +82,18 @@ export interface TeamMember {
   nameAr: string;
   role: string;
   roleAr: string;
+  description?: string;
+  descriptionAr?: string;
   bio: string;
   bioAr: string;
   image: string;
-  imageStatus: 'confirmed' | 'temporary' | 'temporary-generated';
+  imageStatus: 'confirmed' | 'requires-confirmation';
   bioStatus: 'confirmed' | 'requires-confirmation';
   isFeatured?: boolean;
   portraitScale?: number;
   portraitObjectPosition?: string;
-  bioPanelSide?: 'left' | 'center' | 'right';
+  portraitTranslateX?: string;
+  portraitTranslateY?: string;
 }
 
 export interface CurriculumLevel {
