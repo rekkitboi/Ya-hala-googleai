@@ -5,6 +5,7 @@ import { AboutTeaser } from '../components/AboutTeaser';
 import { VideoShowcaseSection } from '../components/VideoShowcaseSection';
 import { MethodologySection } from '../components/MethodologySection';
 import { ProgramsSection } from '../components/ProgramsSection';
+import { OurClientsSection } from '../components/OurClientsSection';
 import { SaudiPhraseSection } from '../components/SaudiPhraseSection';
 import { ExperiencesSection } from '../components/ExperiencesSection';
 import { EditorialSection } from '../components/EditorialSection';
@@ -67,7 +68,10 @@ export const HomePage: React.FC<HomePageProps> = ({
         onApplyProgram={onOpenApplication}
       />
 
-      {/* 6. Dialect Discovery / Interactive Phrase of the Day */}
+      {/* 6. Trusted By Professionals / Our Clients */}
+      <OurClientsSection language={language} />
+
+      {/* 7. Dialect Discovery / Interactive Phrase of the Day */}
       <SaudiPhraseSection language={language} />
 
       {/* 7. Cultural Experiences Showcase */}
