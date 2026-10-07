@@ -136,6 +136,9 @@ export interface StudentActivity {
   description: string;
   descriptionAr: string;
   iconName: string;
+  image?: string;
+  categoryEn?: string;
+  categoryAr?: string;
 }
 
 export interface FAQItem {

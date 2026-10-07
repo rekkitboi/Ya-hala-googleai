@@ -259,6 +259,12 @@ export const CurriculumBook3D: React.FC<CurriculumBook3DProps> = ({
                 className="w-full h-full object-cover sepia-[0.32] contrast-[0.96] brightness-[0.98] transition-transform duration-500 group-hover:scale-105"
                 referrerPolicy="no-referrer"
                 loading="lazy"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (target.src.endsWith('.webp')) {
+                    target.src = target.src.replace(/\.webp$/, '.jpg');
+                  }
+                }}
               />
               {/* Subtle vignette for photographic depth */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />

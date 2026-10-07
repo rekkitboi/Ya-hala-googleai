@@ -14,8 +14,27 @@ export const AboutTeaser: React.FC<AboutTeaserProps> = ({ language }) => {
       id="why"
       data-theme="dark"
       data-header-theme="dark"
-      className="relative py-20 md:py-28 bg-[#0C100E]/75 backdrop-blur-md text-white overflow-hidden border-y border-white/5"
+      className="relative py-24 md:py-32 bg-[#0C100E] text-white overflow-hidden border-t border-[#1F3423]/40"
     >
+      {/* Original About Section Background: Rich Saudi Oasis imagery with verdant tones and radial vignetting */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none" aria-hidden="true">
+        <img
+          src={ASSETS.aboutBg}
+          alt="Saudi Palm Oasis Sanctuary"
+          className="w-full h-full object-cover object-center opacity-35 mix-blend-luminosity scale-105"
+          referrerPolicy="no-referrer"
+        />
+        <div className="absolute inset-0 bg-[#0C100E]/75 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0C100E] via-transparent to-[#0C100E] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#1F3423]/60 via-[#0C100E]/85 to-[#0C100E] pointer-events-none" />
+      </div>
+
+      {/* Atmospheric emerald glow accent */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-[#1EC672]/15 rounded-full blur-[130px] pointer-events-none"
+        aria-hidden="true"
+      />
+
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         {/* Eyebrow badge */}
         <div className="inline-flex items-center gap-2 mb-4">
