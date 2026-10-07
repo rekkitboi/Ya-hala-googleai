@@ -138,3 +138,18 @@ export interface StudentActivity {
   iconName: string;
 }
 
+export interface FAQItem {
+  id: string;
+  questionEn: string;
+  questionAr: string;
+  answerEn: string;
+  answerAr: string;
+}
+
+export interface FAQCategory {
+  id: string;
+  titleEn: string;
+  titleAr: string;
+  items: FAQItem[];
+}
+

@@ -87,6 +87,15 @@ export const ScrollToTop: React.FC<ScrollToTopProps> = ({ language }) => {
         language === 'en'
           ? 'Digital terms of use, intellectual property policies, and legal guidelines governing the Ya Hala demonstration website.'
           : 'شروط الاستخدام الرقمي وسياسات الملكية الفكرية والضوابط القانونية الحاكمة لتصفح موقع يا هلا التجريبي.';
+    } else if (pathname === '/faq') {
+      title =
+        language === 'en'
+          ? 'Frequently Asked Questions | Ya Hala'
+          : 'الأسئلة الشائعة | معهد يا هلا';
+      description =
+        language === 'en'
+          ? 'Find answers about Ya Hala registration, learning programs, costs, payment, certificates, employment, training, and learner support.'
+          : 'تعرّف على إجابات الأسئلة الشائعة حول التسجيل والبرامج والتعلّم والتكاليف والدفع والشهادات والتوظيف والدعم في معهد يا هلا.';
     } else {
       title =
         language === 'en'

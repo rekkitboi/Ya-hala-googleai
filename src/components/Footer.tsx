@@ -214,6 +214,9 @@ export const Footer: React.FC<FooterProps> = ({ language, onSelectProgramId }) =
           <Link to="/terms-of-use" className="hover:text-white transition-colors">
             {language === 'en' ? 'Terms of Use' : 'سياسة الاستخدام'}
           </Link>
+          <Link to="/faq" className="hover:text-white transition-colors">
+            {language === 'en' ? 'FAQ' : 'الأسئلة الشائعة'}
+          </Link>
         </div>
       </div>
     </footer>

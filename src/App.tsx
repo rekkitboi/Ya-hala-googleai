@@ -11,6 +11,7 @@ import { BeyondTheClassroomPage } from './pages/BeyondTheClassroomPage';
 import { CulturalHighlightsPage } from './pages/CulturalHighlightsPage';
 import { TermsAndConditionsPage } from './pages/TermsAndConditionsPage';
 import { TermsOfUsePage } from './pages/TermsOfUsePage';
+import { FAQPage } from './pages/FAQPage';
 import { ApplicationModal } from './components/ApplicationModal';
 import { ProgramModal } from './components/ProgramModal';
 import { ExperienceModal } from './components/ExperienceModal';
@@ -141,6 +142,15 @@ export default function App() {
             path="/terms-of-use"
             element={
               <TermsOfUsePage
+                language={language}
+              />
+            }
+          />
+
+          <Route
+            path="/faq"
+            element={
+              <FAQPage
                 language={language}
               />
             }
