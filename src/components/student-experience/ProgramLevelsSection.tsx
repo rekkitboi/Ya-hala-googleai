@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { CURRICULUM_LEVELS_DATA } from '../../data/studentExperienceData';
 import { Language } from '../../types';
 import { CheckCircle2, Layers } from 'lucide-react';
+import { CurriculumBookShowcase } from './CurriculumBookShowcase';
 
 interface ProgramLevelsSectionProps {
   language: Language;
@@ -9,6 +10,8 @@ interface ProgramLevelsSectionProps {
 
 export const ProgramLevelsSection: React.FC<ProgramLevelsSectionProps> = ({ language }) => {
   const [activeLevelId, setActiveLevelId] = useState<string>('a1');
+  const isAr = language === 'ar';
+  const displayFont = isAr ? 'font-arabic font-bold' : 'font-syne font-bold';
 
   const activeLevel = CURRICULUM_LEVELS_DATA.find((lvl) => lvl.id === activeLevelId) || CURRICULUM_LEVELS_DATA[0];
 
@@ -23,11 +26,11 @@ export const ProgramLevelsSection: React.FC<ProgramLevelsSectionProps> = ({ lang
         <div className="max-w-2xl mb-12 text-left rtl:text-right">
           <div className="inline-flex items-center gap-2 mb-3">
             <Layers className="w-3.5 h-3.5 text-[#1EC672]" />
-            <span className="text-[#1F3423]/70 uppercase tracking-[0.2em] font-syne font-semibold text-xs">
+            <span className={`text-[#1F3423]/70 ${isAr ? '' : 'uppercase tracking-[0.2em]'} ${displayFont} text-xs`}>
               {language === 'en' ? 'CURRICULUM FRAMEWORK' : 'الإطار المنهجي المعتمد'}
             </span>
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-syne font-bold text-[#1F3423] tracking-tight mb-3">
+          <h2 className={`text-2xl sm:text-3xl md:text-4xl ${displayFont} text-[#1F3423] tracking-tight mb-3`}>
             {language === 'en' ? 'Four Progressive Program Levels' : 'أربعة مستويات تعليمية متدرجة'}
           </h2>
           <p className="text-sm sm:text-base text-[#1F3423]/75 leading-relaxed font-light">
@@ -60,7 +63,7 @@ export const ProgramLevelsSection: React.FC<ProgramLevelsSectionProps> = ({ lang
                       {lvl.level.split('|')[0].trim()}
                     </span>
                   </div>
-                  <h4 className={`text-sm sm:text-base font-syne font-bold leading-tight ${isSelected ? 'text-white' : 'text-[#1F3423]'}`}>
+                  <h4 className={`text-sm sm:text-base ${displayFont} leading-tight ${isSelected ? 'text-white' : 'text-[#1F3423]'}`}>
                     {language === 'en' ? lvl.title : lvl.titleAr}
                   </h4>
                 </div>
@@ -73,41 +76,59 @@ export const ProgramLevelsSection: React.FC<ProgramLevelsSectionProps> = ({ lang
         </div>
 
         {/* Detailed Active Level Showcase */}
-        <div className="bg-white rounded-2xl border border-[#1F3423]/10 p-7 sm:p-10 md:p-12 shadow-sm relative overflow-hidden transition-all duration-300">
-          <div className="grid lg:grid-cols-12 gap-8 items-start">
-            <div className="lg:col-span-4 border-b lg:border-b-0 lg:border-r rtl:lg:border-r-0 rtl:lg:border-l border-[#1F3423]/10 pb-6 lg:pb-0 lg:pr-8 rtl:lg:pr-0 rtl:lg:pl-8 text-left rtl:text-right">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1F3423]/5 text-[#1F3423] font-syne font-bold text-xs uppercase tracking-wider mb-4 border border-[#1F3423]/10">
-                <span>{activeLevel.level}</span>
+        <div className="bg-white rounded-2xl border border-[#1F3423]/10 p-6 sm:p-8 md:p-10 shadow-sm relative overflow-hidden transition-all duration-300">
+          <div className="grid lg:grid-cols-12 gap-8 items-center">
+            {/* Left Zone: Level Title & Overview */}
+            <div className="lg:col-span-3 border-b lg:border-b-0 lg:border-r rtl:lg:border-r-0 rtl:lg:border-l border-[#1F3423]/10 pb-6 lg:pb-0 lg:pr-6 rtl:lg:pr-0 rtl:lg:pl-6 text-left rtl:text-right flex flex-col justify-between">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1F3423]/5 text-[#1F3423] font-syne font-bold text-xs uppercase tracking-wider mb-4 border border-[#1F3423]/10">
+                  <span>{activeLevel.level}</span>
+                </div>
+
+                <h3 className={`text-xl sm:text-2xl md:text-3xl ${displayFont} text-[#1F3423] mb-2 leading-tight`}>
+                  {language === 'en' ? activeLevel.title : activeLevel.titleAr}
+                </h3>
+
+                <div className="text-xs sm:text-sm font-semibold text-[#1F3423]/70 mb-4">
+                  {language === 'en' ? activeLevel.focus : activeLevel.focusAr}
+                </div>
               </div>
 
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-syne font-bold text-[#1F3423] mb-2 leading-tight">
-                {language === 'en' ? activeLevel.title : activeLevel.titleAr}
-              </h3>
-
-              <div className="text-xs sm:text-sm font-syne font-semibold text-[#1F3423]/70">
-                {language === 'en' ? activeLevel.focus : activeLevel.focusAr}
+              <div className="pt-4 border-t border-[#1F3423]/10 text-xs text-[#1F3423]/65 leading-relaxed font-light">
+                {language === 'en'
+                  ? 'Includes Student Book, Workbook, and Conversation Guide with authentic Saudi cultural contexts.'
+                  : 'يشمل كتاب الطالب، وكتاب التمارين، ودليل المحادثة المبني على السياق الثقافي والاجتماعي السعودي.'}
               </div>
             </div>
 
-            <div className="lg:col-span-8 text-left rtl:text-right">
+            {/* Center Zone: Interactive Curriculum Book Showcase */}
+            <div className="lg:col-span-5 border-b lg:border-b-0 lg:border-r rtl:lg:border-r-0 rtl:lg:border-l border-[#1F3423]/10 pb-8 lg:pb-0 lg:px-4 flex items-center justify-center">
+              <CurriculumBookShowcase
+                levelId={activeLevelId}
+                language={language}
+              />
+            </div>
+
+            {/* Right Zone: Competency Target & Key Learning Outcomes */}
+            <div className="lg:col-span-4 text-left rtl:text-right">
               <div className="mb-6">
-                <h4 className="text-xs uppercase tracking-widest font-syne font-bold text-[#1F3423]/50 mb-2">
+                <h4 className={`text-xs ${isAr ? '' : 'uppercase tracking-widest'} ${displayFont} text-[#1F3423]/50 mb-2`}>
                   {language === 'en' ? 'Competency Target' : 'الهدف التعليمي العام'}
                 </h4>
-                <p className="text-base sm:text-lg text-[#1F3423]/85 leading-relaxed font-light">
+                <p className="text-sm sm:text-base text-[#1F3423]/85 leading-relaxed font-light">
                   {language === 'en' ? activeLevel.description : activeLevel.descriptionAr}
                 </p>
               </div>
 
               <div>
-                <h4 className="text-xs uppercase tracking-widest font-syne font-bold text-[#1F3423]/50 mb-3">
+                <h4 className={`text-xs ${isAr ? '' : 'uppercase tracking-widest'} ${displayFont} text-[#1F3423]/50 mb-3`}>
                   {language === 'en' ? 'Key Learning Outcomes' : 'مخرجات التعلم المستهدفة'}
                 </h4>
-                <div className="grid sm:grid-cols-2 gap-3">
+                <div className="grid gap-2.5">
                   {(language === 'en' ? activeLevel.milestones : activeLevel.milestonesAr).map((milestone, idx) => (
                     <div
                       key={idx}
-                      className="p-3.5 rounded-xl bg-[#F9F8F5] border border-[#1F3423]/5 flex items-start gap-2.5"
+                      className="p-3 rounded-xl bg-[#F9F8F5] border border-[#1F3423]/5 flex items-start gap-2.5"
                     >
                       <CheckCircle2 className="w-4 h-4 text-[#1EC672] shrink-0 mt-0.5" />
                       <span className="text-xs sm:text-sm text-[#1F3423]/85 leading-snug">

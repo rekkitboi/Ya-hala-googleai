@@ -153,3 +153,23 @@ export interface FAQCategory {
   items: FAQItem[];
 }
 
+export type BookType = 'student-book' | 'workbook' | 'conversation-guide';
+
+export interface CurriculumBook {
+  id: BookType;
+  type: BookType;
+  levelCode: string;
+  titleAr: string;
+  titleEn: string;
+  subtitleAr: string;
+  subtitleEn: string;
+  partAr: string;
+  partEn: string;
+  unitsAr: string;
+  unitsEn: string;
+  archImage: string;
+  archAlt: string;
+  badgeAr: string;
+  badgeEn: string;
+}
+
